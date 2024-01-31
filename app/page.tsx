@@ -6,6 +6,7 @@ export default function Home() {
       <Button>Hello</Button>
       <h1>Hello</h1>
       <h1>Hello2</h1>
+      <h2>Hello3</h2>
     </main>
   );
 }
