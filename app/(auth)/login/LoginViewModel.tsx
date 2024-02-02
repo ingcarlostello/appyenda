@@ -6,12 +6,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
 // @Validation
-import { LoginValidation } from "@/lib/validation";
+import { LoginValidationSchema } from "@/lib/validation";
 
 const LoginViewModel = () => {
     // 1. Define your form.
-    const form = useForm<z.infer<typeof LoginValidation>>({
-        resolver: zodResolver(LoginValidation),
+    const form = useForm<z.infer<typeof LoginValidationSchema>>({
+        resolver: zodResolver(LoginValidationSchema),
         defaultValues: {
             email: '',
             password: ''
@@ -19,7 +19,7 @@ const LoginViewModel = () => {
     });
 
     // 2. Define a submit handler.
-    function onSubmit(values: z.infer<typeof LoginValidation>) {
+    async function handleSignIn(values: z.infer<typeof LoginValidationSchema>) {
         // Do something with the form values.
         // ✅ This will be type-safe and validated.
         console.log(values);
@@ -27,7 +27,7 @@ const LoginViewModel = () => {
 
     return {
         form,
-        onSubmit,
+        handleSignIn,
     };
 };
 
