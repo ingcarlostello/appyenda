@@ -1,5 +1,9 @@
 "use client";
 
+// @Nextjs
+import Image from "next/image";
+import Link from "next/link";
+
 // @Shadcn
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
@@ -8,6 +12,9 @@ import { Input } from "@/components/ui/input";
 // @View Models
 import LoginViewModel from "./LoginViewModel";
 
+// @Assets
+import logo from "../../assets/logo-white.png"
+
 const Login = () => {
     const { form, onSubmit } = LoginViewModel();
 
@@ -15,7 +22,10 @@ const Login = () => {
         <div className="min-h-screen grid content-center">
             <Form {...form}>
                 <div className="flex justify-center">
-                    <div className="bg-white w-1/4 p-8 shadow-2xl flex-center flex-col rounded-2xl">
+                    <div className="bg-white md:w-3/6 lg:w-3/6 xl:w-1/4 p-8 md:shadow-2xl flex-center flex-col rounded-2xl">
+                        <div className="flex justify-center mb-4">
+                            <Image src={logo} alt="Appyenda-logo" width={250} height={250}/>
+                        </div>
                         <form
                             // onSubmit={form.handleSubmit(handleSignin)}
                             className="flex flex-col gap-5 w-full mt-4"
@@ -57,7 +67,7 @@ const Login = () => {
                             </Button>
 
                             <p className="text-small-regular text-light-2 text-center mt-2">
-                                No tienes una cuenta? Regístrate
+                                No tienes una cuenta? <Link className="underline" href={"/register"}>Regístrate</Link> 
                             </p>
                         </form>
                     </div>
