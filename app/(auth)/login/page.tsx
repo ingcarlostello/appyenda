@@ -16,7 +16,7 @@ import LoginViewModel from "./LoginViewModel";
 import logo from "../../assets/logo-white.png"
 
 const Login = () => {
-    const { form, onSubmit } = LoginViewModel();
+    const { form, handleSignIn } = LoginViewModel();
 
     return (
         <div className="min-h-screen grid content-center">
@@ -27,7 +27,7 @@ const Login = () => {
                             <Image src={logo} alt="Appyenda-logo" width={250} height={250}/>
                         </div>
                         <form
-                            // onSubmit={form.handleSubmit(handleSignin)}
+                            onSubmit={form.handleSubmit(handleSignIn)}
                             className="flex flex-col gap-5 w-full mt-4"
                         >
                             <FormField
