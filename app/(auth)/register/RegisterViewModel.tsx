@@ -18,6 +18,7 @@ const RegisterViewModel = () => {
       confirmPassword: "",
       name: "",
       username: "",
+      checkbox: false,
     },
   });
 

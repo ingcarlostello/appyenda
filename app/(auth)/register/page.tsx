@@ -6,7 +6,7 @@ import Link from "next/link";
 
 // @Shadcn
 import { Button } from "@/components/ui/button";
-// import { Checkbox } from "@/components/ui/checkbox";
+import { Checkbox } from "@/components/ui/checkbox";
 
 import {
   Form,
@@ -142,6 +142,32 @@ const Register = () => {
                   </FormItem>
                 )}
               />
+              <FormField
+                control={form.control}
+                name="checkbox"
+                render={({ field }) => (
+                  <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md ">
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                      />
+                    </FormControl>
+                    <div className="space-y-1 leading-none">
+                      <FormLabel>
+                        Acepto los{" "}
+                        <Link className="underline" href="/examples/forms">
+                          términos y condiciones
+                        </Link>{" "}
+                      </FormLabel>
+                      <FormDescription></FormDescription>
+                      {form.formState.errors.checkbox && (
+                        <p>{form.formState.errors.checkbox.message}</p>
+                      )}
+                    </div>
+                  </FormItem>
+                )}
+              />
 
               <Button type="submit" className="shad-button_primary">
                 CREAR CUENTA
@@ -155,30 +181,3 @@ const Register = () => {
 };
 
 export default Register;
-
-{
-  /* <FormField
-                control={form.control}
-                name="mobile"
-                render={({ field }) => (
-                  <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 shadow">
-                    <FormControl>
-                      <Checkbox
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                      />
-                    </FormControl>
-                    <div className="space-y-1 leading-none">
-                      <FormLabel>
-                        Use different settings for my mobile devices
-                      </FormLabel>
-                      <FormDescription>
-                        You can manage your mobile notifications in the{" "}
-                        <Link href="/examples/forms">mobile settings</Link>{" "}
-                        page.
-                      </FormDescription>
-                    </div>
-                  </FormItem>
-                )}
-              /> */
-}
