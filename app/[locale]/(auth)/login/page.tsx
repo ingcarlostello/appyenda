@@ -1,22 +1,26 @@
-"use client";
-
+"use client"
 // @Nextjs
 import Image from "next/image";
 import Link from "next/link";
 
 // @Shadcn
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
 // @View Models
 import LoginViewModel from "./LoginViewModel";
 
 // @Assets
-import logo from "../../assets/logo-white.png"
+import logo from "../../../assets/logo-white.png"
+
+// @Next-intl
+import {useTranslations} from 'next-intl';
 
 const Login = () => {
-    const { form, handleSignIn } = LoginViewModel();
+    const { form, handleSignIn,  } = LoginViewModel();
+
+    const t = useTranslations('LoginPage');
 
     return (
         <div className="min-h-screen grid content-center">
@@ -63,11 +67,11 @@ const Login = () => {
                             />
 
                             <Button type="submit" className="shad-button_primary">
-                                Log in
+                                {t('LogIn')}
                             </Button>
 
                             <p className="text-small-regular text-light-2 text-center mt-2">
-                                No tienes una cuenta? <Link className="underline" href={"/register"}>Regístrate</Link> 
+                                {t('DONT_HAVE_ACCOUNT')} <Link className="underline" href={"/register"}>{t('SIGN_UP')}</Link> 
                             </p>
                         </form>
                     </div>

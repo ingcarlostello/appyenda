@@ -1,0 +1,16 @@
+{
+    "LoginPage": {
+        "LogIn": "Log in",
+        "DONT_HAVE_ACCOUNT": "You don't have an account?",
+        "SIGN_UP":"Sign up"
+    },
+
+    "LanguageSelector": {
+        "locale": "{locale, select, es {Spanish} en {English} other {Unknown}}",
+        "Language": "Language"
+    },
+
+    "RegisterPage": {
+        "REGISTER": "Sign up"
+    }
+}
