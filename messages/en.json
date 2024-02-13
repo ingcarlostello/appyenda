@@ -11,6 +11,15 @@
     },
 
     "RegisterPage": {
-        "REGISTER": "Sign up"
+        "NAME": "Name",
+        "USER_NAME": "User name",
+        "NAME_TO_RECOGNIZE": "Name you will be recognized by",
+        "EMAIL": "Email",
+        "PASSWORD": "Password",
+        "CONFIRM_PASSWORD": "Confirm password",
+        "ACCEPT_TERMS_AND_CONDITIONS": "Accept terms and conditions",
+        "REGISTER": "Register",
+        "ALREADY_REGISTERED": "Do you already have an account?",
+        "LOG_IN": "Log in"
     }
 }

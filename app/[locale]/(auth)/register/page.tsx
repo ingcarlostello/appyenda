@@ -7,7 +7,6 @@ import Link from "next/link";
 // @Shadcn
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-
 import {
     Form,
     FormControl,
@@ -22,11 +21,16 @@ import { Input } from "@/components/ui/input";
 // @View Models
 import RegisterViewModel from "./RegisterViewModel";
 
+// @Next-intl
+import {useTranslations} from 'next-intl';
+
 // @Assets
 import logo from "../../../assets/logo-white.png";
 
 const Register = () => {
     const { form, handleSignUp } = RegisterViewModel();
+
+    const t = useTranslations('RegisterPage');
 
     return (
         <div className="min-h-screen grid content-center">
@@ -45,7 +49,7 @@ const Register = () => {
                                 name="name"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel className="shad-form_label">Nombre</FormLabel>
+                                        <FormLabel className="shad-form_label">{t('NAME')}</FormLabel>
                                         <FormControl>
                                             <Input
                                                 type="text"
@@ -65,14 +69,14 @@ const Register = () => {
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel className="shad-form_label">
-                                            Nombre de usuario
+                                            {t('USER_NAME')}
                                         </FormLabel>
                                         <FormControl>
                                             <Input
                                                 type="text"
                                                 className="shad-input"
                                                 {...field}
-                                                placeholder="Nombre con el que te reconocerán"
+                                                placeholder={t('NAME_TO_RECOGNIZE')}
                                             />
                                         </FormControl>
                                         <FormMessage />
@@ -104,7 +108,7 @@ const Register = () => {
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel className="shad-form_label">
-                                            Contraseña
+                                            {t('PASSWORD')}
                                         </FormLabel>
                                         <FormControl>
                                             <Input
@@ -124,7 +128,7 @@ const Register = () => {
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel className="shad-form_label">
-                                            Confirma tu contraseña
+                                            {t('CONFIRM_PASSWORD')}
                                         </FormLabel>
                                         <FormControl>
                                             <Input
@@ -155,9 +159,8 @@ const Register = () => {
                                         </FormControl>
                                         <div className="space-y-1 leading-none">
                                             <FormLabel>
-                                                Acepto los{" "}
                                                 <Link className="underline" href="/examples/forms">
-                                                    términos y condiciones
+                                                    {t('ACCEPT_TERMS_AND_CONDITIONS')}
                                                 </Link>{" "}
                                             </FormLabel>
                                             <FormDescription></FormDescription>
@@ -170,8 +173,11 @@ const Register = () => {
                             />
 
                             <Button type="submit" className="shad-button_primary">
-                                Crear cuenta
+                                {t('REGISTER')}
                             </Button>
+                            <p className="text-small-regular text-light-2 text-center mt-2">
+                                {t('ALREADY_REGISTERED')} <Link className="underline" href={"/login"}>{t('LOG_IN')}</Link> 
+                            </p>
                         </form>
                     </div>
                 </div>
