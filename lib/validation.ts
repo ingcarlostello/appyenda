@@ -8,13 +8,8 @@ export const LoginValidationSchema = z.object({
     .min(8, { message: "El password debe ser mínimo de 8 caracteres." }),
 });
 
-export const RegistrationValidationSchema = z
+export const RegisterValidationSchema = z
   .object({
-    email: z.string().email("Email no válido"),
-    password: z
-      .string()
-      .min(8, { message: "El password debe ser mínimo de 8 caracteres." }),
-    confirmPassword: z.string(),
     name: z
       .string()
       .min(2, { message: "El nombre debe contener mínimo 2 caracteres." })
@@ -27,6 +22,11 @@ export const RegistrationValidationSchema = z
       .max(50, {
         message: "El nombre de usuario debe contener maximo 2 caracteres.",
       }),
+    email: z.string().email("Email no válido"),
+    password: z
+      .string()
+      .min(8, { message: "El password debe ser mínimo de 8 caracteres." }),
+    confirmPassword: z.string(),
     checkbox: z.boolean().default(false).optional(),
   })
   .refine((data) => data.password === data.confirmPassword, {

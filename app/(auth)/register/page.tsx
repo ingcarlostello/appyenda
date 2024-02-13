@@ -20,13 +20,13 @@ import {
 import { Input } from "@/components/ui/input";
 
 // @View Models
-import LoginViewModel from "./RegisterViewModel";
+import RegisterViewModel from "./RegisterViewModel";
 
 // @Assets
 import logo from "../../assets/logo-white.png";
 
 const Register = () => {
-  const { form, handleSignIn } = LoginViewModel();
+  const { form, handleSignUp } = RegisterViewModel();
 
   return (
     <div className="min-h-screen grid content-center">
@@ -37,7 +37,7 @@ const Register = () => {
               <Image src={logo} alt="Appyenda-logo" width={250} height={250} />
             </div>
             <form
-              onSubmit={form.handleSubmit(handleSignIn)}
+              onSubmit={form.handleSubmit(handleSignUp)}
               className="flex flex-col gap-5 w-full mt-4"
             >
               <FormField
@@ -72,7 +72,7 @@ const Register = () => {
                         type="text"
                         className="shad-input"
                         {...field}
-                        placeholder="Nombre con el que te recocerán"
+                        placeholder="Nombre con el que te reconocerán"
                       />
                     </FormControl>
                     <FormMessage />
@@ -170,7 +170,7 @@ const Register = () => {
               />
 
               <Button type="submit" className="shad-button_primary">
-                CREAR CUENTA
+                Crear cuenta
               </Button>
             </form>
           </div>

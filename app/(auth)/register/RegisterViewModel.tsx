@@ -6,25 +6,25 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
 // @Validation
-import { RegistrationValidationSchema } from "@/lib/validation";
+import { RegisterValidationSchema } from "@/lib/validation";
 
 const RegisterViewModel = () => {
   // 1. Define your form.
-  const form = useForm<z.infer<typeof RegistrationValidationSchema>>({
-    resolver: zodResolver(RegistrationValidationSchema),
+  const form = useForm<z.infer<typeof RegisterValidationSchema>>({
+    resolver: zodResolver(RegisterValidationSchema),
     defaultValues: {
+      name: "",
+      username: "",
       email: "",
       password: "",
       confirmPassword: "",
-      name: "",
-      username: "",
       checkbox: false,
     },
   });
 
   // 2. Define a submit handler.
-  async function handleSignIn(
-    values: z.infer<typeof RegistrationValidationSchema>
+  async function handleSignUp(
+    values: z.infer<typeof RegisterValidationSchema>
   ) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
@@ -33,7 +33,7 @@ const RegisterViewModel = () => {
 
   return {
     form,
-    handleSignIn,
+    handleSignUp,
   };
 };
 
