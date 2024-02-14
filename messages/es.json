@@ -1,0 +1,25 @@
+{
+    "LoginPage": {
+        "LogIn": "Iniciar sesión",
+        "DONT_HAVE_ACCOUNT": "No tienes una cuenta?",
+        "SIGN_UP":"Regístrate"
+    },
+
+    "LanguageSelector": {
+        "locale": "{locale, select, es {Spanish} en {English} other {Unknown}}",
+        "Language": "Idioma"
+    },
+
+    "RegisterPage": {
+        "NAME": "Nombre",
+        "USER_NAME": "Nombre de usuario",
+        "NAME_TO_RECOGNIZE": "Nombre con el que te reconocerán",
+        "EMAIL": "Email",
+        "PASSWORD": "Contraseña",
+        "CONFIRM_PASSWORD": "Confirmar contraseña",
+        "ACCEPT_TERMS_AND_CONDITIONS": "Aceptar términos y condiciones",
+        "REGISTER": "Registrarse",
+        "ALREADY_REGISTERED": "Ya tienes una cuenta?",
+        "LOG_IN": "Inicia sesión"
+    }
+}
