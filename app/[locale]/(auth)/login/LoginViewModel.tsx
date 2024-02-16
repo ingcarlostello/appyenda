@@ -11,6 +11,7 @@ import { useTranslations } from "next-intl";
 
 const LoginViewModel = () => {
   const t = useTranslations("Validation");
+  // Passing t as an argument for validation
   const formSchema = LoginValidationSchema(t);
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({

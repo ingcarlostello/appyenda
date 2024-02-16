@@ -4,6 +4,7 @@ import { z } from "zod";
 // @Next-intl
 import { useTranslations } from "next-intl";
 
+// Receives t = useTranslations("Validation") as an argument
 export const LoginValidationSchema = (t: (arg: string) => string) =>
   z.object({
     email: z.string().email(t("EMAIL")),
