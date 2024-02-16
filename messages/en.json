@@ -1,25 +1,36 @@
 {
-    "LoginPage": {
-        "LogIn": "Log in",
-        "DONT_HAVE_ACCOUNT": "You don't have an account?",
-        "SIGN_UP":"Sign up"
-    },
+  "LoginPage": {
+    "LogIn": "Log in",
+    "DONT_HAVE_ACCOUNT": "You don't have an account?",
+    "SIGN_UP": "Sign up"
+  },
 
-    "LanguageSelector": {
-        "locale": "{locale, select, es {Spanish} en {English} other {Unknown}}",
-        "Language": "Language"
-    },
+  "LanguageSelector": {
+    "locale": "{locale, select, es {Spanish} en {English} other {Unknown}}",
+    "Language": "Language"
+  },
 
-    "RegisterPage": {
-        "NAME": "Name",
-        "USER_NAME": "User name",
-        "NAME_TO_RECOGNIZE": "Name you will be recognized by",
-        "EMAIL": "Email",
-        "PASSWORD": "Password",
-        "CONFIRM_PASSWORD": "Confirm password",
-        "ACCEPT_TERMS_AND_CONDITIONS": "Accept terms and conditions",
-        "REGISTER": "Register",
-        "ALREADY_REGISTERED": "Do you already have an account?",
-        "LOG_IN": "Log in"
-    }
+  "RegisterPage": {
+    "NAME": "Name",
+    "USER_NAME": "User name",
+    "NAME_TO_RECOGNIZE": "Name you will be recognized by",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "CONFIRM_PASSWORD": "Confirm password",
+    "ACCEPT_TERMS_AND_CONDITIONS": "Accept terms and conditions",
+    "REGISTER": "Register",
+    "ALREADY_REGISTERED": "Do you already have an account?",
+    "LOG_IN": "Log in"
+  },
+
+  "Validation": {
+    "NAME_MIN_LENGTH": "Name must be at least 2 characters long.",
+    "NAME_MAX_LENGTH": "Name must be at most 50 characters long.",
+    "USER_NAME_MIN_LENGTH": "User name must be at least 2 characters long.",
+    "USER_NAME_MAX_LENGTH": "User name must be at most 50 characters long.",
+    "EMAIL": "Invalid email",
+    "PASSWORD": "Password must be at least 8 characters long.",
+    "CONFIRM_PASSWORD": "Passwords do not match",
+    "TERMS": "You must accept the terms and conditions"
+  }
 }
