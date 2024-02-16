@@ -4,12 +4,11 @@ import { z } from "zod";
 // @Next-intl
 import { useTranslations } from "next-intl";
 
-export const LoginValidationSchema = z.object({
-  email: z.string().email("Email no valido"),
-  password: z
-    .string()
-    .min(8, { message: "El password debe ser mínimo de 8 caracteres." }),
-});
+export const LoginValidationSchema = (t: (arg: string) => string) =>
+  z.object({
+    email: z.string().email(t("EMAIL")),
+    password: z.string().min(8, { message: t("PASSWORD") }),
+  });
 
 export const RegisterValidationSchema = (t: (arg: string) => string) =>
   z
