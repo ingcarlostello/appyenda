@@ -1,5 +1,7 @@
 "use client";
+import { useEffect, useRef, useState } from "react";
 
+// @Syncfusion
 import {
     Agenda,
     Day,
@@ -12,16 +14,14 @@ import {
     CellClickEventArgs,
     EventClickArgs
 } from "@syncfusion/ej2-react-schedule";
-
 import { registerLicense } from "@syncfusion/ej2-base";
-import { endHour, startHour, workHours } from "@/constants/schedule";
-
 import { extend } from '@syncfusion/ej2-base';
 
-import * as dataSource from "../../constants/scheduleData.json"
-import { useEffect, useRef, useState } from "react";
+// Constants
+import dataSource from "../../constants/scheduleData.json"
+import { endHour, startHour, workHours } from "@/constants/schedule";
 
-registerLicense("ORg4AjUWIQA/Gnt2UVhiQlVPd11dXmJWd1p/THNYflR1fV9DaUwxOX1dQl9nSXxSc0VjWX1ccHFSQGI=");
+registerLicense("Ngo9BigBOggjHTQxAR8/V1NAaF1cXmhIfEx1RHxQdld5ZFRHallYTnNWUj0eQnxTdEFjW35YcndUQmNeWUBzWA==");
 
 
 
@@ -33,8 +33,8 @@ const Scheduler = () => {
 
     const onCellClick = (args: CellClickEventArgs): void => {
         console.log('onCellClick args --->', args);        
-        scheduleObj.current.openEditor(args, 'Add');
-        let eventCollection = scheduleObj.current.getEvents();
+        scheduleObj.current?.openEditor(args, 'Add');
+        let eventCollection = scheduleObj.current?.getEvents();
         console.log('eventCollection -->', eventCollection);
         
     }
@@ -42,10 +42,10 @@ const Scheduler = () => {
     const onEventClick = (args: EventClickArgs): void => {
         console.log('onEventClick args --->', args);        
         if (!(args.event as any).RecurrenceRule) {
-            scheduleObj.current.openEditor(args.event, 'Save');
+            scheduleObj.current?.openEditor(args.event, 'Save');
         }
         else {
-            scheduleObj.current.quickPopup.openRecurrenceAlert();
+            scheduleObj.current?.quickPopup.openRecurrenceAlert();
         }
     }
 

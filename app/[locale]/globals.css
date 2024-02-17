@@ -13,8 +13,6 @@
 @import "../../node_modules/@syncfusion/ej2-splitbuttons/styles/tailwind.css";
 @import "../../node_modules/@syncfusion/ej2-react-schedule/styles/tailwind.css";
 
-
- 
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -78,7 +76,7 @@
     --ring: 212.7 26.8% 83.9%;
   }
 }
- 
+
 @layer base {
   * {
     @apply border-border;
@@ -87,7 +85,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-
-
-
