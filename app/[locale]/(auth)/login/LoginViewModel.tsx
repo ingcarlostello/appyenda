@@ -8,28 +8,32 @@ import { z } from "zod";
 // @Validation
 import { LoginValidationSchema } from "@/lib/validation";
 
+// @next-int
+import { useTranslations } from "next-intl";
+
 const LoginViewModel = () => {
+  const t = useTranslations("ValidationRegisterPage");
+  const formSchema = LoginValidationSchema(t);
+  // 1. Define your form.
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
 
-    // 1. Define your form.
-    const form = useForm<z.infer<typeof LoginValidationSchema>>({
-        resolver: zodResolver(LoginValidationSchema),
-        defaultValues: {
-            email: '',
-            password: ''
-        },
-    });
+  // 2. Define a submit handler.
+  async function handleSignIn(values: z.infer<typeof formSchema>) {
+    // Do something with the form values.
+    // ✅ This will be type-safe and validated.
+    console.log(values);
+  }
 
-    // 2. Define a submit handler.
-    async function handleSignIn(values: z.infer<typeof LoginValidationSchema>) {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
-        console.log(values);
-    }
-
-    return {
-        form,
-        handleSignIn,
-    };
+  return {
+    form,
+    handleSignIn,
+  };
 };
 
 export default LoginViewModel;
