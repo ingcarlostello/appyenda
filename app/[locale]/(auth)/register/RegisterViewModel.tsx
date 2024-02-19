@@ -7,6 +7,7 @@ import { z } from "zod";
 
 // @Validation
 import { RegisterValidationSchema } from "@/lib/validation";
+import { registerUser } from "@/lib/actions/auth.action";
 
 const RegisterViewModel = () => {
   // 1. Define your form.
@@ -23,12 +24,9 @@ const RegisterViewModel = () => {
   });
 
   // 2. Define a submit handler.
-  async function handleSignUp(
-    values: z.infer<typeof RegisterValidationSchema>
-  ) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function handleSignUp(values: z.infer<typeof RegisterValidationSchema>) {
+    console.log('--->', values);
+    registerUser(values)
   }
 
   return {
