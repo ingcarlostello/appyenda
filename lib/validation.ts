@@ -26,8 +26,8 @@ export const RegisterValidationSchema = (t: (arg: string) => string) =>
         .max(50, {
           message: t("USER_NAME_MAX_LENGTH"),
         }),
-      email: z.string().email(t("EMAIL")),
-      password: z.string().min(8, { message: t("PASSWORD") }),
+      email: z.string().email(t("INVALID_EMAIL")),
+      password: z.string().min(8, { message: t("PASSWORD_MIN_LENGTH") }),
       confirmPassword: z.string(),
       checkbox: z.boolean().default(false).optional(),
     })
@@ -36,6 +36,6 @@ export const RegisterValidationSchema = (t: (arg: string) => string) =>
       path: ["confirmPassword"],
     })
     .refine((data) => data.checkbox === true, {
-      message: t("TERMS"),
+      message: t("ACCEPT_TERMS_AND_CONDITIONS"),
       path: ["checkbox"],
     });

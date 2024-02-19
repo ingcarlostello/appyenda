@@ -23,14 +23,14 @@
     "LOG_IN": "Log in"
   },
 
-  "Validation": {
+  "ValidationRegisterPage": {
     "NAME_MIN_LENGTH": "Name must be at least 2 characters long.",
     "NAME_MAX_LENGTH": "Name must be at most 50 characters long.",
     "USER_NAME_MIN_LENGTH": "User name must be at least 2 characters long.",
     "USER_NAME_MAX_LENGTH": "User name must be at most 50 characters long.",
-    "EMAIL": "Invalid email",
-    "PASSWORD": "Password must be at least 8 characters long.",
+    "INVALID_EMAIL": "Invalid email",
+    "PASSWORD_MIN_LENGTH": "Password must be at least 8 characters long.",
     "CONFIRM_PASSWORD": "Passwords do not match",
-    "TERMS": "You must accept the terms and conditions"
+    "ACCEPT_TERMS_AND_CONDITIONS": "You must accept the terms and conditions"
   }
 }

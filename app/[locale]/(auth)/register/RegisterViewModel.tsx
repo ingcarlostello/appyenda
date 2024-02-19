@@ -7,10 +7,12 @@ import { z } from "zod";
 
 // @Validation
 import { RegisterValidationSchema } from "@/lib/validation";
+
+// @next-intl
 import { useTranslations } from "next-intl";
 
 const RegisterViewModel = () => {
-  const t = useTranslations("Validation");
+  const t = useTranslations("ValidationRegisterPage");
   // Passing t as an argument for validation
   const formSchema = RegisterValidationSchema(t);
   // 1. Define your form.

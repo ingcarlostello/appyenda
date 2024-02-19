@@ -23,14 +23,14 @@
     "LOG_IN": "Inicia sesión"
   },
 
-  "Validation": {
+  "ValidationRegisterPage": {
     "NAME_MIN_LENGTH": "El nombre debe contener mínimo 2 caracteres.",
     "NAME_MAX_LENGTH": "El nombre debe contener maximo 50 caracteres.",
     "USER_NAME_MIN_LENGTH": "El nombre de usuario debe contener mínimo 2 caracteres.",
     "USER_NAME_MAX_LENGTH": "El nombre de usuario debe contener maximo 2 caracteres.",
-    "EMAIL": "Email no valido",
-    "PASSWORD": "El password debe ser mínimo de 8 caracteres.",
+    "INVALID_EMAIL": "Email no valido",
+    "PASSWORD_MIN_LENGTH": "El password debe ser mínimo de 8 caracteres.",
     "CONFIRM_PASSWORD": "Contraseñas no son iguales",
-    "TERMS": "Debe aceptar los términos y condiciones"
+    "ACCEPT_TERMS_AND_CONDITIONS": "Debe aceptar los términos y condiciones"
   }
 }
