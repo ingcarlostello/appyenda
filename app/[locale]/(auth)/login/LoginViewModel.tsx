@@ -7,6 +7,7 @@ import { z } from "zod";
 
 // @Validation
 import { LoginValidationSchema } from "@/lib/validation";
+import { account } from "@/lib/appwrite/config";
 
 const LoginViewModel = () => {
 
@@ -24,6 +25,11 @@ const LoginViewModel = () => {
         // Do something with the form values.
         // ✅ This will be type-safe and validated.
         console.log(values);
+        try {
+            await account.createEmailSession(values.email, values.password)            
+        } catch (error) {
+            console.log('error login: ',  error);         
+        }
     }
 
     return {
