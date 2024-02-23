@@ -21,6 +21,7 @@ const RegisterViewModel = () => {
     defaultValues: {
       name: "",
       username: "",
+      radioButtons: undefined,
       email: "",
       password: "",
       confirmPassword: "",
