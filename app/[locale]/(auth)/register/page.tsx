@@ -93,7 +93,7 @@ const Register = () => {
                 name="radioButtons"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel>Type of user</FormLabel>
+                    <FormLabel>{t("TYPE_OF_USER")}</FormLabel>
                     <FormControl>
                       <RadioGroup
                         onValueChange={field.onChange}
@@ -104,14 +104,16 @@ const Register = () => {
                           <FormControl>
                             <RadioGroupItem value="client" />
                           </FormControl>
-                          <FormLabel className="font-normal">Client</FormLabel>
+                          <FormLabel className="font-normal">
+                            {t("CLIENT")}
+                          </FormLabel>
                         </FormItem>
                         <FormItem className="flex items-center space-x-3 space-y-0">
                           <FormControl>
                             <RadioGroupItem value="business" />
                           </FormControl>
                           <FormLabel className="font-normal">
-                            Business
+                            {t("BUSINESS")}
                           </FormLabel>
                         </FormItem>
                       </RadioGroup>
