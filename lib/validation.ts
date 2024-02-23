@@ -27,7 +27,7 @@ export const RegisterValidationSchema = (t: (arg: string) => string) =>
           message: t("USER_NAME_MAX_LENGTH"),
         }),
       radioButtons: z.enum(["client", "business"], {
-        required_error: t("USER_TYPE"),
+        required_error: t("MISSING_USER_TYPE"),
       }),
       email: z.string().email(t("INVALID_EMAIL")),
       password: z.string().min(8, { message: t("PASSWORD_MIN_LENGTH") }),
