@@ -90,10 +90,10 @@ const Register = () => {
 
               <FormField
                 control={form.control}
-                name="radioButtons"
+                name="userType"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel>{t("TYPE_OF_USER")}</FormLabel>
+                    <FormLabel>{t("USER_TYPE")}</FormLabel>
                     <FormControl>
                       <RadioGroup
                         onValueChange={field.onChange}
@@ -113,7 +113,7 @@ const Register = () => {
                             <RadioGroupItem value="business" />
                           </FormControl>
                           <FormLabel className="font-normal">
-                            {t("BUSINESS")}
+                            {t("BUSINESS_OWNER")}
                           </FormLabel>
                         </FormItem>
                       </RadioGroup>
