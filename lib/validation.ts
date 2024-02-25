@@ -7,8 +7,8 @@ import { useTranslations } from "next-intl";
 // Receives t = useTranslations("Validation") as an argument
 export const LoginValidationSchema = (t: (arg: string) => string) =>
   z.object({
-    email: z.string().email(t("EMAIL")),
-    password: z.string().min(8, { message: t("PASSWORD") }),
+    email: z.string().email(t("INVALID_EMAIL")),
+    password: z.string().min(8, { message: t("PASSWORD_MIN_LENGTH") }),
   });
 
 export const RegisterValidationSchema = (t: (arg: string) => string) =>
