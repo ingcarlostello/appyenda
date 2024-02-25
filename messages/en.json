@@ -1,5 +1,7 @@
 {
   "LoginPage": {
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
     "LogIn": "Log in",
     "DONT_HAVE_ACCOUNT": "You don't have an account?",
     "SIGN_UP": "Sign up"
