@@ -1,5 +1,7 @@
 {
   "LoginPage": {
+    "EMAIL": "Email",
+    "PASSWORD": "Contraseña",
     "LogIn": "Iniciar sesión",
     "DONT_HAVE_ACCOUNT": "No tienes una cuenta?",
     "SIGN_UP": "Regístrate"
