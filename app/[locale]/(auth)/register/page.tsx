@@ -19,6 +19,19 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
+
+// @radix-ui/react-icons
+import { InfoCircledIcon } from "@radix-ui/react-icons";
 
 // @View Models
 import RegisterViewModel from "./RegisterViewModel";
@@ -33,6 +46,7 @@ const Register = () => {
   const { form, handleSignUp } = RegisterViewModel();
 
   const t = useTranslations("RegisterPage");
+  const t2 = useTranslations("UserTypeInformationCircle");
 
   return (
     <div className="min-h-screen grid content-center">
@@ -99,7 +113,36 @@ const Register = () => {
                 name="userType"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel>{t("USER_TYPE")}</FormLabel>
+                    <div className="flex gap-4">
+                      <FormLabel>{t("USER_TYPE")}</FormLabel>
+                      <Drawer>
+                        <DrawerTrigger>{<InfoCircledIcon />}</DrawerTrigger>
+                        <DrawerContent>
+                          <DrawerHeader>
+                            <DrawerTitle>{t("USER_TYPE")}:</DrawerTitle>
+                            <DrawerDescription>
+                              <div className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex  space-x-4">
+                                <div>
+                                  <p className=" font-semibold ">
+                                    <strong>{t2("CLIENT_USER")}: </strong>
+                                  </p>
+                                  <p>{t2("CLIENT_USER_DESCRIPTION")}</p>
+                                  <p className=" font-semibold ">
+                                    <strong>{t2("BUSINESS_USER")}: </strong>{" "}
+                                  </p>
+                                  <p>{t2("BUSINESS_USER_DESCRIPTION")}</p>
+                                </div>
+                              </div>
+                            </DrawerDescription>
+                          </DrawerHeader>
+                          <DrawerFooter>
+                            <DrawerClose>
+                              <Button variant="outline">Close</Button>
+                            </DrawerClose>
+                          </DrawerFooter>
+                        </DrawerContent>
+                      </Drawer>
+                    </div>
                     <FormControl>
                       <RadioGroup
                         onValueChange={field.onChange}

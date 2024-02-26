@@ -38,5 +38,11 @@
     "PASSWORD_MIN_LENGTH": "Password must be at least 8 characters long.",
     "CONFIRM_PASSWORD": "Passwords do not match",
     "ACCEPT_TERMS_AND_CONDITIONS": "You must accept the terms and conditions"
+  },
+  "UserTypeInformationCircle": {
+    "CLIENT_USER": "Client user",
+    "CLIENT_USER_DESCRIPTION": "A user who seeks professional services. They can schedule, book, and pay for services online.",
+    "BUSINESS_USER": "Business user",
+    "BUSINESS_USER_DESCRIPTION": "A professional or business owner who offers services. They can manage bookings and receive payments online."
   }
 }

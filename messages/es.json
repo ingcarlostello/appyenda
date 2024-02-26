@@ -38,5 +38,11 @@
     "PASSWORD_MIN_LENGTH": "El password debe ser mínimo de 8 caracteres.",
     "CONFIRM_PASSWORD": "Contraseñas no son iguales",
     "ACCEPT_TERMS_AND_CONDITIONS": "Debe aceptar los términos y condiciones"
+  },
+  "UserTypeInformationCircle": {
+    "CLIENT_USER": "Usuario cliente",
+    "CLIENT_USER_DESCRIPTION": "Un usuario que busca servicios profesionales. Pueden programar, reservar y pagar por servicios en línea.",
+    "BUSINESS_USER": "Usuario de Negocio",
+    "BUSINESS_USER_DESCRIPTION": "Un profesional o propietario de un negocio que ofrece servicios. Pueden gestionar reservas y recibir pagos en línea."
   }
 }
