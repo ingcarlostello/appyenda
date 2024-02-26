@@ -17,12 +17,12 @@ const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
         suffix={
           showPassword ? (
             <EyeOpenIcon
-              className="select-none"
+              className="select-none cursor-pointer"
               onClick={() => setShowPassword(false)}
             />
           ) : (
             <EyeClosedIcon
-              className="select-none"
+              className="select-none cursor-pointer"
               onClick={() => setShowPassword(true)}
             />
           )

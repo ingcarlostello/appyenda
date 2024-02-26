@@ -30,8 +30,6 @@ import { useTranslations } from "next-intl";
 // @Assets
 import logo from "../../../assets/APPYENDA_hr_logo.webp";
 
-import { EyeOpenIcon } from "@radix-ui/react-icons";
-
 const Register = () => {
   const { form, handleSignUp } = RegisterViewModel();
 
@@ -174,12 +172,7 @@ const Register = () => {
                       {t("CONFIRM_PASSWORD")}
                     </FormLabel>
                     <FormControl>
-                      <Input
-                        type="password"
-                        className="shad-input"
-                        {...field}
-                        placeholder="********"
-                      />
+                      <PasswordInput {...field} placeholder="********" />
                     </FormControl>
                     {form.formState.errors.confirmPassword && (
                       <FormMessage>
