@@ -22,8 +22,6 @@ import LoginViewModel from "./LoginViewModel";
 
 import logo from "../../../assets/APPYENDA_hr_logo.webp";
 
-
-
 // @Next-intl
 import { useTranslations } from "next-intl";
 
@@ -49,9 +47,6 @@ const Login = () => {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-
-                    <FormLabel className="shad-form_label">Email</FormLabel>
-
                     <FormLabel className="shad-form_label">
                       {t("EMAIL")}
                     </FormLabel>
@@ -69,9 +64,6 @@ const Login = () => {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-
-                    <FormLabel className="shad-form_label">Password</FormLabel>
-
                     <FormLabel className="shad-form_label">
                       {t("PASSWORD")}
                     </FormLabel>
