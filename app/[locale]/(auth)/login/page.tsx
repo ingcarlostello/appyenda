@@ -48,7 +48,6 @@ const Login = () => {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="shad-form_label">Email</FormLabel>
 
                     <FormLabel className="shad-form_label">
                       {t("EMAIL")}
@@ -67,7 +66,6 @@ const Login = () => {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="shad-form_label">Password</FormLabel>
 
                     <FormLabel className="shad-form_label">
                       {t("PASSWORD")}
