@@ -15,6 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { PasswordInput } from "@/components/ui/password-input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
@@ -28,6 +29,8 @@ import { useTranslations } from "next-intl";
 
 // @Assets
 import logo from "../../../assets/APPYENDA_hr_logo.webp";
+
+import { EyeOpenIcon } from "@radix-ui/react-icons";
 
 const Register = () => {
   const { form, handleSignUp } = RegisterViewModel();
@@ -156,12 +159,7 @@ const Register = () => {
                       {t("PASSWORD")}
                     </FormLabel>
                     <FormControl>
-                      <Input
-                        type="password"
-                        className="shad-input"
-                        {...field}
-                        placeholder="********"
-                      />
+                      <PasswordInput {...field} placeholder="********" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
