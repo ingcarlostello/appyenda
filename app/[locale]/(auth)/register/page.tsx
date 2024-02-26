@@ -15,6 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { PasswordInput } from "@/components/ui/password-input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
@@ -156,12 +157,7 @@ const Register = () => {
                       {t("PASSWORD")}
                     </FormLabel>
                     <FormControl>
-                      <Input
-                        type="password"
-                        className="shad-input"
-                        {...field}
-                        placeholder="********"
-                      />
+                      <PasswordInput {...field} placeholder="********" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -176,12 +172,7 @@ const Register = () => {
                       {t("CONFIRM_PASSWORD")}
                     </FormLabel>
                     <FormControl>
-                      <Input
-                        type="password"
-                        className="shad-input"
-                        {...field}
-                        placeholder="********"
-                      />
+                      <PasswordInput {...field} placeholder="********" />
                     </FormControl>
                     {form.formState.errors.confirmPassword && (
                       <FormMessage>

@@ -14,6 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { PasswordInput } from "@/components/ui/password-input";
 
 // @View Models
 import LoginViewModel from "./LoginViewModel";
@@ -47,6 +48,7 @@ const Login = () => {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
+
                     <FormLabel className="shad-form_label">
                       {t("EMAIL")}
                     </FormLabel>
@@ -64,16 +66,13 @@ const Login = () => {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
+
                     <FormLabel className="shad-form_label">
                       {t("PASSWORD")}
                     </FormLabel>
 
                     <FormControl>
-                      <Input
-                        type="password"
-                        className="shad-input"
-                        {...field}
-                      />
+                      <PasswordInput {...field} placeholder="********" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
