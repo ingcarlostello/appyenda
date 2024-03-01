@@ -25,7 +25,8 @@
     "ACCEPT_TERMS_AND_CONDITIONS": "Aceptar términos y condiciones",
     "REGISTER": "Registrarse",
     "ALREADY_REGISTERED": "Ya tienes una cuenta?",
-    "LOG_IN": "Inicia sesión"
+    "LOG_IN": "Inicia sesión",
+    "REGISTERING": "Registrando..."
   },
 
   "ValidationRegisterPage": {

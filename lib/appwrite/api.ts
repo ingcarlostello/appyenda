@@ -7,7 +7,7 @@ import { account, appwriteConfig, databases } from "./config";
 // @Interfaces
 import { IUser } from "@/interfaces/IAuth";
 
-export async function createUserAccount(user: IUser) {
+export async function createUserAccount(user: IUser) {    
     try {
         const newAccount = await account.create(
             ID.unique(),
@@ -21,7 +21,7 @@ export async function createUserAccount(user: IUser) {
             name: user.name,
             username: user.username,
             email: user.email.toString(),
-            usertype: "business",
+            usertype: user.usertype,
         });
 
         return newUser;

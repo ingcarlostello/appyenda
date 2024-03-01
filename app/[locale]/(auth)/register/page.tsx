@@ -4,6 +4,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
+// @Lucide-react
+import { Loader2 } from "lucide-react";
+
 // @Shadcn
 import {
   Form,
@@ -30,7 +33,7 @@ import { useTranslations } from "next-intl";
 import logo from "../../../assets/APPYENDA_hr_logo.webp";
 
 const Register = () => {
-  const { form, handleSignUp, APPYENDA } = RegisterViewModel();
+  const { form, handleSignUp, APPYENDA, isDisabled, isLoading } = RegisterViewModel();
 
   const t = useTranslations("RegisterPage");
 
@@ -66,6 +69,7 @@ const Register = () => {
                         className="shad-input"
                         {...field}
                         placeholder="John Doe"
+                        disabled={isDisabled}
                       />
                     </FormControl>
                     <FormMessage />
@@ -87,6 +91,7 @@ const Register = () => {
                         className="shad-input"
                         {...field}
                         placeholder={t("NAME_TO_RECOGNIZE")}
+                        disabled={isDisabled}
                       />
                     </FormControl>
                     <FormMessage />
@@ -96,7 +101,7 @@ const Register = () => {
 
               <FormField
                 control={form.control}
-                name="userType"
+                name="usertype"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
                     <FormLabel>{t("USER_TYPE")}</FormLabel>
@@ -105,6 +110,7 @@ const Register = () => {
                         onValueChange={field.onChange}
                         defaultValue={field.value}
                         className="flex gap-11 space-y-1"
+                        disabled={isDisabled}
                       >
                         <FormItem className="flex items-center space-x-3 space-y-0">
                           <FormControl>
@@ -141,6 +147,7 @@ const Register = () => {
                         className="shad-input"
                         {...field}
                         placeholder="john@ejemplo.com"
+                        disabled={isDisabled}
                       />
                     </FormControl>
                     <FormMessage />
@@ -156,7 +163,7 @@ const Register = () => {
                       {t("PASSWORD")}
                     </FormLabel>
                     <FormControl>
-                      <PasswordInput {...field} placeholder="********" />
+                      <PasswordInput {...field} placeholder="********" disabled={isDisabled}/>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -171,7 +178,7 @@ const Register = () => {
                       {t("CONFIRM_PASSWORD")}
                     </FormLabel>
                     <FormControl>
-                      <PasswordInput {...field} placeholder="********" />
+                      <PasswordInput {...field} placeholder="********" disabled={isDisabled}/>
                     </FormControl>
                     {form.formState.errors.confirmPassword && (
                       <FormMessage>
@@ -190,6 +197,7 @@ const Register = () => {
                       <Checkbox
                         checked={field.value}
                         onCheckedChange={field.onChange}
+                        disabled={isDisabled}
                       />
                     </FormControl>
                     <div className="space-y-1 leading-none">
@@ -207,8 +215,8 @@ const Register = () => {
                 )}
               />
 
-              <Button type="submit" className="shad-button_primary">
-                {t("REGISTER")}
+              <Button disabled={isDisabled} type="submit" className="shad-button_primary">
+                {isLoading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> {t("REGISTERING")} </> : t("REGISTER")}
               </Button>
               <p className="text-small-regular text-light-2 text-center mt-2">
                 {t("ALREADY_REGISTERED")}{" "}

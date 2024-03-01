@@ -1,10 +1,6 @@
 // @Zod
 import { z } from "zod";
 
-// @Next-intl
-import { useTranslations } from "next-intl";
-
-// Receives t = useTranslations("Validation") as an argument
 export const LoginValidationSchema = (t: (arg: string) => string) =>
   z.object({
     email: z.string().email(t("INVALID_EMAIL")),
@@ -26,7 +22,7 @@ export const RegisterValidationSchema = (t: (arg: string) => string) =>
         .max(50, {
           message: t("USER_NAME_MAX_LENGTH"),
         }),
-      userType: z.enum(["client", "business"], {
+      usertype: z.enum(["client", "business"], {
         required_error: t("MISSING_USER_TYPE"),
       }),
       email: z.string().email(t("INVALID_EMAIL")),
