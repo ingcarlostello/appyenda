@@ -123,8 +123,6 @@ export const checkUser = async () => {
 export const logout = async () => {
     try {
       await account.deleteSession('current');
-      //setUser(null);
-      //router.refresh()
     } catch (error) {
       console.error(error);
     }
