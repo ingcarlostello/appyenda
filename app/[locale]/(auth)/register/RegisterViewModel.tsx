@@ -1,6 +1,9 @@
 // @React-hook-form
 import { useForm } from "react-hook-form";
 
+// @Nextjs
+import { useRouter } from "next/navigation";
+
 // @Zod
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -8,14 +11,20 @@ import { z } from "zod";
 // @Validation
 import { RegisterValidationSchema } from "@/lib/validation";
 
+// @Constants
+import { REGISTER_USER_API } from "@/constants/urls";
+import { APPYENDA } from "@/constants/pages";
+
 // @next-intl
 import { useTranslations } from "next-intl";
 
 const RegisterViewModel = () => {
   const t = useTranslations("ValidationRegisterPage");
-  // Passing t as an argument for validation
+
+  const router = useRouter();
+
   const formSchema = RegisterValidationSchema(t);
-  // 1. Define your form.
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -29,16 +38,30 @@ const RegisterViewModel = () => {
     },
   });
 
-  // 2. Define a submit handler.
-  async function handleSignUp(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
-  }
+  const handleSignUp = async (values: z.infer<typeof formSchema>) => {
+    try {
+      const res = await fetch(REGISTER_USER_API, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+      const data = await res.json();
+      console.log("data -->", data);
+      form.reset();
+      if (data.success) {
+        return router.push(APPYENDA.DASHBOARD);
+      }
+    } catch (error) {
+      console.log("error +++++++>", error);
+    }
+  };
 
   return {
     form,
     handleSignUp,
+    APPYENDA,
   };
 };
 

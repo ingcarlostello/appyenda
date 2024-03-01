@@ -18,7 +18,6 @@ import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/ui/password-input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 // @View Models
@@ -31,7 +30,7 @@ import { useTranslations } from "next-intl";
 import logo from "../../../assets/APPYENDA_hr_logo.webp";
 
 const Register = () => {
-  const { form, handleSignUp } = RegisterViewModel();
+  const { form, handleSignUp, APPYENDA } = RegisterViewModel();
 
   const t = useTranslations("RegisterPage");
 
@@ -213,7 +212,7 @@ const Register = () => {
               </Button>
               <p className="text-small-regular text-light-2 text-center mt-2">
                 {t("ALREADY_REGISTERED")}{" "}
-                <Link className="underline" href={"/login"}>
+                <Link className="underline" href={APPYENDA.LOGIN}>
                   {t("LOG_IN")}
                 </Link>
               </p>

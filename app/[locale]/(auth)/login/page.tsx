@@ -27,7 +27,7 @@ import logo from "../../../assets/APPYENDA_hr_logo.webp";
 import { useTranslations } from "next-intl";
 
 const Login = () => {
-  const { form, handleSignIn } = LoginViewModel();
+  const { form, handleSignIn, APPYENDA } = LoginViewModel();
 
   const t = useTranslations("LoginPage");
 
@@ -85,7 +85,7 @@ const Login = () => {
 
               <p className="text-small-regular text-light-2 text-center mt-2">
                 {t("DONT_HAVE_ACCOUNT")}{" "}
-                <Link className="underline" href={"/register"}>
+                <Link className="underline" href={APPYENDA.REGISTER}>
                   {t("SIGN_UP")}
                 </Link>
               </p>
