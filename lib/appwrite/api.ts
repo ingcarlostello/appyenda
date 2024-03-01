@@ -1,5 +1,57 @@
-import { Query } from "appwrite";
+// @Appwrite
+import { ID, Query } from "appwrite";
+
+// @Appwrite config
 import { account, appwriteConfig, databases } from "./config";
+
+// @Interfaces
+import { IUser } from "@/interfaces/IAuth";
+
+export async function createUserAccount(user: IUser) {
+    try {
+        const newAccount = await account.create(
+            ID.unique(),
+            user.email,
+            user.password!,
+            user.name
+        );
+
+        const newUser = await saveUserToDB({
+            userId: newAccount.$id,
+            name: user.name,
+            username: user.username,
+            email: user.email.toString(),
+            usertype: "business",
+        });
+
+        return newUser;
+    } catch (error) {
+        throw new Error(`Error creating account: ${error}`);
+    }
+}
+
+export async function saveUserToDB(user: IUser) {
+    try {
+        const newUser = await databases.createDocument(
+            appwriteConfig.databaseId as string,
+            appwriteConfig.userCollectionId as string,
+            ID.unique(),
+            user
+        );
+        return newUser;
+    } catch (error) {
+        throw new Error(`Error saving user to DB: ${error}`);
+    }
+}
+
+export async function signInAccount(user: { email: string; password: string }) {
+    try {
+        const session = await account.createEmailSession(user.email, user.password);
+        return session;
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 export async function getAccount() {
     try {
@@ -9,9 +61,6 @@ export async function getAccount() {
         console.log(error);
     }
 }
-
-
-
 
 export async function getCurrentUser() {
     try {
@@ -33,3 +82,50 @@ export async function getCurrentUser() {
         return null;
     }
 }
+
+export const useGetProfileByUserId = async (userId: string) => {
+    try {
+        const response = await databases.listDocuments(
+            appwriteConfig.databaseId!,
+            appwriteConfig.userCollectionId!,
+            [Query.equal("userId", userId)]
+        );
+        const documents = response.documents;
+        return {
+            email: documents[0]?.email,
+            id: documents[0]?.$id,
+            name: documents[0]?.name,
+            userId: documents[0]?.userId,
+            username: documents[0]?.username,
+            usertype: documents[0]?.usertype,
+        }
+    } catch (error) {
+        throw error
+    }
+}
+
+export const checkUser = async () => {
+    try {
+        const currentSession = await account.getSession("current")
+               
+        if (!currentSession) return
+        const promise = await account.get() as any
+      
+        const profile = await useGetProfileByUserId(promise?.$id)
+     
+        return profile
+    } catch (error) {
+        console.log('******>', error + ' no existe sesion de usuario');
+    }
+}
+
+
+export const logout = async () => {
+    try {
+      await account.deleteSession('current');
+      //setUser(null);
+      //router.refresh()
+    } catch (error) {
+      console.error(error);
+    }
+  };

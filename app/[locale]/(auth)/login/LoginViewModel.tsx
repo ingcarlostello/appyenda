@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 // @React-hook-form
 import { useForm } from "react-hook-form";
 
@@ -10,13 +12,27 @@ import { z } from "zod";
 
 // @Validation
 import { LoginValidationSchema } from "@/lib/validation";
+
+// @Constants
+import { APPYENDA } from "@/constants/pages";
+
+// @Appwrite
 import { account } from "@/lib/appwrite/config";
+import { checkUser } from "@/lib/appwrite/api";
 
 const LoginViewModel = () => {
-
     const router = useRouter()
 
-    // 1. Define your form.
+    useEffect(() => { 
+        const verifySession = async () =>{
+            const userSessionExists = await checkUser()
+            if (userSessionExists?.id) {
+                router.push(APPYENDA.DASHBOARD);
+            }
+        }
+        verifySession()
+    }, []);
+
     const form = useForm<z.infer<typeof LoginValidationSchema>>({
         resolver: zodResolver(LoginValidationSchema),
         defaultValues: {
@@ -25,40 +41,26 @@ const LoginViewModel = () => {
         },
     });
 
-    // 2. Define a submit handler.
     async function handleSignIn(values: z.infer<typeof LoginValidationSchema>) {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
-        console.log(values);
-        // try {
-        //     await account.createEmailSession(values.email, values.password)            
-        // } catch (error) {
-        //     console.log('error login: ',  error);         
-        // }
-
-        try {
-
-            const res = await fetch('api/session',{
-                method: 'POST',
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(values),
-            })
-            const data = await res.json();
-            console.log('data ------>', data);
-            
-            if(data.success){
-                return router.push("/dashboard");
-              }
+        const {email, password} = values
+         try {
+            const session = await account.createEmailSession(email, password);            
+            checkUser()
+            router.push(APPYENDA.DASHBOARD);
+            return session
         } catch (error) {
-            console.log('error +++++++***>', error);
+            console.log("error +++++++***>", error);
+            return {
+                success: false,
+                msg: 'Invalid credentials'
+            }
         }
     }
 
     return {
         form,
         handleSignIn,
+        APPYENDA
     };
 };
 

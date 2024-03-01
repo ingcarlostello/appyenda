@@ -11,7 +11,9 @@ import { z } from "zod";
 // @Validation
 import { RegisterValidationSchema } from "@/lib/validation";
 
-
+// @Constants
+import { REGISTER_USER_API } from "@/constants/urls";
+import { APPYENDA } from "@/constants/pages";
 
 const RegisterViewModel = () => {
 
@@ -34,7 +36,7 @@ const RegisterViewModel = () => {
   const handleSignUp = async (values: z.infer<typeof RegisterValidationSchema>) => {   
     try {
 
-      const res = await fetch('api/register', {
+      const res = await fetch(REGISTER_USER_API, {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",
@@ -45,7 +47,7 @@ const RegisterViewModel = () => {
       console.log('data -->', data);
       form.reset()
       if(data.success){
-        return router.push("/dashboard");
+        return router.push(APPYENDA.DASHBOARD);
       }
 
       // const getSession = await fetch('api/session')
@@ -60,6 +62,7 @@ const RegisterViewModel = () => {
   return {
     form,
     handleSignUp,
+    APPYENDA
   };
 };
 

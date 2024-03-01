@@ -18,7 +18,7 @@ import logo from "../../../assets/logo-white.png"
 import {useTranslations} from 'next-intl';
 
 const Login = () => {
-    const { form, handleSignIn,  } = LoginViewModel();
+    const { form, handleSignIn, APPYENDA} = LoginViewModel();
 
     const t = useTranslations('LoginPage');
 
@@ -71,7 +71,7 @@ const Login = () => {
                             </Button>
 
                             <p className="text-small-regular text-light-2 text-center mt-2">
-                                {t('DONT_HAVE_ACCOUNT')} <Link className="underline" href={"/register"}>{t('SIGN_UP')}</Link> 
+                                {t('DONT_HAVE_ACCOUNT')} <Link className="underline" href={APPYENDA.REGISTER}>{t('SIGN_UP')}</Link> 
                             </p>
                         </form>
                     </div>
