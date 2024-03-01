@@ -15,17 +15,22 @@ import { RegisterValidationSchema } from "@/lib/validation";
 import { REGISTER_USER_API } from "@/constants/urls";
 import { APPYENDA } from "@/constants/pages";
 
+// @next-intl
+import { useTranslations } from "next-intl";
+
 const RegisterViewModel = () => {
+  const t = useTranslations("ValidationRegisterPage");
 
-  const router = useRouter()
+  const router = useRouter();
 
-  // 1. Define your form.
-  const form = useForm<z.infer<typeof RegisterValidationSchema>>({
-    resolver: zodResolver(RegisterValidationSchema),
+  const formSchema = RegisterValidationSchema(t);
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
       username: "",
-      usertype: "",
+      userType: undefined,
       email: "",
       password: "",
       confirmPassword: "",
@@ -33,36 +38,30 @@ const RegisterViewModel = () => {
     },
   });
 
-  const handleSignUp = async (values: z.infer<typeof RegisterValidationSchema>) => {   
+  const handleSignUp = async (values: z.infer<typeof formSchema>) => {
     try {
-
       const res = await fetch(REGISTER_USER_API, {
-        method: 'POST',
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(values),
-      })
+      });
       const data = await res.json();
-      console.log('data -->', data);
-      form.reset()
-      if(data.success){
+      console.log("data -->", data);
+      form.reset();
+      if (data.success) {
         return router.push(APPYENDA.DASHBOARD);
       }
-
-      // const getSession = await fetch('api/session')
-      // console.log('getSession --->', getSession);
-      
-
     } catch (error) {
-      console.log('error +++++++>', error);
+      console.log("error +++++++>", error);
     }
-  }
+  };
 
   return {
     form,
     handleSignUp,
-    APPYENDA
+    APPYENDA,
   };
 };
 
