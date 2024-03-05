@@ -4,7 +4,8 @@
     "PASSWORD": "Contraseña",
     "LogIn": "Iniciar sesión",
     "DONT_HAVE_ACCOUNT": "No tienes una cuenta?",
-    "SIGN_UP": "Regístrate"
+    "SIGN_UP": "Regístrate",
+    "LOGGING_IN": "Iniciando sesión"
   },
 
   "LanguageSelector": {

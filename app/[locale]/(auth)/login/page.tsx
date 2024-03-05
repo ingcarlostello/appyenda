@@ -3,6 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
+// @Lucide-react
+import { Loader2 } from "lucide-react";
+
 // @Shadcn
 import { Button } from "@/components/ui/button";
 import {
@@ -27,7 +30,7 @@ import logo from "../../../assets/APPYENDA_hr_logo.webp";
 import { useTranslations } from "next-intl";
 
 const Login = () => {
-  const { form, handleSignIn, APPYENDA } = LoginViewModel();
+  const { form, handleSignIn, APPYENDA, isDisabled, isLoading } = LoginViewModel();
 
   const t = useTranslations("LoginPage");
 
@@ -54,7 +57,7 @@ const Login = () => {
                     </FormLabel>
 
                     <FormControl>
-                      <Input type="text" className="shad-input" {...field} />
+                      <Input disabled={isDisabled} type="text" className="shad-input" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -72,15 +75,15 @@ const Login = () => {
                     </FormLabel>
 
                     <FormControl>
-                      <PasswordInput {...field} placeholder="********" />
+                      <PasswordInput disabled={isDisabled} {...field} placeholder="********" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
 
-              <Button type="submit" className="shad-button_primary">
-                {t("LogIn")}
+              <Button disabled={isDisabled} type="submit" className="shad-button_primary">
+                {isLoading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> {t("LOGGING_IN")} </> : t("LogIn")}
               </Button>
 
               <p className="text-small-regular text-light-2 text-center mt-2">

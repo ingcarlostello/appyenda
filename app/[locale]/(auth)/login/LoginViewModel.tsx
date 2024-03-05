@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // @React-hook-form
 import { useForm } from "react-hook-form";
@@ -23,8 +23,18 @@ import { useTranslations } from "next-intl";
 import { account } from "@/lib/appwrite/config";
 import { checkUser } from "@/lib/appwrite/api";
 
+// @Js-cookie
+import Cookies from 'js-cookie'
+
+// @Libs
+import { extractCookieInfo } from "@/lib/auth";
+
 const LoginViewModel = () => {
     const t = useTranslations("ValidationRegisterPage");
+
+    const [isDisabled, setIsDisabled] = useState<boolean>(false)
+    const [isLoading, setIsLoading] = useState<boolean>(false)
+
     const formSchema = LoginValidationSchema(t);
     const router = useRouter()
 
@@ -48,12 +58,20 @@ const LoginViewModel = () => {
     async function handleSignIn(values: z.infer<typeof formSchema>) {
         const { email, password } = values
         try {
+            setIsDisabled(true)
+            setIsLoading(true)
             const session = await account.createEmailSession(email, password);
             checkUser()
+            const getCookie =  window.localStorage.getItem("cookieFallback");
+            const parsedCookie = JSON.parse(getCookie!);
+            const cookieInfo = extractCookieInfo(parsedCookie);
+            Cookies.set('login-user-cookie', cookieInfo.infoCookie)
             router.push(APPYENDA.DASHBOARD);
             return session
         } catch (error) {
             console.log("error +++++++***>", error);
+            setIsDisabled(false)
+            setIsLoading(false)
             return {
                 success: false,
                 msg: 'Invalid credentials'
@@ -62,9 +80,11 @@ const LoginViewModel = () => {
     }
 
     return {
+        APPYENDA,
         form,
         handleSignIn,
-        APPYENDA
+        isDisabled,
+        isLoading,
     };
 }
 
