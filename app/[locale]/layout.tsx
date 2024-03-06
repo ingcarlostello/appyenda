@@ -1,3 +1,6 @@
+// @shadcn
+import { Toaster } from "@/components/ui/toaster";
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -19,6 +22,7 @@ export default function RootLayout({ children, params: { locale } }: Readonly<{ 
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
           {children}
+          <Toaster />
         </NextIntlClientProvider>
       </body>
     </html>

@@ -5,7 +5,9 @@
     "LogIn": "Iniciar sesión",
     "DONT_HAVE_ACCOUNT": "No tienes una cuenta?",
     "SIGN_UP": "Regístrate",
-    "LOGGING_IN": "Iniciando sesión"
+    "LOGGING_IN": "Iniciando sesión",
+    "SUCCESSFUL_LOGGING_IN": "Inicio de sesión exitoso",
+    "INVALID_CREDENTIALS": "Credenciales invalidas"
   },
 
   "LanguageSelector": {

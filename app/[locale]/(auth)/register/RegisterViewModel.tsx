@@ -20,11 +20,17 @@ import { APPYENDA } from "@/constants/pages";
 // @next-intl
 import { useTranslations } from "next-intl";
 
+// @Js-cookie
+import Cookies from "js-cookie";
+
+// @Libs
+import { extractCookieInfo } from "@/lib/auth";
+
 const RegisterViewModel = () => {
   const t = useTranslations("ValidationRegisterPage");
 
-  const [isDisabled, setIsDisabled] = useState<boolean>(false)
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isDisabled, setIsDisabled] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const router = useRouter();
 
@@ -43,10 +49,10 @@ const RegisterViewModel = () => {
     },
   });
 
-  const handleSignUp = async (values: z.infer<typeof formSchema>) => {    
+  const handleSignUp = async (values: z.infer<typeof formSchema>) => {
     try {
-      setIsDisabled(true)
-      setIsLoading(true)
+      setIsDisabled(true);
+      setIsLoading(true);
       const res = await fetch(REGISTER_USER_API, {
         method: "POST",
         headers: {
@@ -58,13 +64,13 @@ const RegisterViewModel = () => {
       console.log("data -->", data);
       form.reset();
       if (data.success) {
-        setIsDisabled(false)
-        setIsLoading(false)
+        setIsDisabled(false);
+        setIsLoading(false);
         return router.push(APPYENDA.DASHBOARD);
       }
     } catch (error) {
-      setIsDisabled(false)
-      setIsLoading(false)
+      setIsDisabled(false);
+      setIsLoading(false);
       console.log("error +++++++>", error);
     }
   };

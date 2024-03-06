@@ -5,7 +5,9 @@
     "LogIn": "Log in",
     "DONT_HAVE_ACCOUNT": "You don't have an account?",
     "SIGN_UP": "Sign up",
-    "LOGGING_IN": "Logging in"
+    "LOGGING_IN": "Logging in",
+    "SUCCESSFUL_LOGGING_IN": "Successfully logged in",
+    "INVALID_CREDENTIALS": "Invalid credentials"
   },
 
   "LanguageSelector": {

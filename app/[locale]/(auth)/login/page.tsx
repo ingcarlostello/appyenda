@@ -23,7 +23,6 @@ import { PasswordInput } from "@/components/ui/password-input";
 import LoginViewModel from "./LoginViewModel";
 
 // @Assets
-
 import logo from "../../../assets/APPYENDA_hr_logo.webp";
 
 // @Next-intl
@@ -84,7 +83,7 @@ const Login = () => {
 
               <Button disabled={isDisabled} type="submit" className="shad-button_primary">
                 {isLoading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> {t("LOGGING_IN")} </> : t("LogIn")}
-              </Button>
+              </Button> 
 
               <p className="text-small-regular text-light-2 text-center mt-2">
                 {t("DONT_HAVE_ACCOUNT")}{" "}

@@ -18,6 +18,11 @@ export default async function middleware(request: NextRequest) {
         return response;
     }
 
+    if (authToken && request.nextUrl.pathname.startsWith("/register")) {
+        const response = NextResponse.redirect(new URL("/dashboard", request.url));
+        return response;
+    }
+
     const handleI18nRouting = createMiddleware({
         // A list of all locales that are supported
         locales: ["en", "es"],
