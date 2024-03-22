@@ -7,7 +7,8 @@
     "SIGN_UP": "Sign up",
     "LOGGING_IN": "Logging in",
     "SUCCESSFUL_LOGGING_IN": "Successfully logged in",
-    "INVALID_CREDENTIALS": "Invalid credentials"
+    "INVALID_CREDENTIALS": "Invalid credentials",
+    "lOG_IN_WITH": "Log in with"
   },
 
   "LanguageSelector": {
@@ -29,7 +30,10 @@
     "REGISTER": "Register",
     "ALREADY_REGISTERED": "Do you already have an account?",
     "LOG_IN": "Log in",
-    "REGISTERING": "Registering..."
+    "REGISTERING": "Registering...",
+    "SUCCESSFUL_REGISTRATION": "User registered successfully",
+    "USER_ALREADY_EXIST": "User is already registered",
+    "REGISTER_WITH": "Register with:"
   },
 
   "ValidationRegisterPage": {

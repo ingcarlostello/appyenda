@@ -6,19 +6,34 @@ import { NextRequest, NextResponse } from "next/server";
 
 export default async function middleware(request: NextRequest) {
     const authToken = request.cookies.get("login-user-cookie")?.value;
+    const initialSocialCookie = request.cookies.get("initial-social-cookie")?.value;
 
-    if (request.nextUrl.pathname.startsWith("/dashboard") && !authToken) {
+    const path = request.nextUrl.pathname;
+
+    if (!authToken && !initialSocialCookie && path === "/dashboard") {
+        NextResponse.next().cookies.delete('login-user-cookie')
+        NextResponse.next().cookies.delete('initial-social-cookie')
+        NextResponse.next().cookies.delete('social-account-cookie')
         const response = NextResponse.redirect(new URL("/login", request.url));
-        response.cookies.delete("login-user-cookie");
         return response;
     }
 
-    if (authToken && request.nextUrl.pathname.startsWith("/login")) {
+    if (request.cookies.has("initial-social-cookie") && request.nextUrl.pathname.startsWith("/login") && !authToken) {
+        const response = NextResponse.redirect(new URL("/dashboard", request.url));
+        return response;
+    }
+
+    if (request.cookies.has("social-account-cookie") && request.nextUrl.pathname.startsWith("/register")) {
         const response = NextResponse.redirect(new URL("/dashboard", request.url));
         return response;
     }
 
     if (authToken && request.nextUrl.pathname.startsWith("/register")) {
+        const response = NextResponse.redirect(new URL("/dashboard", request.url));
+        return response;
+    }
+
+    if (authToken && request.nextUrl.pathname.startsWith("/login")) {
         const response = NextResponse.redirect(new URL("/dashboard", request.url));
         return response;
     }
@@ -47,7 +62,7 @@ export const config = {
         // However, match all pathnames within `/users`, optionally with a locale prefix
         "/([\\w-]+)?/users/(.+)",
 
-        "/dashboard",
-        "/login",
+        "/dashboard/:path*",
+        // "/login",
     ],
 };

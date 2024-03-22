@@ -36,24 +36,27 @@ import Cookies from "js-cookie";
 import { extractCookieInfo } from "@/lib/auth";
 
 // @Assets
-import goodIcon from "../../../assets/icons/goodIcon.png";
-import badIcon from "../../../assets/icons/badIcon.png";
+import goodIcon from "../../app/assets/icons/goodIcon.png";
+import badIcon from "../../app/assets/icons/badIcon.png";
 
 const LoginViewModel = () => {
     const t = useTranslations("ValidationRegisterPage");
     const t2 = useTranslations("LoginPage");
-
-    const [isDisabled, setIsDisabled] = useState<boolean>(false);
+    
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [isDisabled, setIsDisabled] = useState<boolean>(false);
 
     const { toast } = useToast();
+    const router = useRouter();
 
     const formSchema = LoginValidationSchema(t);
-    const router = useRouter();
 
     useEffect(() => {
         const verifySession = async () => {
             const userSessionExists = await checkUser();
+
+            console.log('userSessionExists', userSessionExists);
+            
             if (userSessionExists?.id) {
                 router.push(APPYENDA.DASHBOARD);
             }
@@ -68,6 +71,7 @@ const LoginViewModel = () => {
             password: "",
         },
     });
+
     async function handleSignIn(values: z.infer<typeof formSchema>) {
         const { email, password } = values;
         try {

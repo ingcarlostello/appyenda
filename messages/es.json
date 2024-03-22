@@ -7,7 +7,8 @@
     "SIGN_UP": "Regístrate",
     "LOGGING_IN": "Iniciando sesión",
     "SUCCESSFUL_LOGGING_IN": "Inicio de sesión exitoso",
-    "INVALID_CREDENTIALS": "Credenciales invalidas"
+    "INVALID_CREDENTIALS": "Credenciales invalidas",
+    "lOG_IN_WITH": "Loguearse con:"
   },
 
   "LanguageSelector": {
@@ -29,7 +30,10 @@
     "REGISTER": "Registrarse",
     "ALREADY_REGISTERED": "Ya tienes una cuenta?",
     "LOG_IN": "Inicia sesión",
-    "REGISTERING": "Registrando..."
+    "REGISTERING": "Registrando...",
+    "SUCCESSFUL_REGISTRATION": "Usuario registrado correctamente",
+    "USER_ALREADY_EXIST": "Usuario ya está registrado",
+    "REGISTER_WITH": "Registrarse con"
   },
 
   "ValidationRegisterPage": {
