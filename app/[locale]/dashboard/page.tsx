@@ -1,26 +1,23 @@
-"use client"
+"use client";
 
-import React from 'react';
-
+// @Shad-cn
 import { Button } from "@/components/ui/button";
-import { logout } from '@/lib/appwrite/api';
-import { useRouter } from 'next/navigation';
-import { APPYENDA } from '@/constants/pages';
+
+// @ViewModel
+import DashboardViewModel from "./DashboardViewModel";
 
 const Dashboard = () => {
 
-    const router = useRouter()
-
-    const cerrarSesion = async () =>{
-        await logout()
-        router.push(APPYENDA.LOGIN);
-        router.refresh()
-    }
+    const { handleSignOut } = DashboardViewModel()
 
     return (
         <div>
             Dashboard page
-            <Button type="submit" className="shad-button_primary" onClick={cerrarSesion}>
+            <Button
+                type="submit"
+                className="shad-button_primary"
+                onClick={handleSignOut}
+            >
                 Salir
             </Button>
         </div>

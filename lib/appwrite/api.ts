@@ -7,7 +7,10 @@ import { account, appwriteConfig, databases } from "./config";
 // @Interfaces
 import { IUser } from "@/interfaces/IAuth";
 
-export async function createUserAccount(user: IUser) {
+// @helpers
+import { extracUserNameFromEmail } from "@/helpers/extractUserFromEmail";
+
+export async function createUserAccount(user: IUser) {    
     try {
         const newAccount = await account.create(
             ID.unique(),
@@ -21,7 +24,7 @@ export async function createUserAccount(user: IUser) {
             name: user.name,
             username: user.username,
             email: user.email.toString(),
-            usertype: "business",
+            usertype: user.usertype,
         });
 
         return newUser;
@@ -107,23 +110,60 @@ export const useGetProfileByUserId = async (userId: string) => {
 export const checkUser = async () => {
     try {
         const currentSession = await account.getSession("current")
-               
+
         if (!currentSession) return
         const promise = await account.get() as any
-      
+
+        console.log('PROMISE --->', promise);
+        
+
         const profile = await useGetProfileByUserId(promise?.$id)
-     
+
         return profile
     } catch (error) {
-        console.log('******>', error + ' no existe sesion de usuario');
+        return {
+            success: false,
+            error: 'No user session exists: ' + error,
+        };
     }
 }
 
-
 export const logout = async () => {
     try {
-      await account.deleteSession('current');
+        await account.deleteSession('current');
     } catch (error) {
-      console.error(error);
+        console.error(error);
     }
-  };
+};
+
+export const googleAuth = () => {
+    try {
+        account.createOAuth2Session('google', 'http://localhost:3000/dashboard', 'http://localhost:3000/login')
+    } catch (error) {
+        console.log('google error', error);
+    }
+}
+
+// export const checkUserSocialAccount = async () => {
+//     try {
+//         const currentSession = await account.getSession("current");
+//         if (!currentSession) return;
+
+//         const promise = (await account.get()) as any;
+//         if (!promise) return;
+
+//         return {
+//             name: promise.name,
+//             email: promise.email,
+//             userId: currentSession.userId,
+//             username: extracUserNameFromEmail(promise.email),
+//         };
+//     } catch (error) {
+//         return {
+//             success: false,
+//             error: "GOOGLE No user session exists: " + error,
+//         };
+//     }
+// };
+
+

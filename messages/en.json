@@ -4,7 +4,11 @@
     "PASSWORD": "Password",
     "LogIn": "Log in",
     "DONT_HAVE_ACCOUNT": "You don't have an account?",
-    "SIGN_UP": "Sign up"
+    "SIGN_UP": "Sign up",
+    "LOGGING_IN": "Logging in",
+    "SUCCESSFUL_LOGGING_IN": "Successfully logged in",
+    "INVALID_CREDENTIALS": "Invalid credentials",
+    "lOG_IN_WITH": "Log in with"
   },
 
   "LanguageSelector": {
@@ -16,7 +20,7 @@
     "NAME": "Name",
     "USER_NAME": "User name",
     "NAME_TO_RECOGNIZE": "Name you will be recognized by",
-    "USER_TYPE": "User Type",
+    "USER_TYPE": "User type",
     "CLIENT": "Client",
     "BUSINESS_OWNER": "Business",
     "EMAIL": "Email",
@@ -25,7 +29,11 @@
     "ACCEPT_TERMS_AND_CONDITIONS": "Accept terms and conditions",
     "REGISTER": "Register",
     "ALREADY_REGISTERED": "Do you already have an account?",
-    "LOG_IN": "Log in"
+    "LOG_IN": "Log in",
+    "REGISTERING": "Registering...",
+    "SUCCESSFUL_REGISTRATION": "User registered successfully",
+    "USER_ALREADY_EXIST": "User is already registered",
+    "REGISTER_WITH": "Register with:"
   },
 
   "ValidationRegisterPage": {
