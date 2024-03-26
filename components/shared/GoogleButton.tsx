@@ -7,7 +7,11 @@ import {googleAuth} from "@/lib/appwrite/api";
 // @Js-cookie
 import Cookies from "js-cookie";
 
-const GoogleButton = () => {
+interface GoogleButtonProps {
+    disabled: boolean;
+}
+
+const GoogleButton = ({disabled}: GoogleButtonProps) => {
     const registerUserViaGoogle = async (e) => {
         e.preventDefault();
         googleAuth();
@@ -15,7 +19,7 @@ const GoogleButton = () => {
     };
 
     return (
-        <Button onClick={(e) => registerUserViaGoogle(e)} variant="outline">
+        <Button disabled={disabled} onClick={(e) => registerUserViaGoogle(e)} variant="outline">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 x="0px"

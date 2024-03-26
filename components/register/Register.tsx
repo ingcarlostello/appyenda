@@ -50,6 +50,7 @@ const Register = () => {
                 width={250}
                 height={250}
                 className=""
+                priority={true}
               />
             </div>
             <form
@@ -227,15 +228,13 @@ const Register = () => {
                   </legend>
                 </fieldset>
                 <div className="text-center">
-                  <GoogleButton />
+                  <GoogleButton disabled={isDisabled}/>
                 </div>
               </div>
             </form>
           </div>
         </div>
       </Form>
-
-
 
       <p className="text-small-regular text-light-2 text-center mt-10 mb-10">
         {t("ALREADY_REGISTERED")}{" "}

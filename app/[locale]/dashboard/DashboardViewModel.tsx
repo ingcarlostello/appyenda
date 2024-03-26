@@ -8,7 +8,7 @@ import { Query } from "appwrite";
 
 // @Lib
 import { account, appwriteConfig, databases } from "@/lib/appwrite/config";
-import { logout, saveUserToDB } from "@/lib/appwrite/api";
+import { checkUser, logout, saveUserToDB } from "@/lib/appwrite/api";
 
 // @Helpers
 import { extracUserNameFromEmail } from "@/helpers/extractUserFromEmail";
@@ -20,7 +20,10 @@ import { APPYENDA } from "@/constants/pages";
 import Cookies from "js-cookie";
 
 // @Interfaces
-import { Account, Session } from "@/interfaces/IAuth";
+import { Account, IUser, Session } from "@/interfaces/IAuth";
+
+// @Stores
+import { useAuthStore } from "@/stores/auth.store";
 
 const DashboardViewModel = () => {
     const router = useRouter();
@@ -29,11 +32,15 @@ const DashboardViewModel = () => {
     const [socialAccount, setSocialAccount] = useState<Account>();
     const [session, setSession] = useState<Partial<Session>>();
 
+    const loginUser = useAuthStore(state => state.loginUserWithEmail)
+
     useEffect(() => {
         const verifySocialAccount = async () => {
             try {
                 const currentAccount = await account.get();
                 const currentSession = await account.getSession("current");
+                const userData = await checkUser();
+                loginUser(userData as IUser);
                 setSocialAccount(currentAccount);
                 setSession(currentSession);
                 setCount(count + 1);
@@ -48,7 +55,7 @@ const DashboardViewModel = () => {
         const saveUserSocialAccountToDB = async () => {
             if (!session?.userId || !socialAccount) return;
             Cookies.set("social-account-cookie", session?.providerAccessToken!);
-
+        
             try {
                 const response = await databases.listDocuments(
                     appwriteConfig.databaseId!,
@@ -59,6 +66,13 @@ const DashboardViewModel = () => {
                 if (response.total === 0) {
                     if (count === 1) {
                         await saveUserToDB({
+                            email: socialAccount.email,
+                            name: socialAccount.name,
+                            userId: socialAccount.$id,
+                            username: extracUserNameFromEmail(socialAccount.email),
+                            usertype: "client",
+                        });
+                        loginUser({
                             email: socialAccount.email,
                             name: socialAccount.name,
                             userId: socialAccount.$id,

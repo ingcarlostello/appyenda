@@ -43,7 +43,7 @@ const Login = () => {
         <div className="flex justify-center">
           <div className="bg-white md:w-3/6 lg:w-3/6 xl:w-1/4 p-8 md:shadow-2xl flex-center flex-col rounded-2xl">
             <div className="flex justify-center mb-4">
-              <Image src={logo} alt="Appyenda-logo" width={250} height={250} />
+              <Image priority={true} src={logo} alt="Appyenda-logo" width={250} height={250}/>
             </div>
             <form
               onSubmit={form.handleSubmit(handleSignIn)}
@@ -114,7 +114,7 @@ const Login = () => {
                   </legend>
                 </fieldset>
                 <div className="text-center">
-                  <GoogleButton />
+                  <GoogleButton disabled={isDisabled} />
                 </div>
               </div>
             </form>
