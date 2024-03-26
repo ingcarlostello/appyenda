@@ -7,9 +7,6 @@ import { account, appwriteConfig, databases } from "./config";
 // @Interfaces
 import { IUser } from "@/interfaces/IAuth";
 
-// @helpers
-import { extracUserNameFromEmail } from "@/helpers/extractUserFromEmail";
-
 export async function createUserAccount(user: IUser) {    
     try {
         const newAccount = await account.create(
@@ -111,19 +108,18 @@ export const checkUser = async () => {
     try {
         const currentSession = await account.getSession("current")
 
-        if (!currentSession) return
-        const promise = await account.get() as any
-
-        console.log('PROMISE --->', promise);
-        
+        if (!currentSession) throw new Error("No current session");
+        const promise = await account.get() as any        
 
         const profile = await useGetProfileByUserId(promise?.$id)
+
+        if (!profile) throw new Error("Profile not found");
 
         return profile
     } catch (error) {
         return {
             success: false,
-            error: 'No user session exists: ' + error,
+            error: `No user session exists: ${error}` ,
         };
     }
 }
@@ -143,27 +139,3 @@ export const googleAuth = () => {
         console.log('google error', error);
     }
 }
-
-// export const checkUserSocialAccount = async () => {
-//     try {
-//         const currentSession = await account.getSession("current");
-//         if (!currentSession) return;
-
-//         const promise = (await account.get()) as any;
-//         if (!promise) return;
-
-//         return {
-//             name: promise.name,
-//             email: promise.email,
-//             userId: currentSession.userId,
-//             username: extracUserNameFromEmail(promise.email),
-//         };
-//     } catch (error) {
-//         return {
-//             success: false,
-//             error: "GOOGLE No user session exists: " + error,
-//         };
-//     }
-// };
-
-

@@ -93,7 +93,8 @@ const RegisterViewModel = () => {
     } catch (error) {
       setIsDisabled(false);
       setIsLoading(false);
-      console.log("error -----+++++++>", error);
+      throw new Error(`Error creating account: ${error}`);
+      
     }
   };
 

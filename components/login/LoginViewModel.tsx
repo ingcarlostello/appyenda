@@ -39,23 +39,30 @@ import { extractCookieInfo } from "@/lib/auth";
 import goodIcon from "../../app/assets/icons/goodIcon.png";
 import badIcon from "../../app/assets/icons/badIcon.png";
 
+// @Stores
+import { useAuthStore } from "@/stores/auth.store";
+
+// @Interfaces
+import { IUser } from "@/interfaces/IAuth";
+
 const LoginViewModel = () => {
+    const router = useRouter();
+    
     const t = useTranslations("ValidationRegisterPage");
     const t2 = useTranslations("LoginPage");
+
+    const loginUser = useAuthStore(state => state.loginUserWithEmail)
     
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [isDisabled, setIsDisabled] = useState<boolean>(false);
 
     const { toast } = useToast();
-    const router = useRouter();
 
     const formSchema = LoginValidationSchema(t);
 
     useEffect(() => {
         const verifySession = async () => {
             const userSessionExists = await checkUser();
-
-            console.log('userSessionExists', userSessionExists);
             
             if (userSessionExists?.id) {
                 router.push(APPYENDA.DASHBOARD);
@@ -77,17 +84,24 @@ const LoginViewModel = () => {
         try {
             setIsDisabled(true);
             setIsLoading(true);
+
             const session = await account.createEmailSession(email, password);
-            await checkUser();
+            const userData = await checkUser();
+
             const getCookie = window.localStorage.getItem("cookieFallback");
             const parsedCookie = JSON.parse(getCookie!);
             const cookieInfo = extractCookieInfo(parsedCookie);
             Cookies.set("login-user-cookie", cookieInfo.infoCookie);
+
             router.push(APPYENDA.DASHBOARD);
+
             toast({
                 description: t2("SUCCESSFUL_LOGGING_IN"),
                 action: <Icon icon={goodIcon} alt={"good"} />,
             });
+
+            loginUser(userData as IUser);
+
             return session;
         } catch (error) {
             setIsDisabled(false);
