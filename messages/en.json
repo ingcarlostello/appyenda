@@ -46,5 +46,12 @@
     "PASSWORD_MIN_LENGTH": "Password must be at least 8 characters long.",
     "CONFIRM_PASSWORD": "Passwords do not match",
     "ACCEPT_TERMS_AND_CONDITIONS": "You must accept the terms and conditions"
+  },
+
+  "Sidebar":{
+    "DASHBOARD": "Dashboard",
+    "CALENDAR": "Calendar",
+    "SERVICES": "Services",
+    "PROFILE": "Profile"
   }
 }

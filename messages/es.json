@@ -46,5 +46,12 @@
     "PASSWORD_MIN_LENGTH": "El password debe ser mínimo de 8 caracteres.",
     "CONFIRM_PASSWORD": "Contraseñas no son iguales",
     "ACCEPT_TERMS_AND_CONDITIONS": "Debe aceptar los términos y condiciones"
+  },
+
+  "Sidebar":{
+    "DASHBOARD": "Dashboard",
+    "CALENDAR": "Calendario",
+    "SERVICES": "Servicios",
+    "PROFILE": "Perfil"
   }
 }
