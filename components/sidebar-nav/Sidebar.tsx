@@ -15,11 +15,18 @@ import { Nav } from "../ui/nav";
 
 // @View Models
 import SidebarViewModel from "./SidebarViewModel";
+
+// @Constants
 import { APPYENDA } from "@/constants/pages";
+
+// @Next-intl
+import { useTranslations } from "next-intl";
 
 export default function SideNavbar() {
 
   const {isCollapsed, mobileWidth, toggleSidebar} = SidebarViewModel()
+
+  const t = useTranslations("Sidebar");
 
   return (
     <div className="relative min-w-[80px] border-r px-3 pb-10 pt-24">
@@ -40,25 +47,25 @@ export default function SideNavbar() {
         isCollapsed={mobileWidth ? true : isCollapsed}
         links={[
           {
-            title: "Dashboard",
+            title: `${t("DASHBOARD")}`,
             href: "/dashboard",
             icon: LayoutDashboard,
             variant: "default"
           },
           {
-            title: "Calendar",
+            title: `${t("CALENDAR")}`,
             href: APPYENDA.CALENDAR,
             icon: CalendarDays,
             variant: "ghost"
           },
           {
-            title: "Services",
+            title: `${t("SERVICES")}`,
             href: APPYENDA.SERVICES,
             icon: Briefcase,
             variant: "ghost"
           },
           {
-            title: "Profile",
+            title: `${t("PROFILE")}`,
             href: APPYENDA.PROFILE,
             icon: User,
             variant: "ghost"

@@ -1,4 +1,5 @@
 // @Components
+import LanguageSelector from "@/components/shared/LanguageSelector";
 import Sidebar from "@/components/sidebar-nav/Sidebar";
 
 // @Libs
@@ -12,15 +13,16 @@ type DashboardLayoutProps = { children: React.ReactNode };
 
 const Layout = ({ children }: DashboardLayoutProps) => {
   return (
-    <div  className={cn(
-      "min-h-screen w-full bg-white text-black flex ",
-      inter.className,
-      {
-        "debug-screens": process.env.NODE_ENV === "development"
-      }
-    )}>
-      <Sidebar />
-      <div>{children}</div>
+    <div>
+      <div className="flex justify-end pt-4 mr-6">
+        <LanguageSelector />
+      </div>
+      <div className={cn("min-h-screen w-full text-black flex")}>
+        <div>
+          <Sidebar />
+        </div>
+        <div>{children}</div>
+      </div>
     </div>
   );
 };
