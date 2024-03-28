@@ -1,27 +1,5 @@
-"use client";
-
-// @Shad-cn
-import { Button } from "@/components/ui/button";
-
-// @ViewModel
-import DashboardViewModel from "./DashboardViewModel";
-
 const Dashboard = () => {
-
-    const { handleSignOut } = DashboardViewModel()
-
-    return (
-        <div>
-            Dashboard page
-            <Button
-                type="submit"
-                className="shad-button_primary"
-                onClick={handleSignOut}
-            >
-                Salir
-            </Button>
-        </div>
-    );
+    return <div className="bg-green-400 w-full">Dashboard Data</div>;
 };
 
 export default Dashboard;
