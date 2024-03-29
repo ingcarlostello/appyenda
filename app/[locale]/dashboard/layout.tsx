@@ -13,15 +13,13 @@ type DashboardLayoutProps = { children: React.ReactNode };
 
 const Layout = ({ children }: DashboardLayoutProps) => {
   return (
-    <div>
+    <div className="">
       <div className="flex justify-end pt-4 mr-6">
         <LanguageSelector />
       </div>
       <div className={cn("min-h-screen w-full text-black flex")}>
-        <div>
-          <Sidebar />
-        </div>
-        <div>{children}</div>
+        <Sidebar />
+        <div className="w-full">{children}</div>
       </div>
     </div>
   );
