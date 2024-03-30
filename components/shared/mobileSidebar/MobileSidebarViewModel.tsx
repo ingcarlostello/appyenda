@@ -17,14 +17,12 @@ import { logout } from "@/lib/appwrite/api";
 // @Constants
 import { APPYENDA } from "@/constants/pages";
 
-const SidebarViewModel = () => {
+const MobileSidebarViewModel = () => {
     const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
     const [mobileWidth, setMobileWidth] = useState<boolean>();
     const router = useRouter();
 
     const onlyWidth = useWindowWidth();
-    console.log(onlyWidth);
-    
 
     useEffect(() => {
         setMobileWidth(onlyWidth < 768);
@@ -53,4 +51,4 @@ const SidebarViewModel = () => {
     };
 };
 
-export default SidebarViewModel;
+export default MobileSidebarViewModel;

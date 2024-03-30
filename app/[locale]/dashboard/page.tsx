@@ -6,12 +6,12 @@ import { CalendarCheck, CircleDollarSign, Users } from "lucide-react";
 
 const Dashboard = () => {
     return (
-        <div className="pl-10 w-full">
+        <div>
             <p className="text-2xl font-semibold mb-10">Dasboard</p>
 
-            <div className="grid grid-cols-4 gap-4 w-full pr-8">
+            <div className="grid sm:grid-cols-1 lg:grid-cols-4 gap-4 w-full pr-8">
                 <div>
-                    <MetricCard 
+                    <MetricCard
                         icon={<CircleDollarSign size={35} />}
                         iconColor="bg-green-400"
                         title="Total Ventas"
@@ -25,7 +25,6 @@ const Dashboard = () => {
                         iconColor="bg-blue-400"
                         title="Reservas"
                         value="87"
-
                     />
                 </div>
                 <div>

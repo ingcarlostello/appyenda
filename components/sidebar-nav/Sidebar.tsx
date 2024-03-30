@@ -1,13 +1,7 @@
 "use client";
 
 // @Lucide-react
-import {
-  Briefcase,
-  CalendarDays,
-  ChevronRight,
-  LayoutDashboard,
-  User
-} from "lucide-react";
+import { Briefcase, CalendarDays, LayoutDashboard, User } from "lucide-react";
 
 // @UI components
 import { Button } from "../ui/button";
@@ -23,57 +17,49 @@ import { APPYENDA } from "@/constants/pages";
 import { useTranslations } from "next-intl";
 
 export default function SideNavbar() {
-
-  const {isCollapsed, mobileWidth, toggleSidebar} = SidebarViewModel()
+  const { handleSignOut } = SidebarViewModel();
 
   const t = useTranslations("Sidebar");
 
   return (
-    <div className="relative min-w-[80px] border-r px-3 pb-10 pt-24">
-    
-      {!mobileWidth && (
-        <div className="absolute right-[-20px] top-7">
-          <Button
-            onClick={toggleSidebar}
-            variant="secondary"
-            className=" rounded-full p-2"
-          >
-            <ChevronRight />
-          </Button>
-        </div>
-      )}
-
+    <div>
       <Nav
-        isCollapsed={mobileWidth ? true : isCollapsed}
+        isCollapsed={false}
         links={[
           {
             title: `${t("DASHBOARD")}`,
             href: "/dashboard",
             icon: LayoutDashboard,
-            variant: "default"
+            variant: "default",
           },
           {
             title: `${t("CALENDAR")}`,
             href: APPYENDA.CALENDAR,
             icon: CalendarDays,
-            variant: "ghost"
+            variant: "ghost",
           },
           {
             title: `${t("SERVICES")}`,
             href: APPYENDA.SERVICES,
             icon: Briefcase,
-            variant: "ghost"
+            variant: "ghost",
           },
           {
             title: `${t("PROFILE")}`,
             href: APPYENDA.PROFILE,
             icon: User,
-            variant: "ghost"
-          }
+            variant: "ghost",
+          },
         ]}
       />
 
-
+      <div>
+        <div className="flex justify-center mt-12">
+          <Button onClick={handleSignOut}>
+            <div className="ml-2">{t("LOGOUT")}</div>
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }
