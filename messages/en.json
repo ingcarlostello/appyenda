@@ -53,6 +53,7 @@
     "CALENDAR": "Calendar",
     "SERVICES": "Services",
     "PROFILE": "Profile",
-    "LOGOUT": "Log out"
+    "LOGOUT": "Log out",
+    "LOGGING_OUT": "Logging out..."
   }
 }

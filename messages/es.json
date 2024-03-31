@@ -53,6 +53,7 @@
     "CALENDAR": "Calendario",
     "SERVICES": "Servicios",
     "PROFILE": "Perfil",
-    "LOGOUT": "Cerrar sesión"
+    "LOGOUT": "Cerrar sesión",
+    "LOGGING_OUT": "Cerrando sesión..."
   }
 }

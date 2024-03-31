@@ -1,7 +1,7 @@
 "use client";
 
 // @Lucide-react
-import { Briefcase, CalendarDays, LayoutDashboard, User } from "lucide-react";
+import { Briefcase, CalendarDays, LayoutDashboard, Loader2, User } from "lucide-react";
 
 // @UI components
 import { Button } from "../ui/button";
@@ -17,7 +17,7 @@ import { APPYENDA } from "@/constants/pages";
 import { useTranslations } from "next-intl";
 
 export default function SideNavbar() {
-  const { handleSignOut } = SidebarViewModel();
+  const { handleSignOut, isDisabled, isLoading } = SidebarViewModel();
 
   const t = useTranslations("Sidebar");
 
@@ -55,8 +55,15 @@ export default function SideNavbar() {
 
       <div>
         <div className="flex justify-center mt-12">
-          <Button onClick={handleSignOut}>
-            <div className="ml-2">{t("LOGOUT")}</div>
+          <Button disabled={isDisabled} onClick={handleSignOut}>
+            {isLoading ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />{" "}
+                {t("LOGGING_OUT")}{" "}
+              </>
+            ) : (
+              t("LOGOUT")
+            )}
           </Button>
         </div>
       </div>

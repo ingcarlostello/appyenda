@@ -30,6 +30,7 @@ const DashboardViewModel = () => {
     const [session, setSession] = useState<Partial<Session>>();
 
     const loginUser = useAuthStore(state => state.loginUserWithEmail)
+    const userName = useAuthStore(state => state.name)
 
     useEffect(() => {
         const verifySocialAccount = async () => {
@@ -84,8 +85,10 @@ const DashboardViewModel = () => {
         };
         saveUserSocialAccountToDB();
     }, [count]);
+
     return {
-      
+        loginUser,
+        userName
     };
 };
 

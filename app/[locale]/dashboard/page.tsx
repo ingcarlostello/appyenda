@@ -1,13 +1,20 @@
+"use client"
 // @Components
 import { MetricCard } from "@/components/shared/MetricCard";
 
 // @Lucide react icons
 import { CalendarCheck, CircleDollarSign, Users } from "lucide-react";
 
+// @View model
+import DashboardViewModel from "./DashboardViewModel";
+
 const Dashboard = () => {
+
+    const {userName} = DashboardViewModel()
+
     return (
         <div>
-            <p className="text-2xl font-semibold mb-10">Dasboard</p>
+            <p className="text-5xl font-bold mb-14  max-[767px]:text-3xl">Hola {userName}!</p>
 
             <div className="grid sm:grid-cols-1 lg:grid-cols-4 gap-4 w-full pr-8">
                 <div>
