@@ -1,17 +1,24 @@
+"use client"
 // @Components
 import { MetricCard } from "@/components/shared/MetricCard";
 
 // @Lucide react icons
 import { CalendarCheck, CircleDollarSign, Users } from "lucide-react";
 
-const Dashboard = () => {
-    return (
-        <div className="pl-10 w-full">
-            <p className="text-2xl font-semibold mb-10">Dasboard</p>
+// @View model
+import DashboardViewModel from "./DashboardViewModel";
 
-            <div className="grid grid-cols-4 gap-4 w-full pr-8">
+const Dashboard = () => {
+
+    const {userName} = DashboardViewModel()
+
+    return (
+        <div>
+            <p className="text-5xl font-bold mb-14  max-[767px]:text-3xl">Hola {userName}!</p>
+
+            <div className="grid sm:grid-cols-1 lg:grid-cols-4 gap-4 w-full pr-8">
                 <div>
-                    <MetricCard 
+                    <MetricCard
                         icon={<CircleDollarSign size={35} />}
                         iconColor="bg-green-400"
                         title="Total Ventas"
@@ -25,7 +32,6 @@ const Dashboard = () => {
                         iconColor="bg-blue-400"
                         title="Reservas"
                         value="87"
-
                     />
                 </div>
                 <div>

@@ -52,6 +52,8 @@
     "DASHBOARD": "Dashboard",
     "CALENDAR": "Calendario",
     "SERVICES": "Servicios",
-    "PROFILE": "Perfil"
+    "PROFILE": "Perfil",
+    "LOGOUT": "Cerrar sesión",
+    "LOGGING_OUT": "Cerrando sesión..."
   }
 }
