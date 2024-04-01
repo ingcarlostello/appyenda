@@ -11,15 +11,18 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+
+// @next-intl
+import { useTranslations } from "next-intl";
 
 // @View Models
 import ProfileViewModel from "./ProfileViewModel";
 
 const Profile = () => {
 	const { form, handleProfileUpdate } = ProfileViewModel();
+	const t = useTranslations("ProfilePage");
 
 	return (
 		<div className="min-h-screen grid content-center">
@@ -40,18 +43,18 @@ const Profile = () => {
 							</div>
 						</div>
 						<form onSubmit={form.handleSubmit(handleProfileUpdate)}>
-							<div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-y-6 gap-x-12 ">
+							<div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-y-6 gap-x-16 ">
 								<FormField
 									control={form.control}
-									name="username"
+									name="name"
 									render={({ field }) => (
 										<FormItem>
-											<FormLabel>Name</FormLabel>
+											<FormLabel>{t("NAME")}</FormLabel>
 											<FormControl>
 												<Input
+													className="text-center"
 													placeholder="Emmanuel Garavito"
 													{...field}
-													disabled
 												/>
 											</FormControl>
 
@@ -65,42 +68,12 @@ const Profile = () => {
 									name="username"
 									render={({ field }) => (
 										<FormItem>
-											<FormLabel>Username</FormLabel>
-											<FormControl>
-												<Input placeholder="emmanuel123" {...field} disabled />
-											</FormControl>
-
-											<FormMessage />
-										</FormItem>
-									)}
-								/>
-
-								<FormField
-									control={form.control}
-									name="username"
-									render={({ field }) => (
-										<FormItem>
-											<FormLabel>Usertype</FormLabel>
-											<FormControl>
-												<Input placeholder="Business" {...field} disabled />
-											</FormControl>
-
-											<FormMessage />
-										</FormItem>
-									)}
-								/>
-
-								<FormField
-									control={form.control}
-									name="username"
-									render={({ field }) => (
-										<FormItem>
-											<FormLabel>Email</FormLabel>
+											<FormLabel>{t("USER_NAME")}</FormLabel>
 											<FormControl>
 												<Input
-													placeholder="bob123@example.com"
+													className="text-center"
+													placeholder="emmanuel123"
 													{...field}
-													disabled
 												/>
 											</FormControl>
 
@@ -111,12 +84,16 @@ const Profile = () => {
 
 								<FormField
 									control={form.control}
-									name="username"
+									name="usertype"
 									render={({ field }) => (
 										<FormItem>
-											<FormLabel>Phone Number</FormLabel>
+											<FormLabel>{t("USER_TYPE")}</FormLabel>
 											<FormControl>
-												<Input placeholder="3228950339" {...field} disabled />
+												<Input
+													className="text-center"
+													placeholder="Business"
+													{...field}
+												/>
 											</FormControl>
 
 											<FormMessage />
@@ -126,15 +103,53 @@ const Profile = () => {
 
 								<FormField
 									control={form.control}
-									name="username"
+									name="email"
 									render={({ field }) => (
 										<FormItem>
-											<FormLabel>Location</FormLabel>
+											<FormLabel>{t("EMAIL")}</FormLabel>
 											<FormControl>
 												<Input
+													className="text-center"
+													placeholder="emmanuel123@example.com"
+													{...field}
+												/>
+											</FormControl>
+
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+
+								<FormField
+									control={form.control}
+									name="phone"
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel>{t("PHONE_NUMBER")}</FormLabel>
+											<FormControl>
+												<Input
+													className="text-center"
+													placeholder="3228950339"
+													{...field}
+												/>
+											</FormControl>
+
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+
+								<FormField
+									control={form.control}
+									name="location"
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel>{t("LOCATION")}</FormLabel>
+											<FormControl>
+												<Input
+													className="text-center"
 													placeholder="Floridablanca, COL"
 													{...field}
-													disabled
 												/>
 											</FormControl>
 
@@ -148,7 +163,7 @@ const Profile = () => {
 									className="w-full p-auto md:w-auto px-12 "
 									type="submit"
 								>
-									Edit Profile
+									{t("EDIT_PROFILE")}
 								</Button>
 							</div>
 						</form>

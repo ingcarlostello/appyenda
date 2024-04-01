@@ -1,57 +1,72 @@
 {
-  "LoginPage": {
-    "EMAIL": "Email",
-    "PASSWORD": "Password",
-    "LogIn": "Log in",
-    "DONT_HAVE_ACCOUNT": "You don't have an account?",
-    "SIGN_UP": "Sign up",
-    "LOGGING_IN": "Logging in",
-    "SUCCESSFUL_LOGGING_IN": "Successfully logged in",
-    "INVALID_CREDENTIALS": "Invalid credentials",
-    "lOG_IN_WITH": "Log in with"
-  },
+	"LoginPage": {
+		"EMAIL": "Email",
+		"PASSWORD": "Password",
+		"LogIn": "Log in",
+		"DONT_HAVE_ACCOUNT": "You don't have an account?",
+		"SIGN_UP": "Sign up",
+		"LOGGING_IN": "Logging in",
+		"SUCCESSFUL_LOGGING_IN": "Successfully logged in",
+		"INVALID_CREDENTIALS": "Invalid credentials",
+		"lOG_IN_WITH": "Log in with"
+	},
 
-  "LanguageSelector": {
-    "locale": "{locale, select, es {Spanish} en {English} other {Unknown}}",
-    "Language": "Language"
-  },
+	"LanguageSelector": {
+		"locale": "{locale, select, es {Spanish} en {English} other {Unknown}}",
+		"Language": "Language"
+	},
 
-  "RegisterPage": {
-    "NAME": "Name",
-    "USER_NAME": "User name",
-    "NAME_TO_RECOGNIZE": "Name you will be recognized by",
-    "USER_TYPE": "User type",
-    "CLIENT": "Client",
-    "BUSINESS_OWNER": "Business",
-    "EMAIL": "Email",
-    "PASSWORD": "Password",
-    "CONFIRM_PASSWORD": "Confirm password",
-    "ACCEPT_TERMS_AND_CONDITIONS": "Accept terms and conditions",
-    "REGISTER": "Register",
-    "ALREADY_REGISTERED": "Do you already have an account?",
-    "LOG_IN": "Log in",
-    "REGISTERING": "Registering...",
-    "SUCCESSFUL_REGISTRATION": "User registered successfully",
-    "USER_ALREADY_EXIST": "User is already registered",
-    "REGISTER_WITH": "Register with:"
-  },
+	"RegisterPage": {
+		"NAME": "Name",
+		"USER_NAME": "User name",
+		"NAME_TO_RECOGNIZE": "Name you will be recognized by",
+		"USER_TYPE": "User type",
+		"CLIENT": "Client",
+		"BUSINESS_OWNER": "Business",
+		"EMAIL": "Email",
+		"PASSWORD": "Password",
+		"CONFIRM_PASSWORD": "Confirm password",
+		"ACCEPT_TERMS_AND_CONDITIONS": "Accept terms and conditions",
+		"REGISTER": "Register",
+		"ALREADY_REGISTERED": "Do you already have an account?",
+		"LOG_IN": "Log in",
+		"REGISTERING": "Registering...",
+		"SUCCESSFUL_REGISTRATION": "User registered successfully",
+		"USER_ALREADY_EXIST": "User is already registered",
+		"REGISTER_WITH": "Register with:"
+	},
 
-  "ValidationRegisterPage": {
-    "NAME_MIN_LENGTH": "Name must be at least 2 characters long.",
-    "NAME_MAX_LENGTH": "Name must be at most 50 characters long.",
-    "USER_NAME_MIN_LENGTH": "User name must be at least 2 characters long.",
-    "USER_NAME_MAX_LENGTH": "User name must be at most 50 characters long.",
-    "MISSING_USER_TYPE": "You need to select a user type.",
-    "INVALID_EMAIL": "Invalid email",
-    "PASSWORD_MIN_LENGTH": "Password must be at least 8 characters long.",
-    "CONFIRM_PASSWORD": "Passwords do not match",
-    "ACCEPT_TERMS_AND_CONDITIONS": "You must accept the terms and conditions"
-  },
+	"ValidationRegisterPage": {
+		"NAME_MIN_LENGTH": "Name must be at least 2 characters long.",
+		"NAME_MAX_LENGTH": "Name must be at most 50 characters long.",
+		"USER_NAME_MIN_LENGTH": "User name must be at least 2 characters long.",
+		"USER_NAME_MAX_LENGTH": "User name must be at most 50 characters long.",
+		"MISSING_USER_TYPE": "You need to select a user type.",
+		"INVALID_EMAIL": "Invalid email",
+		"PASSWORD_MIN_LENGTH": "Password must be at least 8 characters long.",
+		"CONFIRM_PASSWORD": "Passwords do not match",
+		"ACCEPT_TERMS_AND_CONDITIONS": "You must accept the terms and conditions",
+		"INVALID_PHONE": "Phone must be a number",
+		"PHONE_REQUIRED": "Phone is required",
+		"LOCATION_MIN_LENGTH": "Location must be at least 2 characters long."
+	},
 
-  "Sidebar":{
-    "DASHBOARD": "Dashboard",
-    "CALENDAR": "Calendar",
-    "SERVICES": "Services",
-    "PROFILE": "Profile"
-  }
+	"Sidebar": {
+		"DASHBOARD": "Dashboard",
+		"CALENDAR": "Calendar",
+		"SERVICES": "Services",
+		"PROFILE": "Profile"
+	},
+
+	"ProfilePage": {
+		"NAME": "Name",
+		"USER_NAME": "User name",
+		"USER_TYPE": "User type",
+		"CLIENT": "Client",
+		"BUSINESS_OWNER": "Business",
+		"EMAIL": "Email",
+		"PHONE_NUMBER": "Phone Number",
+		"LOCATION": "Location",
+		"EDIT_PROFILE": "Edit Profile"
+	}
 }

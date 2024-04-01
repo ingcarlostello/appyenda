@@ -6,36 +6,38 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
 // @Validation
-import { RegisterValidationSchema } from "@/lib/validation";
+import {
+	ProfileValidationSchema,
+	RegisterValidationSchema,
+} from "@/lib/validation";
 
 // @next-intl
 import { useTranslations } from "next-intl";
 
 const ProfileViewModel = () => {
-  const t = useTranslations("ValidationRegisterPage");
-  const formSchema = RegisterValidationSchema(t);
+	const t = useTranslations("ValidationRegisterPage");
+	const formSchema = ProfileValidationSchema(t);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      username: "",
-      usertype: undefined,
-      email: "",
-      password: "",
-      confirmPassword: "",
-      checkbox: false,
-    },
-  });
+	const form = useForm<z.infer<typeof formSchema>>({
+		resolver: zodResolver(formSchema),
+		defaultValues: {
+			name: "",
+			username: "",
+			usertype: undefined,
+			email: "",
+			phone: undefined,
+			location: "",
+		},
+	});
 
-  const handleProfileUpdate = () => {
-    // Here will go data handling for the profile update
-  };
+	const handleProfileUpdate = () => {
+		// Here will go data handling for the profile update
+	};
 
-  return {
-    form,
-    handleProfileUpdate,
-  };
+	return {
+		form,
+		handleProfileUpdate,
+	};
 };
 
 export default ProfileViewModel;
