@@ -17,11 +17,15 @@ import { logout } from "@/lib/appwrite/api";
 // @Constants
 import { APPYENDA } from "@/constants/pages";
 
+// @Stores
+import { useAuthStore } from "@/stores/auth.store";
+
 const SidebarViewModel = () => {
     const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
     const [mobileWidth, setMobileWidth] = useState<boolean>();
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [isDisabled, setIsDisabled] = useState<boolean>(false);
+    const logOutUser = useAuthStore(state => state.logOutUser)
     const router = useRouter();
 
     const onlyWidth = useWindowWidth();    
@@ -41,8 +45,10 @@ const SidebarViewModel = () => {
         Cookies.remove("initial-social-cookie");
         Cookies.remove("social-account-cookie");
         await logout();
+        logOutUser();
         router.push(APPYENDA.LOGIN);
         router.refresh();
+        localStorage.removeItem("cookieFallback");
     };
 
     return {

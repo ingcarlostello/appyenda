@@ -30,7 +30,7 @@ import RegisterViewModel from "./RegisterViewModel";
 import { useTranslations } from "next-intl";
 
 // @Assets
-import logo from "../../app/assets/APPYENDA_hr_logo.webp";
+import logo from "../../app/assets/APPYENDA-logo-transparent.png";
 import GoogleButton from "../shared/GoogleButton";
 
 const Register = () => {
@@ -47,10 +47,10 @@ const Register = () => {
               <Image
                 src={logo}
                 alt="Appyenda-logo"
-                width={250}
-                height={250}
-                className=""
-                priority={true}
+                width={0}
+                height={0}
+               priority={true}
+                style={{ width: 'auto', height: 'auto' }} 
               />
             </div>
             <form
