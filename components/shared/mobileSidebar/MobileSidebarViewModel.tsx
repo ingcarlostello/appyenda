@@ -17,14 +17,12 @@ import { logout } from "@/lib/appwrite/api";
 // @Constants
 import { APPYENDA } from "@/constants/pages";
 
-const SidebarViewModel = () => {
+const MobileSidebarViewModel = () => {
     const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
     const [mobileWidth, setMobileWidth] = useState<boolean>();
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [isDisabled, setIsDisabled] = useState<boolean>(false);
     const router = useRouter();
 
-    const onlyWidth = useWindowWidth();    
+    const onlyWidth = useWindowWidth();
 
     useEffect(() => {
         setMobileWidth(onlyWidth < 768);
@@ -35,8 +33,6 @@ const SidebarViewModel = () => {
     }
 
     const handleSignOut = async () => {
-        setIsDisabled(true);
-        setIsLoading(true);
         Cookies.remove("login-user-cookie");
         Cookies.remove("initial-social-cookie");
         Cookies.remove("social-account-cookie");
@@ -48,8 +44,6 @@ const SidebarViewModel = () => {
     return {
         handleSignOut,
         isCollapsed,
-        isDisabled,
-        isLoading,
         mobileWidth,
         onlyWidth,
         setIsCollapsed,
@@ -57,4 +51,4 @@ const SidebarViewModel = () => {
     };
 };
 
-export default SidebarViewModel;
+export default MobileSidebarViewModel;

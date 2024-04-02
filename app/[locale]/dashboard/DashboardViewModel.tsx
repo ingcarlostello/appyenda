@@ -8,13 +8,10 @@ import { Query } from "appwrite";
 
 // @Lib
 import { account, appwriteConfig, databases } from "@/lib/appwrite/config";
-import { checkUser, logout, saveUserToDB } from "@/lib/appwrite/api";
+import { checkUser, saveUserToDB } from "@/lib/appwrite/api";
 
 // @Helpers
 import { extracUserNameFromEmail } from "@/helpers/extractUserFromEmail";
-
-// @Constants
-import { APPYENDA } from "@/constants/pages";
 
 // @Js-cookie
 import Cookies from "js-cookie";
@@ -33,6 +30,7 @@ const DashboardViewModel = () => {
     const [session, setSession] = useState<Partial<Session>>();
 
     const loginUser = useAuthStore(state => state.loginUserWithEmail)
+    const userName = useAuthStore(state => state.name)
 
     useEffect(() => {
         const verifySocialAccount = async () => {
@@ -88,17 +86,9 @@ const DashboardViewModel = () => {
         saveUserSocialAccountToDB();
     }, [count]);
 
-    const handleSignOut = async () => {
-        Cookies.remove("login-user-cookie");
-        Cookies.remove("initial-social-cookie");
-        Cookies.remove("social-account-cookie");
-        await logout();
-        router.push(APPYENDA.LOGIN);
-        router.refresh();
-    };
-
     return {
-        handleSignOut,
+        loginUser,
+        userName
     };
 };
 

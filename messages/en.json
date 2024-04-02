@@ -51,13 +51,6 @@
 		"LOCATION_MIN_LENGTH": "Location must be at least 2 characters long."
 	},
 
-	"Sidebar": {
-		"DASHBOARD": "Dashboard",
-		"CALENDAR": "Calendar",
-		"SERVICES": "Services",
-		"PROFILE": "Profile"
-	},
-
 	"ProfilePage": {
 		"NAME": "Name",
 		"USER_NAME": "User name",
@@ -68,5 +61,13 @@
 		"PHONE_NUMBER": "Phone Number",
 		"LOCATION": "Location",
 		"EDIT_PROFILE": "Edit Profile"
+	},
+	"Sidebar": {
+		"DASHBOARD": "Dashboard",
+		"CALENDAR": "Calendar",
+		"SERVICES": "Services",
+		"PROFILE": "Profile",
+		"LOGOUT": "Log out",
+		"LOGGING_OUT": "Logging out..."
 	}
 }
