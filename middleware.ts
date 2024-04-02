@@ -5,25 +5,50 @@ import createMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
 
 export default async function middleware(request: NextRequest) {
+    const restrictedPaths = [
+        "/dashboard/profile",
+        "/dashboard/calendar",
+        "/dashboard/services",
+    ];
     const authToken = request.cookies.get("login-user-cookie")?.value;
-    const initialSocialCookie = request.cookies.get("initial-social-cookie")?.value;
+    const initialSocialCookie = request.cookies.get(
+        "initial-social-cookie"
+    )?.value;
 
     const path = request.nextUrl.pathname;
 
     if (!authToken && !initialSocialCookie && path === "/dashboard") {
-        NextResponse.next().cookies.delete('login-user-cookie')
-        NextResponse.next().cookies.delete('initial-social-cookie')
-        NextResponse.next().cookies.delete('social-account-cookie')
+        NextResponse.next().cookies.delete("login-user-cookie");
+        NextResponse.next().cookies.delete("initial-social-cookie");
+        NextResponse.next().cookies.delete("social-account-cookie");
         const response = NextResponse.redirect(new URL("/login", request.url));
         return response;
     }
 
-    if (request.cookies.has("initial-social-cookie") && request.nextUrl.pathname.startsWith("/login") && !authToken) {
+    function redirectToLogin(request: NextRequest): NextResponse {
+        NextResponse.next().cookies.delete("login-user-cookie");
+        NextResponse.next().cookies.delete("initial-social-cookie");
+        NextResponse.next().cookies.delete("social-account-cookie");
+        return NextResponse.redirect(new URL("/login", request.url));
+    }
+
+    if (!authToken && !initialSocialCookie && restrictedPaths.includes(path)) {
+        return redirectToLogin(request);
+    }
+
+    if (
+        request.cookies.has("initial-social-cookie") &&
+        request.nextUrl.pathname.startsWith("/login") &&
+        !authToken
+    ) {
         const response = NextResponse.redirect(new URL("/dashboard", request.url));
         return response;
     }
 
-    if (request.cookies.has("social-account-cookie") && request.nextUrl.pathname.startsWith("/register")) {
+    if (
+        request.cookies.has("social-account-cookie") &&
+        request.nextUrl.pathname.startsWith("/register")
+    ) {
         const response = NextResponse.redirect(new URL("/dashboard", request.url));
         return response;
     }
