@@ -12,6 +12,7 @@ interface IAuthState {
     username: string;
     usertype: string;
     loginUserWithEmail: (userData: IUser) => Promise<void>;
+    logOutUser: () => void;
 }
 
 const authStoreAPI: StateCreator<IAuthState, [["zustand/devtools", never]]> = (set, get) => ({
@@ -47,6 +48,16 @@ const authStoreAPI: StateCreator<IAuthState, [["zustand/devtools", never]]> = (s
             });
         }
     },
+
+    logOutUser: () => {
+        set({
+            email: "",
+            name: "",
+            userId: "",
+            username: "",
+            usertype: "",
+        })
+    }
 });
 
 export const useAuthStore = create<IAuthState>()(devtools(authStoreAPI));

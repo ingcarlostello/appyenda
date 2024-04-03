@@ -26,7 +26,7 @@ import { PasswordInput } from "@/components/ui/password-input";
 import LoginViewModel from "./LoginViewModel";
 
 // @Assets
-import logo from "../../app/assets/APPYENDA_hr_logo.webp";
+import logo from "../../app/assets/APPYENDA-logo-transparent.png";
 
 // @Next-intl
 import { useTranslations } from "next-intl";
@@ -43,7 +43,7 @@ const Login = () => {
         <div className="flex justify-center">
           <div className="bg-white md:w-3/6 lg:w-3/6 xl:w-1/4 p-8 md:shadow-2xl flex-center flex-col rounded-2xl">
             <div className="flex justify-center mb-4">
-              <Image priority={true} src={logo} alt="Appyenda-logo" width={250} height={250}/>
+              <Image priority={true} src={logo} alt="Appyenda-logo" width={0} height={0} style={{ width: 'auto', height: 'auto' }}/>
             </div>
             <form
               onSubmit={form.handleSubmit(handleSignIn)}
