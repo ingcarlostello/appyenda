@@ -5,9 +5,9 @@ import { ID, Query } from "appwrite";
 import { account, appwriteConfig, databases } from "./config";
 
 // @Interfaces
-import { IUser } from "@/interfaces/IAuth";
+import { IProvider, IUser } from "@/interfaces/IAuth";
 
-export async function createUserAccount(user: IUser) {    
+export async function createUserAccount(user: IUser) {
     try {
         const newAccount = await account.create(
             ID.unique(),
@@ -16,15 +16,28 @@ export async function createUserAccount(user: IUser) {
             user.name
         );
 
-        const newUser = await saveUserToDB({
-            userId: newAccount.$id,
-            name: user.name,
-            username: user.username,
-            email: user.email.toString(),
-            usertype: user.usertype,
-        });
+        if (user.usertype === "business") {
+            const newUserProvider = await saveProviderToDB({
+                providerId: newAccount.$id,
+                businessName: user.name,
+                userName: user.username,
+                email: user.email.toString(),
+                userType: user.usertype,
+            });
+            return newUserProvider;
+        }
 
-        return newUser;
+        if (user.usertype === "client") {
+            const newUser = await saveUserToDB({
+                userId: newAccount.$id,
+                name: user.name,
+                username: user.username,
+                email: user.email.toString(),
+                usertype: user.usertype,
+            });
+
+            return newUser;
+        }
     } catch (error) {
         throw new Error(`Error creating account: ${error}`);
     }
@@ -35,6 +48,20 @@ export async function saveUserToDB(user: IUser) {
         const newUser = await databases.createDocument(
             appwriteConfig.databaseId as string,
             appwriteConfig.userCollectionId as string,
+            ID.unique(),
+            user
+        );
+        return newUser;
+    } catch (error) {
+        throw new Error(`Error saving user to DB: ${error}`);
+    }
+}
+
+export async function saveProviderToDB(user: IProvider) {
+    try {
+        const newUser = await databases.createDocument(
+            appwriteConfig.databaseId as string,
+            appwriteConfig.providerCollectionId as string,
             ID.unique(),
             user
         );
@@ -83,7 +110,7 @@ export async function getCurrentUser() {
     }
 }
 
-export const useGetProfileByUserId = async (userId: string) => {
+export const useGetProfileByUserId = async (userId: string) => {    
     try {
         const response = await databases.listDocuments(
             appwriteConfig.databaseId!,
@@ -98,35 +125,34 @@ export const useGetProfileByUserId = async (userId: string) => {
             userId: documents[0]?.userId,
             username: documents[0]?.username,
             usertype: documents[0]?.usertype,
-        }
+        };
     } catch (error) {
-        throw error
+        throw error;
     }
-}
+};
 
 export const checkUser = async () => {
     try {
-        const currentSession = await account.getSession("current")
+        const currentSession = await account.getSession("current");
 
         if (!currentSession) throw new Error("No current session");
-        const promise = await account.get() as any        
-
-        const profile = await useGetProfileByUserId(promise?.$id)
+        const promise = (await account.get()) as any;
+        const profile = await useGetProfileByUserId(promise?.$id);
 
         if (!profile) throw new Error("Profile not found");
 
-        return profile
+        return profile;
     } catch (error) {
         return {
             success: false,
-            error: `No user session exists: ${error}` ,
+            error: `No user session exists: ${error}`,
         };
     }
-}
+};
 
 export const logout = async () => {
     try {
-        await account.deleteSession('current');
+        await account.deleteSession("current");
     } catch (error) {
         console.error(error);
     }
@@ -134,8 +160,8 @@ export const logout = async () => {
 
 export const googleAuth = () => {
     try {
-        account.createOAuth2Session('google', 'http://localhost:3000/dashboard', 'http://localhost:3000/login')
+        account.createOAuth2Session("google", "http://localhost:3000/dashboard", "http://localhost:3000/login");
     } catch (error) {
-        console.log('google error', error);
+        console.log("google error", error);
     }
-}
+};
