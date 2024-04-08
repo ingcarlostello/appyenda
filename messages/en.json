@@ -55,5 +55,15 @@
     "PROFILE": "Profile",
     "LOGOUT": "Log out",
     "LOGGING_OUT": "Logging out..."
+  },
+
+  "ServicesPage": {
+    "SERVICES": "Services",
+    "ADD_SERVICE_BUTTON": "Add Service",
+    "NAME": "Name",
+    "DESCRIPTION": "Description",
+    "DURATION": "Duration",
+    "PRICE": "Price",
+    "CATEGORY": "Category"
   }
 }
