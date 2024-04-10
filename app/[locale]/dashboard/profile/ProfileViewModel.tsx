@@ -13,6 +13,7 @@ import {
 
 // @next-intl
 import { useTranslations } from "next-intl";
+import { useState } from "react";
 
 const ProfileViewModel = () => {
 	const t = useTranslations("ValidationRegisterPage");
