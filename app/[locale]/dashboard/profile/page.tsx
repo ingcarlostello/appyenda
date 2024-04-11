@@ -33,7 +33,7 @@ const Profile = () => {
 				<div className="flex justify-center items-center">
 					<div className="bg-white md:w-3/6 lg:w-3/6 xl:w-2/4 p-8 flex flex-col gap-10">
 						<div className="flex  items-center mb-4 gap-8 ">
-							<Avatar className="w-16 h-16 md:w-20 md:h-20 lg:w-36 lg:h-36  rounded-full object-cover shadow-2xl ">
+							<Avatar className="shadow-xl  w-16 h-16 md:w-20 md:h-20 lg:w-36 lg:h-36  rounded-full object-cover ">
 								<AvatarImage src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=900&t=st=1711854839~exp=1711855439~hmac=a480be31238e5c5ae178b3e805aa820830e9a3242ba8cdac193e4dd739b1db3c" />
 								<AvatarFallback>EG</AvatarFallback>
 							</Avatar>
