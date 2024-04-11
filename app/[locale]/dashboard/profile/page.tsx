@@ -168,7 +168,7 @@ const Profile = () => {
 							</div>
 							<div className="flex justify-center mt-16  ">
 								<Button
-									className="w-full p-auto md:w-auto px-12 "
+									className="w-full p-auto md:w-full lg:w-auto px-12 "
 									type="submit"
 								>
 									{isDisabled ? t("EDIT_PROFILE") : t("SAVE_PROFILE")}
