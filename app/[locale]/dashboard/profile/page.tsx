@@ -27,7 +27,7 @@ const Profile = () => {
 	const { isDisabled, setIsDisabled, handleOnSubmit } = handleProfileUpdate();
 
 	return (
-		<div className="min-h-screen grid content-center">
+		<div className="min-h-screen grid content-center md:-mt-12">
 			{" "}
 			<Form {...form}>
 				<div className="flex justify-center items-center">
@@ -168,7 +168,7 @@ const Profile = () => {
 							</div>
 							<div className="flex justify-center mt-16  ">
 								<Button
-									className="w-full p-auto md:w-full lg:w-auto px-12 "
+									className="w-full p-auto md:w-full lg:w-auto px-20 "
 									type="submit"
 								>
 									{isDisabled ? t("EDIT_PROFILE") : t("SAVE_PROFILE")}
