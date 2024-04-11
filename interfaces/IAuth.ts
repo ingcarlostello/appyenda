@@ -8,6 +8,16 @@ export interface IUser {
     userId: string;
 }
 
+export interface IProvider {
+    userType: string;
+    userName: string;
+    providerId: string;
+    password?: string;
+    email: string;
+    checkbox?: boolean | undefined;
+    businessName: string;
+}
+
 export interface Account {
     $createdAt?: string;
     $id: string;

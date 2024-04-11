@@ -70,5 +70,14 @@
 		"PROFILE": "Perfil",
 		"LOGOUT": "Cerrar sesión",
 		"LOGGING_OUT": "Cerrando sesión..."
+	},
+	"ServicesPage": {
+		"SERVICES": "Servicios",
+		"ADD_SERVICE_BUTTON": "Agregar Servicio",
+		"NAME": "Nombre",
+		"DESCRIPTION": "Descripción",
+		"DURATION": "Duración",
+		"PRICE": "Precio",
+		"CATEGORY": "Categoría"
 	}
 }
