@@ -19,10 +19,12 @@ import { useTranslations } from "next-intl";
 
 // @View Models
 import ProfileViewModel from "./ProfileViewModel";
+import { useState } from "react";
 
 const Profile = () => {
 	const { form, handleProfileUpdate } = ProfileViewModel();
 	const t = useTranslations("ProfilePage");
+	const { isDisabled, setIsDisabled, handleOnSubmit } = handleProfileUpdate();
 
 	return (
 		<div className="min-h-screen grid content-center">
@@ -33,7 +35,7 @@ const Profile = () => {
 						<div className="flex  items-center mb-4 gap-8 ">
 							<Avatar className="w-16 h-16 md:w-20 md:h-20 lg:w-36 lg:h-36  rounded-full object-cover shadow-2xl ">
 								<AvatarImage src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=900&t=st=1711854839~exp=1711855439~hmac=a480be31238e5c5ae178b3e805aa820830e9a3242ba8cdac193e4dd739b1db3c" />
-								<AvatarFallback>CN</AvatarFallback>
+								<AvatarFallback>EG</AvatarFallback>
 							</Avatar>
 							<div>
 								<h3 className="text-md text-black font-semibold">
@@ -42,19 +44,19 @@ const Profile = () => {
 								<p className="text-slate-500 ">Floridablanca, COL</p>
 							</div>
 						</div>
-						<form onSubmit={form.handleSubmit(handleProfileUpdate)}>
+						<form onSubmit={(e) => handleOnSubmit(e)}>
 							<div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-y-6 gap-x-16 ">
 								<FormField
 									control={form.control}
 									name="name"
-									disabled={true}
+									disabled={isDisabled}
 									render={({ field }) => (
 										<FormItem>
 											<FormLabel>{t("NAME")}</FormLabel>
 											<FormControl>
 												<Input
 													className="text-center"
-													placeholder="Emmanuel Garavito"
+													placeholder="Your name"
 													{...field}
 												/>
 											</FormControl>
@@ -72,9 +74,9 @@ const Profile = () => {
 											<FormLabel>{t("USER_NAME")}</FormLabel>
 											<FormControl>
 												<Input
-													disabled={true}
+													disabled={isDisabled}
 													className="text-center"
-													placeholder="emmanuel123"
+													placeholder="Name123"
 													{...field}
 												/>
 											</FormControl>
@@ -87,14 +89,14 @@ const Profile = () => {
 								<FormField
 									control={form.control}
 									name="usertype"
-									disabled={true}
+									disabled={isDisabled}
 									render={({ field }) => (
 										<FormItem>
 											<FormLabel>{t("USER_TYPE")}</FormLabel>
 											<FormControl>
 												<Input
 													className="text-center"
-													placeholder="Business"
+													placeholder="Business name"
 													{...field}
 												/>
 											</FormControl>
@@ -107,14 +109,14 @@ const Profile = () => {
 								<FormField
 									control={form.control}
 									name="email"
-									disabled={true}
+									disabled={isDisabled}
 									render={({ field }) => (
 										<FormItem>
 											<FormLabel>{t("EMAIL")}</FormLabel>
 											<FormControl>
 												<Input
 													className="text-center"
-													placeholder="emmanuel123@example.com"
+													placeholder="name123@example.com"
 													{...field}
 												/>
 											</FormControl>
@@ -127,14 +129,14 @@ const Profile = () => {
 								<FormField
 									control={form.control}
 									name="phone"
-									disabled={true}
+									disabled={isDisabled}
 									render={({ field }) => (
 										<FormItem>
 											<FormLabel>{t("PHONE_NUMBER")}</FormLabel>
 											<FormControl>
 												<Input
 													className="text-center"
-													placeholder="3228950339"
+													placeholder="1234567890"
 													{...field}
 												/>
 											</FormControl>
@@ -147,14 +149,14 @@ const Profile = () => {
 								<FormField
 									control={form.control}
 									name="location"
-									disabled={true}
+									disabled={isDisabled}
 									render={({ field }) => (
 										<FormItem>
 											<FormLabel>{t("LOCATION")}</FormLabel>
 											<FormControl>
 												<Input
 													className="text-center"
-													placeholder="Floridablanca, COL"
+													placeholder="City, Country"
 													{...field}
 												/>
 											</FormControl>
@@ -169,7 +171,7 @@ const Profile = () => {
 									className="w-full p-auto md:w-auto px-12 "
 									type="submit"
 								>
-									{t("EDIT_PROFILE")}
+									{isDisabled ? t("EDIT_PROFILE") : t("SAVE_PROFILE")}
 								</Button>
 							</div>
 						</form>

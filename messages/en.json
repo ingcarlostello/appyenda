@@ -60,7 +60,8 @@
 		"EMAIL": "Email",
 		"PHONE_NUMBER": "Phone Number",
 		"LOCATION": "Location",
-		"EDIT_PROFILE": "Edit Profile"
+		"EDIT_PROFILE": "Edit Profile",
+		"SAVE_PROFILE": "Save Profile"
 	},
 	"Sidebar": {
 		"DASHBOARD": "Dashboard",

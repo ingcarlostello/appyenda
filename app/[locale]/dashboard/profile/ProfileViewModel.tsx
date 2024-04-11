@@ -13,7 +13,7 @@ import {
 
 // @next-intl
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 const ProfileViewModel = () => {
 	const t = useTranslations("ValidationRegisterPage");
@@ -32,7 +32,16 @@ const ProfileViewModel = () => {
 	});
 
 	const handleProfileUpdate = () => {
-		// Here will go data handling for the profile update
+		const [isDisabled, setIsDisabled] = useState(true);
+		const handleOnSubmit = function (e: FormEvent<HTMLFormElement>) {
+			e.preventDefault();
+			isDisabled
+				? setIsDisabled(!isDisabled)
+				: (form.handleSubmit(handleProfileUpdate)(),
+				  setIsDisabled(!isDisabled));
+		};
+
+		return { isDisabled, setIsDisabled, handleOnSubmit };
 	};
 
 	return {
