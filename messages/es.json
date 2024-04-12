@@ -64,6 +64,9 @@
     "DESCRIPTION": "Descripción",
     "DURATION": "Duración",
     "PRICE": "Precio",
-    "CATEGORY": "Categoría"
+    "CATEGORY": "Categoría",
+
+    "SERVICE_NAME_MIN_LENGTH": "El nombre del servicio debe contener minimo 4 caracteres",
+    "SERVICE_NAME_MAX_LENGTH": "El nombre del servicio debe contener maximo 50 caracteres"
   }
 }

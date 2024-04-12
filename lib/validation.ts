@@ -38,3 +38,12 @@ export const RegisterValidationSchema = (t: (arg: string) => string) =>
       message: t("ACCEPT_TERMS_AND_CONDITIONS"),
       path: ["checkbox"],
     });
+
+
+export const ServicesValidationSchema = (t: (arg: string) => string) => z.object({
+  name: z.string().min(4, {message: t("SERVICE_NAME_MIN_LENGTH")}).max(30, {message: t("SERVICE_NAME_MAX_LENGTH")} ),
+  description: z.string(),
+  duration: z.number(),
+  price: z.number(),
+  category: z.enum(['a', 'b', 'c'])
+})

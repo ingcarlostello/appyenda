@@ -6,3 +6,15 @@ export const APPYENDA = {
     REGISTER: "/register",
     SERVICES: '/dashboard/services',
 }
+
+
+export const SERVICES_CATEGORIES = [
+    'Gym, Sport, and Fitness',
+    "Beauty and wellness",
+    "Spa salons",
+    "Repair centers",
+    "Online and offline tutoring",
+    "Health and medical services",
+    "Legal consultants",
+    "Independent consultants"
+]
