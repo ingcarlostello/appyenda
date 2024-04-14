@@ -51,6 +51,19 @@
 		"LOCATION_MIN_LENGTH": "Location must be at least 2 characters long."
 	},
 
+	"ValidationProfilePage": {
+		"NAME_MIN_LENGTH": "Name must be at least 2 characters long.",
+		"NAME_MAX_LENGTH": "Name must be at most 50 characters long.",
+		"USER_NAME_MIN_LENGTH": "User name must be at least 2 characters long.",
+		"USER_NAME_MAX_LENGTH": "User name must be at most 50 characters long.",
+		"MISSING_USER_TYPE": "You need to select a user type.",
+		"INVALID_EMAIL": "Invalid email.",
+		"INVALID_PHONE": "Phone must be a number.",
+		"PHONE_REQUIRED": "Phone is required.",
+		"LOCATION_MIN_LENGTH": "Location must be at least 2 characters long.",
+		"LOCATION_MAX_LENGTH": "Location must be at most 50 characters long."
+	},
+
 	"ProfilePage": {
 		"NAME": "Name",
 		"USER_NAME": "User name",

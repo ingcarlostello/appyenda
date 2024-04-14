@@ -1,3 +1,7 @@
+// @next-intl
+import { useTranslations } from "next-intl";
+import { FormEvent, useState } from "react";
+
 // @React-hook-form
 import { useForm } from "react-hook-form";
 
@@ -6,17 +10,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
 // @Validation
-import {
-	ProfileValidationSchema,
-	RegisterValidationSchema,
-} from "@/lib/validation";
-
-// @next-intl
-import { useTranslations } from "next-intl";
-import { FormEvent, useState } from "react";
+import { ProfileValidationSchema } from "@/lib/validation";
 
 const ProfileViewModel = () => {
-	const t = useTranslations("ValidationRegisterPage");
+	const t = useTranslations("ValidationProfilePage");
 	const formSchema = ProfileValidationSchema(t);
 
 	const form = useForm<z.infer<typeof formSchema>>({
@@ -33,7 +30,7 @@ const ProfileViewModel = () => {
 
 	const handleProfileUpdate = () => {
 		const [isDisabled, setIsDisabled] = useState(true);
-		const handleOnSubmit = function (e: FormEvent<HTMLFormElement>) {
+		const handleOnSubmit = (e: FormEvent<HTMLFormElement>): void => {
 			e.preventDefault();
 			isDisabled
 				? setIsDisabled(!isDisabled)

@@ -19,12 +19,11 @@ import { useTranslations } from "next-intl";
 
 // @View Models
 import ProfileViewModel from "./ProfileViewModel";
-import { useState } from "react";
 
 const Profile = () => {
 	const { form, handleProfileUpdate } = ProfileViewModel();
 	const t = useTranslations("ProfilePage");
-	const { isDisabled, setIsDisabled, handleOnSubmit } = handleProfileUpdate();
+	const { isDisabled, handleOnSubmit } = handleProfileUpdate();
 
 	return (
 		<div className="min-h-screen grid content-center md:-mt-12">

@@ -66,5 +66,5 @@ export const ProfileValidationSchema = (t: (arg: string) => string) =>
 		location: z
 			.string()
 			.min(2, { message: t("LOCATION_MIN_LENGTH") })
-			.max(50, { message: t("NAME_MAX_LENGTH") }),
+			.max(50, { message: t("LOCATION_MAX_LENGTH") }),
 	});
