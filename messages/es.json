@@ -1,77 +1,99 @@
 {
-  "LoginPage": {
-    "EMAIL": "Email",
-    "PASSWORD": "Contraseña",
-    "LogIn": "Iniciar sesión",
-    "DONT_HAVE_ACCOUNT": "No tienes una cuenta?",
-    "SIGN_UP": "Regístrate",
-    "LOGGING_IN": "Iniciando sesión",
-    "SUCCESSFUL_LOGGING_IN": "Inicio de sesión exitoso",
-    "INVALID_CREDENTIALS": "Credenciales invalidas",
-    "lOG_IN_WITH": "Loguearse con:"
-  },
-
-  "LanguageSelector": {
-    "locale": "{locale, select, es {Spanish} en {English} other {Unknown}}",
-    "Language": "Idioma"
-  },
-
-  "RegisterPage": {
-    "NAME": "Nombre",
-    "USER_NAME": "Nombre de usuario",
-    "NAME_TO_RECOGNIZE": "Nombre con el que te reconocerán",
-    "USER_TYPE": "Tipo de usuario",
-    "CLIENT": "Cliente",
-    "BUSINESS_OWNER": "Negocio",
-    "EMAIL": "Email",
-    "PASSWORD": "Contraseña",
-    "CONFIRM_PASSWORD": "Confirmar contraseña",
-    "ACCEPT_TERMS_AND_CONDITIONS": "Aceptar términos y condiciones",
-    "REGISTER": "Registrarse",
-    "ALREADY_REGISTERED": "Ya tienes una cuenta?",
-    "LOG_IN": "Inicia sesión",
-    "REGISTERING": "Registrando...",
-    "SUCCESSFUL_REGISTRATION": "Usuario registrado correctamente",
-    "USER_ALREADY_EXIST": "Usuario ya está registrado",
-    "REGISTER_WITH": "Registrarse con"
-  },
-
-  "ValidationRegisterPage": {
-    "NAME_MIN_LENGTH": "El nombre debe contener mínimo 2 caracteres.",
-    "NAME_MAX_LENGTH": "El nombre debe contener maximo 50 caracteres.",
-    "USER_NAME_MIN_LENGTH": "El nombre de usuario debe contener mínimo 2 caracteres.",
-    "USER_NAME_MAX_LENGTH": "El nombre de usuario debe contener maximo 2 caracteres.",
-    "MISSING_USER_TYPE": "Debe seleccionar un tipo de usuario.",
-    "INVALID_EMAIL": "Email no valido",
-    "PASSWORD_MIN_LENGTH": "El password debe ser mínimo de 8 caracteres.",
-    "CONFIRM_PASSWORD": "Contraseñas no son iguales",
-    "ACCEPT_TERMS_AND_CONDITIONS": "Debe aceptar los términos y condiciones"
-  },
-
-  "Sidebar":{
-    "DASHBOARD": "Dashboard",
-    "CALENDAR": "Calendario",
-    "SERVICES": "Servicios",
-    "PROFILE": "Perfil",
-    "LOGOUT": "Cerrar sesión",
-    "LOGGING_OUT": "Cerrando sesión..."
-  },
-
-  "ServicesPage": {
-    "SERVICES": "Servicios",
-    "ADD_SERVICE_BUTTON": "Agregar Servicio",
-    "NAME": "Nombre",
-    "DESCRIPTION": "Descripción",
-    "DURATION": "Duración",
-    "PRICE": "Precio",
-    "CATEGORY": "Categoría",
-    "DESCRIPTION_PLACEHOLDER": "Descripción del producto o servicio",
-    "MINUTES": "minutos",
-    "SERVICE_NAME_MIN_LENGTH": "El nombre del servicio debe contener minimo 4 caracteres",
-    "SERVICE_NAME_MAX_LENGTH": "El nombre del servicio debe contener maximo 50 caracteres",
-    "DESCRIPTION_MIN_LENGTH": "La descripción debe contener al menos 10 caracteres",
-    "DESCRIPTION_MAX_LENGTH": "La descripción debe contener un máximo de 500 caracteres",
-    "SELECT_CATEGORY": "Seleccione una categoría",
-    "DURATION_VALIDATION_MESSAGE": "Sólo números positivos"
-  }
+	"LoginPage": {
+		"EMAIL": "Email",
+		"PASSWORD": "Contraseña",
+		"LogIn": "Iniciar sesión",
+		"DONT_HAVE_ACCOUNT": "No tienes una cuenta?",
+		"SIGN_UP": "Regístrate",
+		"LOGGING_IN": "Iniciando sesión",
+		"SUCCESSFUL_LOGGING_IN": "Inicio de sesión exitoso",
+		"INVALID_CREDENTIALS": "Credenciales invalidas",
+		"lOG_IN_WITH": "Loguearse con:"
+	},
+	"LanguageSelector": {
+		"locale": "{locale, select, es {Spanish} en {English} other {Unknown}}",
+		"Language": "Idioma"
+	},
+	"RegisterPage": {
+		"NAME": "Nombre",
+		"USER_NAME": "Nombre de usuario",
+		"NAME_TO_RECOGNIZE": "Nombre con el que te reconocerán",
+		"USER_TYPE": "Tipo de usuario",
+		"CLIENT": "Cliente",
+		"BUSINESS_OWNER": "Negocio",
+		"EMAIL": "Email",
+		"PASSWORD": "Contraseña",
+		"CONFIRM_PASSWORD": "Confirmar contraseña",
+		"ACCEPT_TERMS_AND_CONDITIONS": "Aceptar términos y condiciones",
+		"REGISTER": "Registrarse",
+		"ALREADY_REGISTERED": "Ya tienes una cuenta?",
+		"LOG_IN": "Inicia sesión",
+		"REGISTERING": "Registrando...",
+		"SUCCESSFUL_REGISTRATION": "Usuario registrado correctamente",
+		"USER_ALREADY_EXIST": "Usuario ya está registrado",
+		"REGISTER_WITH": "Registrarse con"
+	},
+	"ValidationRegisterPage": {
+		"NAME_MIN_LENGTH": "El nombre debe contener mínimo 2 caracteres.",
+		"NAME_MAX_LENGTH": "El nombre debe contener maximo 50 caracteres.",
+		"USER_NAME_MIN_LENGTH": "El nombre de usuario debe contener mínimo 2 caracteres.",
+		"USER_NAME_MAX_LENGTH": "El nombre de usuario debe contener maximo 2 caracteres.",
+		"MISSING_USER_TYPE": "Debe seleccionar un tipo de usuario.",
+		"INVALID_EMAIL": "Email no valido",
+		"PASSWORD_MIN_LENGTH": "El password debe ser mínimo de 8 caracteres.",
+		"CONFIRM_PASSWORD": "Contraseñas no son iguales",
+		"ACCEPT_TERMS_AND_CONDITIONS": "Debe aceptar los términos y condiciones",
+		"INVALID_PHONE": "El teléfono debe ser un número",
+		"PHONE_REQUIRED": "El teléfono es requerido",
+		"LOCATION_MIN_LENGTH": "La ubicación debe contener mínimo 2 caracteres."
+	},
+	"ValidationProfilePage": {
+		"NAME_MIN_LENGTH": "El nombre debe contener mínimo 2 caracteres.",
+		"NAME_MAX_LENGTH": "El nombre debe contener maximo 50 caracteres.",
+		"USER_NAME_MIN_LENGTH": "El nombre de usuario debe contener mínimo 2 caracteres.",
+		"USER_NAME_MAX_LENGTH": "El nombre de usuario debe contener maximo 2 caracteres.",
+		"MISSING_USER_TYPE": "Debe seleccionar un tipo de usuario.",
+		"INVALID_EMAIL": "Email no valido.",
+		"INVALID_PHONE": "El teléfono debe ser un número.",
+		"PHONE_REQUIRED": "El teléfono es requerido.",
+		"LOCATION_MIN_LENGTH": "La ubicación debe contener mínimo 2 caracteres.",
+		"LOCATION_MAX_LENGTH": "La ubicación debe contener maximo 50 caracteres."
+	},
+	"ServicesPage": {
+		"SERVICES": "Servicios",
+		"ADD_SERVICE_BUTTON": "Agregar Servicio",
+		"NAME": "Nombre",
+		"DESCRIPTION": "Descripción",
+		"DURATION": "Duración",
+		"PRICE": "Precio",
+		"CATEGORY": "Categoría",
+		"DESCRIPTION_PLACEHOLDER": "Descripción del producto o servicio",
+		"MINUTES": "minutos",
+		"SERVICE_NAME_MIN_LENGTH": "El nombre del servicio debe contener minimo 4 caracteres",
+		"SERVICE_NAME_MAX_LENGTH": "El nombre del servicio debe contener maximo 50 caracteres",
+		"DESCRIPTION_MIN_LENGTH": "La descripción debe contener al menos 10 caracteres",
+		"DESCRIPTION_MAX_LENGTH": "La descripción debe contener un máximo de 500 caracteres",
+		"SELECT_CATEGORY": "Seleccione una categoría",
+		"DURATION_VALIDATION_MESSAGE": "Sólo números positivos"
+	},
+	"ProfilePage": {
+		"NAME": "Nombre",
+		"USER_NAME": "Nombre de usuario",
+		"USER_TYPE": "Tipo de usuario",
+		"CLIENT": "Cliente",
+		"BUSINESS_OWNER": "Negocio",
+		"EMAIL": "Email",
+		"PHONE_NUMBER": "Numero de Télefono",
+		"LOCATION": "Ubicación",
+		"EDIT_PROFILE": "Editar Perfil",
+		"SAVE_PROFILE": "Guardar Perfil"
+	},
+	"Sidebar": {
+		"DASHBOARD": "Dashboard",
+		"CALENDAR": "Calendario",
+		"SERVICES": "Servicios",
+		"PROFILE": "Perfil",
+		"LOGOUT": "Cerrar sesión",
+		"LOGGING_OUT": "Cerrando sesión..."
+	}
 }
