@@ -65,8 +65,14 @@
     "DURATION": "Duration",
     "PRICE": "Price",
     "CATEGORY": "Category",
-    
+    "DESCRIPTION_PLACEHOLDER": "Product or service description",
+    "MINUTES": "minutes",
     "SERVICE_NAME_MIN_LENGTH": "The service name must contain at least 4 characters",
-    "SERVICE_NAME_MAX_LENGTH": "The service name must contain a maximum of 50 characters"
+    "SERVICE_NAME_MAX_LENGTH": "The service name must contain a maximum of 50 characters",
+    "DESCRIPTION_MIN_LENGTH": "Description must contain at least 10 characters",
+    "DESCRIPTION_MAX_LENGTH": "Description must contain a maximunm 500 characters",
+    "SELECT_CATEGORY": "Select a category",
+    "DURATION_VALIDATION_MESSAGE": "Only positive numbers",
+    "PRICE_VALIDATION_MESSAGE": "Only positive numbers"
   }
 }

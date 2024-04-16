@@ -32,8 +32,8 @@ const ListTable = () => {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {x.map((item) => (
-                        <TableRow>
+                    {x.map((item, index) => (
+                        <TableRow key={index}>
                             <TableCell className="font-medium">Cancha 1</TableCell>
                             <TableCell className="w-6/12 hidden md:table-cell">
                                 Curabitur non velit vitae urna dignissim fermentum. Proin nec

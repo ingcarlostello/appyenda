@@ -4,7 +4,6 @@
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -17,7 +16,6 @@ import {
     SelectContent,
     SelectGroup,
     SelectItem,
-    SelectLabel,
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
@@ -50,14 +48,10 @@ const ServicesForm = () => {
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel className="shad-form_label">
-                                            Nombre Servicio
+                                            {t("NAME")}
                                         </FormLabel>
                                         <FormControl>
-                                            <Input
-                                                type="text"
-                                                className="shad-input"
-                                                {...field}
-                                            />
+                                            <Input type="text" className="shad-input" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -70,11 +64,11 @@ const ServicesForm = () => {
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel className="shad-form_label">
-                                            Descripcion
+                                            {t("DESCRIPTION")}
                                         </FormLabel>
                                         <FormControl>
-                                            <Textarea 
-                                                placeholder="Descripcion del producto y/o servicio" 
+                                            <Textarea
+                                                placeholder={t("DESCRIPTION_PLACEHOLDER")}
                                                 className="resize-none"
                                                 {...field}
                                             />
@@ -89,7 +83,9 @@ const ServicesForm = () => {
                                 name="duration"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel className="shad-form_label">Duracion</FormLabel>
+                                        <FormLabel className="shad-form_label">
+                                            {t("DURATION")} <span className="text-xs">({t("MINUTES")})</span>
+                                        </FormLabel>
                                         <FormControl>
                                             <Input
                                                 type="number"
@@ -108,7 +104,9 @@ const ServicesForm = () => {
                                 name="price"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel className="shad-form_label">Precio</FormLabel>
+                                        <FormLabel className="shad-form_label">
+                                            {t("PRICE")}
+                                        </FormLabel>
                                         <FormControl>
                                             <Input
                                                 type="number"
@@ -127,19 +125,21 @@ const ServicesForm = () => {
                                 name="category"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel className="shad-form_label">Precio</FormLabel>
+                                        <FormLabel className="shad-form_label">
+                                            {t("CATEGORY")}
+                                        </FormLabel>
                                         <FormControl>
-                                            <Select>
+                                            <Select onValueChange={field.onChange}>
                                                 <SelectTrigger className="w-full">
                                                     <SelectValue placeholder="Seleccione una categoria" />
                                                 </SelectTrigger>
                                                 <SelectContent>
                                                     <SelectGroup>
-                                                        {
-                                                            SERVICES_CATEGORIES.map(category => (
-                                                                <SelectItem value={`${category}`}>{category}</SelectItem>
-                                                            ))
-                                                        }
+                                                        {SERVICES_CATEGORIES.map((category, index) => (
+                                                            <SelectItem key={index} value={`${category}`}>
+                                                                {category}
+                                                            </SelectItem>
+                                                        ))}
                                                     </SelectGroup>
                                                 </SelectContent>
                                             </Select>

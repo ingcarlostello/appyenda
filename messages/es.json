@@ -65,8 +65,13 @@
     "DURATION": "Duración",
     "PRICE": "Precio",
     "CATEGORY": "Categoría",
-
+    "DESCRIPTION_PLACEHOLDER": "Descripción del producto o servicio",
+    "MINUTES": "minutos",
     "SERVICE_NAME_MIN_LENGTH": "El nombre del servicio debe contener minimo 4 caracteres",
-    "SERVICE_NAME_MAX_LENGTH": "El nombre del servicio debe contener maximo 50 caracteres"
+    "SERVICE_NAME_MAX_LENGTH": "El nombre del servicio debe contener maximo 50 caracteres",
+    "DESCRIPTION_MIN_LENGTH": "La descripción debe contener al menos 10 caracteres",
+    "DESCRIPTION_MAX_LENGTH": "La descripción debe contener un máximo de 500 caracteres",
+    "SELECT_CATEGORY": "Seleccione una categoría",
+    "DURATION_VALIDATION_MESSAGE": "Sólo números positivos"
   }
 }
