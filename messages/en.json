@@ -10,12 +10,10 @@
 		"INVALID_CREDENTIALS": "Invalid credentials",
 		"lOG_IN_WITH": "Log in with"
 	},
-
 	"LanguageSelector": {
 		"locale": "{locale, select, es {Spanish} en {English} other {Unknown}}",
 		"Language": "Language"
 	},
-
 	"RegisterPage": {
 		"NAME": "Name",
 		"USER_NAME": "User name",
@@ -35,7 +33,6 @@
 		"USER_ALREADY_EXIST": "User is already registered",
 		"REGISTER_WITH": "Register with:"
 	},
-
 	"ValidationRegisterPage": {
 		"NAME_MIN_LENGTH": "Name must be at least 2 characters long.",
 		"NAME_MAX_LENGTH": "Name must be at most 50 characters long.",
@@ -50,7 +47,6 @@
 		"PHONE_REQUIRED": "Phone is required",
 		"LOCATION_MIN_LENGTH": "Location must be at least 2 characters long."
 	},
-
 	"ValidationProfilePage": {
 		"NAME_MIN_LENGTH": "Name must be at least 2 characters long.",
 		"NAME_MAX_LENGTH": "Name must be at most 50 characters long.",
@@ -63,7 +59,24 @@
 		"LOCATION_MIN_LENGTH": "Location must be at least 2 characters long.",
 		"LOCATION_MAX_LENGTH": "Location must be at most 50 characters long."
 	},
-
+	"ServicesPage": {
+		"SERVICES": "Services",
+		"ADD_SERVICE_BUTTON": "Add Service",
+		"NAME": "Name",
+		"DESCRIPTION": "Description",
+		"DURATION": "Duration",
+		"PRICE": "Price",
+		"CATEGORY": "Category",
+		"DESCRIPTION_PLACEHOLDER": "Product or service description",
+		"MINUTES": "minutes",
+		"SERVICE_NAME_MIN_LENGTH": "The service name must contain at least 4 characters",
+		"SERVICE_NAME_MAX_LENGTH": "The service name must contain a maximum of 50 characters",
+		"DESCRIPTION_MIN_LENGTH": "Description must contain at least 10 characters",
+		"DESCRIPTION_MAX_LENGTH": "Description must contain a maximunm 500 characters",
+		"SELECT_CATEGORY": "Select a category",
+		"DURATION_VALIDATION_MESSAGE": "Only positive numbers",
+		"PRICE_VALIDATION_MESSAGE": "Only positive numbers"
+	},
 	"ProfilePage": {
 		"NAME": "Name",
 		"USER_NAME": "User name",
@@ -83,14 +96,5 @@
 		"PROFILE": "Profile",
 		"LOGOUT": "Log out",
 		"LOGGING_OUT": "Logging out..."
-	},
-	"ServicesPage": {
-		"SERVICES": "Services",
-		"ADD_SERVICE_BUTTON": "Add Service",
-		"NAME": "Name",
-		"DESCRIPTION": "Description",
-		"DURATION": "Duration",
-		"PRICE": "Price",
-		"CATEGORY": "Category"
 	}
 }

@@ -39,6 +39,35 @@ export const RegisterValidationSchema = (t: (arg: string) => string) =>
 			path: ["checkbox"],
 		});
 
+
+
+
+export const ServicesValidationSchema = (t: (arg: string) => string) =>
+	z.object({
+		name: z
+			.string()
+			.min(4, { message: t("SERVICE_NAME_MIN_LENGTH") })
+			.max(30, { message: t("SERVICE_NAME_MAX_LENGTH") }),
+		description: z
+			.string()
+			.min(10, { message: t("DESCRIPTION_MIN_LENGTH") })
+			.max(500, { message: t("DESCRIPTION_MAX_LENGTH") }),
+		duration: z.coerce
+			.number()
+			.min(1, { message: t("DURATION_VALIDATION_MESSAGE") }),
+		price: z.coerce.number().min(1, { message: t("PRICE_VALIDATION_MESSAGE") }),
+		category: z.string({ required_error: t("SELECT_CATEGORY") }),
+	});
+
+
+
+
+
+
+
+
+
+
 export const ProfileValidationSchema = (t: (arg: string) => string) =>
 	z.object({
 		name: z

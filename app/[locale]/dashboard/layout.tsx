@@ -23,7 +23,7 @@ const Layout = ({ children }: DashboardLayoutProps) => {
 					<Sidebar />
 				</div>
 
-				<div className="w-full ">{children}</div>
+				<div className="w-full pl-8">{children}</div>
 			</div>
 		</div>
 	);

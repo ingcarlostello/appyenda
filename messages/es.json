@@ -10,12 +10,10 @@
 		"INVALID_CREDENTIALS": "Credenciales invalidas",
 		"lOG_IN_WITH": "Loguearse con:"
 	},
-
 	"LanguageSelector": {
 		"locale": "{locale, select, es {Spanish} en {English} other {Unknown}}",
 		"Language": "Idioma"
 	},
-
 	"RegisterPage": {
 		"NAME": "Nombre",
 		"USER_NAME": "Nombre de usuario",
@@ -35,7 +33,6 @@
 		"USER_ALREADY_EXIST": "Usuario ya está registrado",
 		"REGISTER_WITH": "Registrarse con"
 	},
-
 	"ValidationRegisterPage": {
 		"NAME_MIN_LENGTH": "El nombre debe contener mínimo 2 caracteres.",
 		"NAME_MAX_LENGTH": "El nombre debe contener maximo 50 caracteres.",
@@ -50,7 +47,6 @@
 		"PHONE_REQUIRED": "El teléfono es requerido",
 		"LOCATION_MIN_LENGTH": "La ubicación debe contener mínimo 2 caracteres."
 	},
-
 	"ValidationProfilePage": {
 		"NAME_MIN_LENGTH": "El nombre debe contener mínimo 2 caracteres.",
 		"NAME_MAX_LENGTH": "El nombre debe contener maximo 50 caracteres.",
@@ -63,7 +59,23 @@
 		"LOCATION_MIN_LENGTH": "La ubicación debe contener mínimo 2 caracteres.",
 		"LOCATION_MAX_LENGTH": "La ubicación debe contener maximo 50 caracteres."
 	},
-
+	"ServicesPage": {
+		"SERVICES": "Servicios",
+		"ADD_SERVICE_BUTTON": "Agregar Servicio",
+		"NAME": "Nombre",
+		"DESCRIPTION": "Descripción",
+		"DURATION": "Duración",
+		"PRICE": "Precio",
+		"CATEGORY": "Categoría",
+		"DESCRIPTION_PLACEHOLDER": "Descripción del producto o servicio",
+		"MINUTES": "minutos",
+		"SERVICE_NAME_MIN_LENGTH": "El nombre del servicio debe contener minimo 4 caracteres",
+		"SERVICE_NAME_MAX_LENGTH": "El nombre del servicio debe contener maximo 50 caracteres",
+		"DESCRIPTION_MIN_LENGTH": "La descripción debe contener al menos 10 caracteres",
+		"DESCRIPTION_MAX_LENGTH": "La descripción debe contener un máximo de 500 caracteres",
+		"SELECT_CATEGORY": "Seleccione una categoría",
+		"DURATION_VALIDATION_MESSAGE": "Sólo números positivos"
+	},
 	"ProfilePage": {
 		"NAME": "Nombre",
 		"USER_NAME": "Nombre de usuario",
@@ -83,14 +95,5 @@
 		"PROFILE": "Perfil",
 		"LOGOUT": "Cerrar sesión",
 		"LOGGING_OUT": "Cerrando sesión..."
-	},
-	"ServicesPage": {
-		"SERVICES": "Servicios",
-		"ADD_SERVICE_BUTTON": "Agregar Servicio",
-		"NAME": "Nombre",
-		"DESCRIPTION": "Descripción",
-		"DURATION": "Duración",
-		"PRICE": "Precio",
-		"CATEGORY": "Categoría"
 	}
 }
