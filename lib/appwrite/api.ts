@@ -110,7 +110,7 @@ export async function getCurrentUser() {
     }
 }
 
-export const useGetProfileByUserId = async (userId: string) => {    
+export const useGetProfileByUserId = async (userId: string) => {
     try {
         const response = await databases.listDocuments(
             appwriteConfig.databaseId!,
@@ -118,6 +118,25 @@ export const useGetProfileByUserId = async (userId: string) => {
             [Query.equal("userId", userId)]
         );
         const documents = response.documents;
+
+        if (documents.length <= 0) {
+            const responseProvider = await databases.listDocuments(
+                appwriteConfig.databaseId!,
+                appwriteConfig.providerCollectionId!,
+                [Query.equal("providerId", userId)]
+            );
+            const documentsProvider = responseProvider.documents;
+            
+            return {
+                email: documentsProvider[0]?.email,
+                id: documentsProvider[0]?.$id,
+                name: documentsProvider[0]?.businessName,
+                userId: documentsProvider[0]?.providerId,
+                username: documentsProvider[0]?.userName,
+                usertype: documentsProvider[0]?.userType,
+            };
+        }
+
         return {
             email: documents[0]?.email,
             id: documents[0]?.$id,
@@ -126,6 +145,7 @@ export const useGetProfileByUserId = async (userId: string) => {
             username: documents[0]?.username,
             usertype: documents[0]?.usertype,
         };
+
     } catch (error) {
         throw error;
     }
