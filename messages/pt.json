@@ -11,12 +11,12 @@
 		"lOG_IN_WITH": "Entrar com"
 	},
 	"LanguageSelector": {
-		"locale": "{locale, select, es {Spanish} en {English} other {Unknown}}",
+		"locale": "{locale, select, es {Spanish} en {English} other {Portuguese}}",
 		"Language": "Idioma"
 	},
 	"RegisterPage": {
 		"NAME": "Nome",
-		"user": "Nome de usuário",
+		"USER_NAME": "Nome de usuário",
 		"NAME_TO_RECOGNIZE": "Nome pelo qual você será reconhecido",
 		"USER_TYPE": "Tipo de usuário",
 		"CLIENT": "Cliente",
@@ -36,8 +36,8 @@
 	"ValidationRegisterPage": {
 		"NAME_MIN_LENGTH": "O nome deve ter pelo menos 2 caracteres.",
 		"NAME_MAX_LENGTH": "O nome deve ter no máximo 50 caracteres.",
-		"user_MIN_LENGTH": "O nome de usuário deve ter pelo menos 2 caracteres.",
-		"user_MAX_LENGTH": "O nome de usuário deve ter no máximo 50 caracteres.",
+		"USER_NAME_MIN_LENGTH": "O nome de usuário deve ter pelo menos 2 caracteres.",
+		"USER_NAME_MAX_LENGTH": "O nome de usuário deve ter no máximo 50 caracteres.",
 		"MISSING_USER_TYPE": "Você precisa selecionar um tipo de usuário.",
 		"INVALID_EMAIL": "Email inválido",
 		"PASSWORD_MIN_LENGTH": "A senha deve ter pelo menos 8 caracteres.",
@@ -50,8 +50,8 @@
 	"ValidationProfilePage": {
 		"NAME_MIN_LENGTH": "O nome deve ter pelo menos 2 caracteres.",
 		"NAME_MAX_LENGTH": "O nome deve ter no máximo 50 caracteres.",
-		"user_MIN_LENGTH": "O nome de usuário deve ter pelo menos 2 caracteres.",
-		"user_MAX_LENGTH": "O nome de usuário deve ter no máximo 50 caracteres.",
+		"USER_NAME_MIN_LENGTH": "O nome de usuário deve ter pelo menos 2 caracteres.",
+		"USER_NAME_MAX_LENGTH": "O nome de usuário deve ter no máximo 50 caracteres.",
 		"MISSING_USER_TYPE": "Você precisa selecionar um tipo de usuário.",
 		"INVALID_EMAIL": "Email inválido.",
 		"INVALID_PHONE": "O telefone deve ser um número.",
@@ -79,7 +79,7 @@
 	},
 	"ProfilePage": {
 		"NAME": "Nome",
-		"user": "Nome de usuário",
+		"USER_NAME": "Nome de usuário",
 		"USER_TYPE": "Tipo de usuário",
 		"CLIENT": "Cliente",
 		"BUSINESS_OWNER": "Negócio",
