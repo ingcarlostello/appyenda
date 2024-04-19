@@ -48,39 +48,41 @@ const DashboardViewModel = () => {
         };
         verifySocialAccount();
     }, []);
-
+    
     useEffect(() => {
         const saveUserSocialAccountToDB = async () => {
             if (!session?.userId || !socialAccount) return;
             Cookies.set("social-account-cookie", session?.providerAccessToken!);
-        
-            try {
-                const response = await databases.listDocuments(
-                    appwriteConfig.databaseId!,
-                    appwriteConfig.userCollectionId!,
-                    [Query.equal("userId", session.userId)]
-                );
 
-                if (response.total === 0) {
-                    if (count === 1) {
-                        await saveUserToDB({
-                            email: socialAccount.email,
-                            name: socialAccount.name,
-                            userId: socialAccount.$id,
-                            username: extracUserNameFromEmail(socialAccount.email),
-                            usertype: "client",
-                        });
-                        loginUser({
-                            email: socialAccount.email,
-                            name: socialAccount.name,
-                            userId: socialAccount.$id,
-                            username: extracUserNameFromEmail(socialAccount.email),
-                            usertype: "client",
-                        });
+            if (session.provider != 'email') {
+                try {
+                    const response = await databases.listDocuments(
+                        appwriteConfig.databaseId!,
+                        appwriteConfig.userCollectionId!,
+                        [Query.equal("userId", session.userId)]
+                    );
+
+                    if (response.total === 0) {
+                        if (count === 1) {
+                            await saveUserToDB({
+                                email: socialAccount.email,
+                                name: socialAccount.name,
+                                userId: socialAccount.$id,
+                                username: extracUserNameFromEmail(socialAccount.email),
+                                usertype: "client",
+                            });
+                            loginUser({
+                                email: socialAccount.email,
+                                name: socialAccount.name,
+                                userId: socialAccount.$id,
+                                username: extracUserNameFromEmail(socialAccount.email),
+                                usertype: "client",
+                            });
+                        }
                     }
+                } catch (error) {
+                    console.error("Error saving user social account to DB:", error);
                 }
-            } catch (error) {
-                console.error("Error saving user social account to DB:", error);
             }
         };
         saveUserSocialAccountToDB();
