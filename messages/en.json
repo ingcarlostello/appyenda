@@ -11,7 +11,7 @@
 		"lOG_IN_WITH": "Log in with"
 	},
 	"LanguageSelector": {
-		"locale": "{locale, select, es {Spanish} en {English} other {Unknown}}",
+		"locale": "{locale, select, es {Spanish} en {English} other {Portuguese}}",
 		"Language": "Language"
 	},
 	"RegisterPage": {
