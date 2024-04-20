@@ -25,6 +25,7 @@ import { APPYENDA } from "@/constants/pages";
 
 // @Next-intl
 import { useTranslations } from "next-intl";
+import { ModeToggle } from "@/components/theme-toggle";
 
 export function MobileSidebar() {
 	const { handleSignOut } = MobileSidebarViewModel();
@@ -32,7 +33,7 @@ export function MobileSidebar() {
 	const t = useTranslations("Sidebar");
 
 	return (
-		<div>
+		<div className="relative">
 			<Sheet>
 				<SheetTrigger asChild>
 					<Menu size={38} />
@@ -67,16 +68,14 @@ export function MobileSidebar() {
 							},
 						]}
 					/>
-					<SheetFooter className="flex flex-col justify-between">
+					<SheetFooter>
 						<SheetClose asChild>
 							<Button onClick={handleSignOut} type="submit">
 								{t("LOGOUT")}
 							</Button>
 						</SheetClose>
-						<div className="flex">
-							<Moon className=" w-4" />
-							<Switch className="relative" />
-							<Sun className=" w-4" />
+						<div className="absolute bottom-2 left-6">
+							<ModeToggle />
 						</div>
 					</SheetFooter>
 				</SheetContent>

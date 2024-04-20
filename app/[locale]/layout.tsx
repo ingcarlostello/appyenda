@@ -1,6 +1,8 @@
 // @shadcn
 import { Toaster } from "@/components/ui/toaster";
 
+import { ThemeProvider } from "@/components/theme-provider";
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -22,10 +24,17 @@ export default function RootLayout({
 	return (
 		<html lang={locale} className="">
 			<body className={inter.className}>
-				<NextIntlClientProvider messages={messages}>
-					{children}
-					<Toaster />
-				</NextIntlClientProvider>
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="system"
+					enableSystem
+					disableTransitionOnChange
+				>
+					<NextIntlClientProvider messages={messages}>
+						{children}
+						<Toaster />
+					</NextIntlClientProvider>
+				</ThemeProvider>
 			</body>
 		</html>
 	);
