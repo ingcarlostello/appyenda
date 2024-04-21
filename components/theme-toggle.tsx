@@ -27,7 +27,7 @@ export function ModeToggle() {
 			<DropdownMenuContent align="end">
 				{themes.map((theme) => (
 					<DropdownMenuItem key={theme} onClick={() => setTheme(theme)}>
-						{theme}
+						{`${theme.charAt(0).toUpperCase()}${theme.slice(1).toLowerCase()}`}
 					</DropdownMenuItem>
 				))}
 			</DropdownMenuContent>
