@@ -28,6 +28,16 @@ export default function RootLayout({
 					attribute="class"
 					defaultTheme="system"
 					enableSystem
+					themes={[
+						"orange",
+						"darkorange",
+						"blue",
+						"darkblue",
+						"green",
+						"darkgreen",
+						"light",
+						"dark",
+					]}
 					disableTransitionOnChange
 				>
 					<NextIntlClientProvider messages={messages}>
