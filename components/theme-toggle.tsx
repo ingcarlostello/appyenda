@@ -12,8 +12,24 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+// @next-intl
+import { useTranslations } from "next-intl";
+
 export function ModeToggle() {
 	const { setTheme, themes } = useTheme();
+	const t = useTranslations("ColorSelector");
+
+	const colorTranslations: { [key: string]: string } = {
+		orange: "ORANGE",
+		darkorange: "DARKORANGE",
+		blue: "BLUE",
+		darkblue: "DARKBLUE",
+		green: "GREEN",
+		darkgreen: "DARKGREEN",
+		light: "LIGHT",
+		dark: "DARK",
+		system: "SYSTEM",
+	};
 
 	return (
 		<DropdownMenu>
@@ -27,7 +43,7 @@ export function ModeToggle() {
 			<DropdownMenuContent align="end">
 				{themes.map((theme) => (
 					<DropdownMenuItem key={theme} onClick={() => setTheme(theme)}>
-						{`${theme.charAt(0).toUpperCase()}${theme.slice(1).toLowerCase()}`}
+						{t(colorTranslations[theme])}
 					</DropdownMenuItem>
 				))}
 			</DropdownMenuContent>
