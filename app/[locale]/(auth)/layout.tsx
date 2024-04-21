@@ -6,7 +6,7 @@ type AuthLayoutProps = { children: React.ReactNode };
 
 export default function AuthLayout({ children }: AuthLayoutProps) {
 	return (
-		<main className=" ">
+		<main>
 			<>
 				<div className="pt-4 mr-6 flex justify-end gap-2">
 					<div className="hidden sm:block">

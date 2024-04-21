@@ -27,7 +27,6 @@ const Profile = () => {
 
 	return (
 		<div className="min-h-screen grid content-center md:-mt-12">
-			{" "}
 			<Form {...form}>
 				<div className="flex justify-center items-center">
 					<div className=" md:w-3/6 lg:w-3/6 xl:w-2/4 p-8 flex flex-col gap-10">
