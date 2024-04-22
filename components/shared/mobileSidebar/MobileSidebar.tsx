@@ -33,7 +33,7 @@ export function MobileSidebar() {
 	const t = useTranslations("Sidebar");
 
 	return (
-		<div className="relative">
+		<div>
 			<Sheet>
 				<SheetTrigger asChild>
 					<Menu size={38} />
@@ -74,9 +74,6 @@ export function MobileSidebar() {
 								{t("LOGOUT")}
 							</Button>
 						</SheetClose>
-						<div className="absolute bottom-2 left-6">
-							<ModeToggle />
-						</div>
 					</SheetFooter>
 				</SheetContent>
 			</Sheet>

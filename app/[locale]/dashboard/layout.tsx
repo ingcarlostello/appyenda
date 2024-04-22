@@ -16,7 +16,7 @@ const Layout = ({ children }: DashboardLayoutProps) => {
 					<MobileSidebar />
 				</div>
 				<div className="flex justify-end  gap-2 pr-4 pt-2">
-					<div className="hidden sm:block">
+					<div>
 						<ModeToggle />
 					</div>
 					<LanguageSelector />
