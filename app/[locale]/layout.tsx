@@ -22,7 +22,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode; params: { locale: string } }>) {
 	const messages = useMessages();
 	return (
-		<html lang={locale} className="">
+		<html lang={locale} suppressHydrationWarning>
 			<body className={inter.className}>
 				<ThemeProvider
 					attribute="class"
