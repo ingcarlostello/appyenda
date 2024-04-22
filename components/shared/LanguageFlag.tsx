@@ -28,7 +28,7 @@ const LanguageFlag = ({ language }: ILanguageFlagProps) => {
 	const { flag, alt } = languageFlags[language] || {};
 	return flag ? (
 		<div className="flex justify-around">
-			<span>{t("locale", { locale: language })}</span>
+			<span>{language}</span>
 			<span className="ml-4">
 				<Image alt={alt} src={flag} width={23} />
 			</span>

@@ -96,5 +96,16 @@
 		"PROFILE": "Perfil",
 		"LOGOUT": "Sair",
 		"LOGGING_OUT": "Saindo..."
+	},
+	"ColorSelector": {
+		"ORANGE": "Laranja",
+		"DARKORANGE": "Laranja Escuro",
+		"BLUE": "Azul",
+		"DARKBLUE": "Azul Escuro",
+		"GREEN": "Verde",
+		"DARKGREEN": "Verde Escuro",
+		"LIGHT": "Claro",
+		"DARK": "Escuro",
+		"SYSTEM": "Sistema"
 	}
 }

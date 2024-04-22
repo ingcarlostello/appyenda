@@ -96,5 +96,16 @@
 		"PROFILE": "Profile",
 		"LOGOUT": "Log out",
 		"LOGGING_OUT": "Logging out..."
+	},
+	"ColorSelector": {
+		"ORANGE": "Orange",
+		"DARKORANGE": "Dark Orange",
+		"BLUE": "Blue",
+		"DARKBLUE": "Dark Blue",
+		"GREEN": "Green",
+		"DARKGREEN": "Dark Green",
+		"LIGHT": "Light",
+		"DARK": "Dark",
+		"SYSTEM": "System"
 	}
 }
