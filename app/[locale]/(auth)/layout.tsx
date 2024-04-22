@@ -9,7 +9,7 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
 		<main>
 			<>
 				<div className="pt-4 mr-6 flex justify-end gap-2">
-					<div className="hidden sm:block">
+					<div>
 						<ModeToggle />
 					</div>
 					<LanguageSelector />

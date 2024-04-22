@@ -23,7 +23,7 @@ const Layout = ({ children }: DashboardLayoutProps) => {
 				</div>
 			</div>
 			<div className=" flex">
-				<div className="  w-2/12 border-r h-screen sm:relative sm:-top-11  max-[767px]:hidden md:block md:w-1/4 lg:w-1/6">
+				<div className="w-2/12 border-r h-screen sm:relative sm:-top-11  max-[767px]:hidden md:block md:w-1/4 lg:w-1/6">
 					<Sidebar />
 				</div>
 				<div className="w-full pl-8">{children}</div>

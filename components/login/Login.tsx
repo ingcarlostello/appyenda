@@ -32,8 +32,11 @@ import logoDarkmode from "../../app/assets/APPYENDA-logo-transparent-darkmode.pn
 // @Next-intl
 import { useTranslations } from "next-intl";
 
+//Helper
+import { isDarkTheme } from "../../helpers/isDarkTheme";
+
 const Login = () => {
-	const { form, handleSignIn, APPYENDA, isDisabled, isLoading, isDarkTheme } =
+	const { form, handleSignIn, APPYENDA, isDisabled, isLoading } =
 		LoginViewModel();
 
 	const t = useTranslations("LoginPage");

@@ -45,9 +45,6 @@ import { useAuthStore } from "@/stores/auth.store";
 // @Interfaces
 import { IUser } from "@/interfaces/IAuth";
 
-// @next-themes
-import { useTheme } from "next-themes";
-
 const LoginViewModel = () => {
 	const router = useRouter();
 
@@ -62,33 +59,6 @@ const LoginViewModel = () => {
 	const { toast } = useToast();
 
 	const formSchema = LoginValidationSchema(t);
-
-	const isDarkTheme = (): boolean | null => {
-		const { theme } = useTheme();
-		const prefersDarkMode =
-			typeof window !== "undefined"
-				? window.matchMedia("(prefers-color-scheme: dark)").matches
-				: false;
-		const isDarkMode =
-			theme === "dark" ||
-			theme === "darkorange" ||
-			theme === "darkblue" ||
-			theme === "darkgreen" ||
-			(theme === "system" && prefersDarkMode);
-
-		// Prevent Hydration warning
-		const [mounted, setMounted] = useState(false);
-
-		useEffect(() => {
-			setMounted(true);
-		}, []);
-
-		if (!mounted) {
-			return null;
-		}
-
-		return isDarkMode;
-	};
 
 	useEffect(() => {
 		const verifySession = async () => {
@@ -151,7 +121,6 @@ const LoginViewModel = () => {
 		isDisabled,
 		isLoading,
 		toast,
-		isDarkTheme,
 	};
 };
 

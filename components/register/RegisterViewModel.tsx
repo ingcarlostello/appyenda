@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useEffect } from "react";
 
 // @React-hook-form
 import { useForm } from "react-hook-form";
@@ -23,9 +22,6 @@ import { APPYENDA } from "@/constants/pages";
 
 // @next-intl
 import { useTranslations } from "next-intl";
-
-// @next-themes
-import { useTheme } from "next-themes";
 
 // @Components
 import Icon from "../shared/Icon";
@@ -59,33 +55,6 @@ const RegisterViewModel = () => {
 			checkbox: false,
 		},
 	});
-
-	const isDarkTheme = (): boolean | null => {
-		const { theme } = useTheme();
-		const prefersDarkMode =
-			typeof window !== "undefined"
-				? window.matchMedia("(prefers-color-scheme: dark)").matches
-				: false;
-
-		const isDarkMode =
-			theme === "dark" ||
-			theme === "darkorange" ||
-			theme === "darkblue" ||
-			theme === "darkgreen" ||
-			(theme === "system" && prefersDarkMode);
-
-		// Prevent hydration warning
-		const [mounted, setMounted] = useState(false);
-		useEffect(() => {
-			setMounted(true);
-		}, []);
-
-		if (!mounted) {
-			return null; // or render nothing, or a placeholder/loading state
-		}
-
-		return isDarkMode;
-	};
 
 	const handleSignUp = async (values: z.infer<typeof formSchema>) => {
 		try {
@@ -134,7 +103,6 @@ const RegisterViewModel = () => {
 		handleSignUp,
 		isDisabled,
 		isLoading,
-		isDarkTheme,
 	};
 };
 

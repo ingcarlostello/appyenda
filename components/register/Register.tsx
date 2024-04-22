@@ -29,13 +29,16 @@ import RegisterViewModel from "./RegisterViewModel";
 // @Next-intl
 import { useTranslations } from "next-intl";
 
+//Helper
+import { isDarkTheme } from "../../helpers/isDarkTheme";
+
 // @Assets
 import logo from "../../app/assets/APPYENDA-logo-transparent.png";
 import logoDark from "../../app/assets/APPYENDA-logo-transparent-darkmode.png";
 import GoogleButton from "../shared/GoogleButton";
 
 const Register = () => {
-	const { form, handleSignUp, APPYENDA, isDisabled, isLoading, isDarkTheme } =
+	const { form, handleSignUp, APPYENDA, isDisabled, isLoading } =
 		RegisterViewModel();
 
 	const t = useTranslations("RegisterPage");
