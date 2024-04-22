@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useEffect } from "react";
 
 // @React-hook-form
 import { useForm } from "react-hook-form";
@@ -23,6 +24,9 @@ import { APPYENDA } from "@/constants/pages";
 // @next-intl
 import { useTranslations } from "next-intl";
 
+// @next-themes
+import { useTheme } from "next-themes";
+
 // @Components
 import Icon from "../shared/Icon";
 
@@ -31,80 +35,107 @@ import goodIcon from "../../app/assets/icons/goodIcon.png";
 import faceFail from "../../app/assets/icons/face-fail.png";
 
 const RegisterViewModel = () => {
-  const t = useTranslations("ValidationRegisterPage");
-  const t2 = useTranslations("RegisterPage");
+	const t = useTranslations("ValidationRegisterPage");
+	const t2 = useTranslations("RegisterPage");
 
-  const [isDisabled, setIsDisabled] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [isDisabled, setIsDisabled] = useState<boolean>(false);
+	const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const { toast } = useToast();
+	const { toast } = useToast();
 
-  const router = useRouter();
+	const router = useRouter();
 
-  const formSchema = RegisterValidationSchema(t);
+	const formSchema = RegisterValidationSchema(t);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      username: "",
-      usertype: undefined,
-      email: "",
-      password: "",
-      confirmPassword: "",
-      checkbox: false,
-    },
-  });
+	const form = useForm<z.infer<typeof formSchema>>({
+		resolver: zodResolver(formSchema),
+		defaultValues: {
+			name: "",
+			username: "",
+			usertype: undefined,
+			email: "",
+			password: "",
+			confirmPassword: "",
+			checkbox: false,
+		},
+	});
 
-  const handleSignUp = async (values: z.infer<typeof formSchema>) => {
-    try {
-      setIsDisabled(true);
-      setIsLoading(true);
-      const res = await fetch(REGISTER_USER_API, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
-      });
-      const data = await res.json();
-      form.reset();
+	const isDarkTheme = (): boolean | null => {
+		const { theme } = useTheme();
+		const prefersDarkMode =
+			typeof window !== "undefined"
+				? window.matchMedia("(prefers-color-scheme: dark)").matches
+				: false;
 
-      if (data.success === false) {
-        setIsDisabled(false);
-        setIsLoading(false);
-        toast({
-          description: t2('USER_ALREADY_EXIST'),
-          action: <Icon icon={faceFail} alt={"already registered"} />,
-          variant: "destructive",
-        });
-        return;
-      }
+		const isDarkMode =
+			theme === "dark" ||
+			theme === "darkorange" ||
+			theme === "darkblue" ||
+			theme === "darkgreen" ||
+			(theme === "system" && prefersDarkMode);
 
-      if (data.success) {
-        setIsDisabled(false);
-        setIsLoading(false);
-      }
-      toast({
-        description: t2("SUCCESSFUL_REGISTRATION"),
-        action: <Icon icon={goodIcon} alt={"good"} />,
-      });
-      router.push(APPYENDA.LOGIN);
-    } catch (error) {
-      setIsDisabled(false);
-      setIsLoading(false);
-      throw new Error(`Error creating account: ${error}`);
-      
-    }
-  };
+		// Prevent hydration warning
+		const [mounted, setMounted] = useState(false);
+		useEffect(() => {
+			setMounted(true);
+		}, []);
 
-  return {
-    APPYENDA,
-    form,
-    handleSignUp,
-    isDisabled,
-    isLoading,
-  };
+		if (!mounted) {
+			return null; // or render nothing, or a placeholder/loading state
+		}
+
+		return isDarkMode;
+	};
+
+	const handleSignUp = async (values: z.infer<typeof formSchema>) => {
+		try {
+			setIsDisabled(true);
+			setIsLoading(true);
+			const res = await fetch(REGISTER_USER_API, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(values),
+			});
+			const data = await res.json();
+			form.reset();
+
+			if (data.success === false) {
+				setIsDisabled(false);
+				setIsLoading(false);
+				toast({
+					description: t2("USER_ALREADY_EXIST"),
+					action: <Icon icon={faceFail} alt={"already registered"} />,
+					variant: "destructive",
+				});
+				return;
+			}
+
+			if (data.success) {
+				setIsDisabled(false);
+				setIsLoading(false);
+			}
+			toast({
+				description: t2("SUCCESSFUL_REGISTRATION"),
+				action: <Icon icon={goodIcon} alt={"good"} />,
+			});
+			router.push(APPYENDA.LOGIN);
+		} catch (error) {
+			setIsDisabled(false);
+			setIsLoading(false);
+			throw new Error(`Error creating account: ${error}`);
+		}
+	};
+
+	return {
+		APPYENDA,
+		form,
+		handleSignUp,
+		isDisabled,
+		isLoading,
+		isDarkTheme,
+	};
 };
 
 export default RegisterViewModel;

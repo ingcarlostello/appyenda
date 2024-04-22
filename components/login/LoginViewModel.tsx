@@ -45,83 +45,114 @@ import { useAuthStore } from "@/stores/auth.store";
 // @Interfaces
 import { IUser } from "@/interfaces/IAuth";
 
+// @next-themes
+import { useTheme } from "next-themes";
+
 const LoginViewModel = () => {
-    const router = useRouter();
-    
-    const t = useTranslations("ValidationRegisterPage");
-    const t2 = useTranslations("LoginPage");
+	const router = useRouter();
 
-    const loginUser = useAuthStore(state => state.loginUserWithEmail)
-    
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [isDisabled, setIsDisabled] = useState<boolean>(false);
+	const t = useTranslations("ValidationRegisterPage");
+	const t2 = useTranslations("LoginPage");
 
-    const { toast } = useToast();
+	const loginUser = useAuthStore((state) => state.loginUserWithEmail);
 
-    const formSchema = LoginValidationSchema(t);
+	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [isDisabled, setIsDisabled] = useState<boolean>(false);
 
-    useEffect(() => {
-        const verifySession = async () => {
-            const userSessionExists = await checkUser();
-            
-            if (userSessionExists?.id) {
-                router.push(APPYENDA.DASHBOARD);
-            }
-        };
-        verifySession();
-    }, []);
+	const { toast } = useToast();
 
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-            email: "",
-            password: "",
-        },
-    });
+	const formSchema = LoginValidationSchema(t);
 
-    async function handleSignIn(values: z.infer<typeof formSchema>) {
-        const { email, password } = values;
-        try {
-            setIsDisabled(true);
-            setIsLoading(true);
+	const isDarkTheme = (): boolean | null => {
+		const { theme } = useTheme();
+		const prefersDarkMode =
+			typeof window !== "undefined"
+				? window.matchMedia("(prefers-color-scheme: dark)").matches
+				: false;
+		const isDarkMode =
+			theme === "dark" ||
+			theme === "darkorange" ||
+			theme === "darkblue" ||
+			theme === "darkgreen" ||
+			(theme === "system" && prefersDarkMode);
 
-            const session = await account.createEmailSession(email, password);
-            const userData = await checkUser();
+		// Prevent Hydration warning
+		const [mounted, setMounted] = useState(false);
 
-            const getCookie = window.localStorage.getItem("cookieFallback");
-            const parsedCookie = JSON.parse(getCookie!);
-            const cookieInfo = extractCookieInfo(parsedCookie);
-            Cookies.set("login-user-cookie", cookieInfo.infoCookie);
+		useEffect(() => {
+			setMounted(true);
+		}, []);
 
-            router.push(APPYENDA.DASHBOARD);
+		if (!mounted) {
+			return null;
+		}
 
-            toast({
-                description: t2("SUCCESSFUL_LOGGING_IN"),
-                action: <Icon icon={goodIcon} alt={"good"} />,
-            });
+		return isDarkMode;
+	};
 
-            loginUser(userData as IUser);
+	useEffect(() => {
+		const verifySession = async () => {
+			const userSessionExists = await checkUser();
 
-            return session;
-        } catch (error) {
-            setIsDisabled(false);
-            setIsLoading(false);
-            return toast({
-                variant: "destructive",
-                description: t2("INVALID_CREDENTIALS"),
-                action: <Icon icon={badIcon} alt={"bad"} />,
-            });
-        }
-    }
+			if (userSessionExists?.id) {
+				router.push(APPYENDA.DASHBOARD);
+			}
+		};
+		verifySession();
+	}, []);
 
-    return {
-        APPYENDA,
-        form,
-        handleSignIn,
-        isDisabled,
-        isLoading,
-        toast,
-    };
+	const form = useForm<z.infer<typeof formSchema>>({
+		resolver: zodResolver(formSchema),
+		defaultValues: {
+			email: "",
+			password: "",
+		},
+	});
+
+	async function handleSignIn(values: z.infer<typeof formSchema>) {
+		const { email, password } = values;
+		try {
+			setIsDisabled(true);
+			setIsLoading(true);
+
+			const session = await account.createEmailSession(email, password);
+			const userData = await checkUser();
+
+			const getCookie = window.localStorage.getItem("cookieFallback");
+			const parsedCookie = JSON.parse(getCookie!);
+			const cookieInfo = extractCookieInfo(parsedCookie);
+			Cookies.set("login-user-cookie", cookieInfo.infoCookie);
+
+			router.push(APPYENDA.DASHBOARD);
+
+			toast({
+				description: t2("SUCCESSFUL_LOGGING_IN"),
+				action: <Icon icon={goodIcon} alt={"good"} />,
+			});
+
+			loginUser(userData as IUser);
+
+			return session;
+		} catch (error) {
+			setIsDisabled(false);
+			setIsLoading(false);
+			return toast({
+				variant: "destructive",
+				description: t2("INVALID_CREDENTIALS"),
+				action: <Icon icon={badIcon} alt={"bad"} />,
+			});
+		}
+	}
+
+	return {
+		APPYENDA,
+		form,
+		handleSignIn,
+		isDisabled,
+		isLoading,
+		toast,
+		isDarkTheme,
+	};
 };
 
 export default LoginViewModel;

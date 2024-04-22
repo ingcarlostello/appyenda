@@ -31,10 +31,11 @@ import { useTranslations } from "next-intl";
 
 // @Assets
 import logo from "../../app/assets/APPYENDA-logo-transparent.png";
+import logoDark from "../../app/assets/APPYENDA-logo-transparent-darkmode.png";
 import GoogleButton from "../shared/GoogleButton";
 
 const Register = () => {
-	const { form, handleSignUp, APPYENDA, isDisabled, isLoading } =
+	const { form, handleSignUp, APPYENDA, isDisabled, isLoading, isDarkTheme } =
 		RegisterViewModel();
 
 	const t = useTranslations("RegisterPage");
@@ -46,7 +47,7 @@ const Register = () => {
 					<div className=" md:w-3/6 lg:w-3/6 xl:w-1/4 p-8 md:shadow-2xl flex-center flex-col rounded-2xl">
 						<div className="flex justify-center mb-4">
 							<Image
-								src={logo}
+								src={isDarkTheme() ? logoDark : logo}
 								alt="Appyenda-logo"
 								width={0}
 								height={0}

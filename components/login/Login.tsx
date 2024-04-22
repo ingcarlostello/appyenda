@@ -27,12 +27,13 @@ import LoginViewModel from "./LoginViewModel";
 
 // @Assets
 import logo from "../../app/assets/APPYENDA-logo-transparent.png";
+import logoDarkmode from "../../app/assets/APPYENDA-logo-transparent-darkmode.png";
 
 // @Next-intl
 import { useTranslations } from "next-intl";
 
 const Login = () => {
-	const { form, handleSignIn, APPYENDA, isDisabled, isLoading } =
+	const { form, handleSignIn, APPYENDA, isDisabled, isLoading, isDarkTheme } =
 		LoginViewModel();
 
 	const t = useTranslations("LoginPage");
@@ -45,7 +46,7 @@ const Login = () => {
 						<div className="flex justify-center mb-4">
 							<Image
 								priority={true}
-								src={logo}
+								src={isDarkTheme() ? logoDarkmode : logo}
 								alt="Appyenda-logo"
 								width={0}
 								height={0}
