@@ -75,13 +75,9 @@
 		"DESCRIPTION_MAX_LENGTH": "La descripción debe contener un máximo de 500 caracteres",
 		"SELECT_CATEGORY": "Seleccione una categoría",
 		"DURATION_VALIDATION_MESSAGE": "Sólo números positivos",
-<<<<<<< HEAD
 		"PRICE_VALIDATION_MESSAGE": "Sólo números positivos",
 		"ADDING_SERVICE": "Agregando servicio",
 		"ADDED_SERVICE": "Servicio agregado"
-=======
-		"PRICE_VALIDATION_MESSAGE": "Sólo números positivos"
->>>>>>> develop
 	},
 	"ProfilePage": {
 		"NAME": "Nombre",
