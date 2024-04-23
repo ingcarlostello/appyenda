@@ -28,8 +28,12 @@ import { SERVICES_CATEGORIES } from "@/constants/pages";
 // @Next-intl
 import { useTranslations } from "next-intl";
 
+// @api
+import { addServiceToDB } from "@/lib/appwrite/api";
+import { Loader2 } from "lucide-react";
+
 const ServicesForm = () => {
-    const { form, handleAddService } = ServicesFormViewModel();
+    const { form, handleAddService, isDisabled, isLoading } = ServicesFormViewModel();
 
     const t = useTranslations("ServicesPage");
 
@@ -51,7 +55,7 @@ const ServicesForm = () => {
                                             {t("NAME")}
                                         </FormLabel>
                                         <FormControl>
-                                            <Input type="text" className="shad-input" {...field} />
+                                            <Input disabled={isDisabled} type="text" className="shad-input" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -68,6 +72,7 @@ const ServicesForm = () => {
                                         </FormLabel>
                                         <FormControl>
                                             <Textarea
+                                                disabled={isDisabled}
                                                 placeholder={t("DESCRIPTION_PLACEHOLDER")}
                                                 className="resize-none"
                                                 {...field}
@@ -88,6 +93,7 @@ const ServicesForm = () => {
                                         </FormLabel>
                                         <FormControl>
                                             <Input
+                                                disabled={isDisabled}
                                                 type="number"
                                                 className="shad-input"
                                                 {...field}
@@ -109,6 +115,7 @@ const ServicesForm = () => {
                                         </FormLabel>
                                         <FormControl>
                                             <Input
+                                                disabled={isDisabled}
                                                 type="number"
                                                 className="shad-input"
                                                 {...field}
@@ -129,7 +136,7 @@ const ServicesForm = () => {
                                             {t("CATEGORY")}
                                         </FormLabel>
                                         <FormControl>
-                                            <Select onValueChange={field.onChange}>
+                                            <Select disabled={isDisabled} onValueChange={field.onChange}>
                                                 <SelectTrigger className="w-full">
                                                     <SelectValue placeholder="Seleccione una categoria" />
                                                 </SelectTrigger>
@@ -149,7 +156,9 @@ const ServicesForm = () => {
                                 )}
                             />
                             <div className="mt-8 flex justify-end">
-                                <Button type="submit"> {t("ADD_SERVICE_BUTTON")}</Button>
+                                <Button disabled={isDisabled} type="submit">
+                                    {isLoading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> {t("ADDING_SERVICE")} </> : t("ADD_SERVICE_BUTTON")}
+                                </Button>
                             </div>
                         </form>
                     </div>

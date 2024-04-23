@@ -64,3 +64,13 @@ export interface Session {
     providerUid: string;
     userId: string;
 }
+
+export interface IService {
+    serviceId: string;
+    name: string;
+    description: string;
+    duration: number;
+    price: string;
+    category: string;
+    provider: any;
+}
