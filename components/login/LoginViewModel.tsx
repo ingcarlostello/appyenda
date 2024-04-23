@@ -46,82 +46,82 @@ import { useAuthStore } from "@/stores/auth.store";
 import { IUser } from "@/interfaces/IAuth";
 
 const LoginViewModel = () => {
-    const router = useRouter();
-    
-    const t = useTranslations("ValidationRegisterPage");
-    const t2 = useTranslations("LoginPage");
+	const router = useRouter();
 
-    const loginUser = useAuthStore(state => state.loginUserWithEmail)
-    
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [isDisabled, setIsDisabled] = useState<boolean>(false);
+	const t = useTranslations("ValidationRegisterPage");
+	const t2 = useTranslations("LoginPage");
 
-    const { toast } = useToast();
+	const loginUser = useAuthStore((state) => state.loginUserWithEmail);
 
-    const formSchema = LoginValidationSchema(t);
+	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [isDisabled, setIsDisabled] = useState<boolean>(false);
 
-    useEffect(() => {
-        const verifySession = async () => {
-            const userSessionExists = await checkUser();
-            
-            if (userSessionExists?.id) {
-                router.push(APPYENDA.DASHBOARD);
-            }
-        };
-        verifySession();
-    }, []);
+	const { toast } = useToast();
 
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-            email: "",
-            password: "",
-        },
-    });
+	const formSchema = LoginValidationSchema(t);
 
-    async function handleSignIn(values: z.infer<typeof formSchema>) {
-        const { email, password } = values;
-        try {
-            setIsDisabled(true);
-            setIsLoading(true);
+	useEffect(() => {
+		const verifySession = async () => {
+			const userSessionExists = await checkUser();
 
-            const session = await account.createEmailSession(email, password);
-            const userData = await checkUser();
+			if (userSessionExists?.id) {
+				router.push(APPYENDA.DASHBOARD);
+			}
+		};
+		verifySession();
+	}, []);
 
-            const getCookie = window.localStorage.getItem("cookieFallback");
-            const parsedCookie = JSON.parse(getCookie!);
-            const cookieInfo = extractCookieInfo(parsedCookie);
-            Cookies.set("login-user-cookie", cookieInfo.infoCookie);
+	const form = useForm<z.infer<typeof formSchema>>({
+		resolver: zodResolver(formSchema),
+		defaultValues: {
+			email: "",
+			password: "",
+		},
+	});
 
-            router.push(APPYENDA.DASHBOARD);
+	async function handleSignIn(values: z.infer<typeof formSchema>) {
+		const { email, password } = values;
+		try {
+			setIsDisabled(true);
+			setIsLoading(true);
 
-            toast({
-                description: t2("SUCCESSFUL_LOGGING_IN"),
-                action: <Icon icon={goodIcon} alt={"good"} />,
-            });
+			const session = await account.createEmailSession(email, password);
+			const userData = await checkUser();
 
-            loginUser(userData as IUser);
+			const getCookie = window.localStorage.getItem("cookieFallback");
+			const parsedCookie = JSON.parse(getCookie!);
+			const cookieInfo = extractCookieInfo(parsedCookie);
+			Cookies.set("login-user-cookie", cookieInfo.infoCookie);
 
-            return session;
-        } catch (error) {
-            setIsDisabled(false);
-            setIsLoading(false);
-            return toast({
-                variant: "destructive",
-                description: t2("INVALID_CREDENTIALS"),
-                action: <Icon icon={badIcon} alt={"bad"} />,
-            });
-        }
-    }
+			router.push(APPYENDA.DASHBOARD);
 
-    return {
-        APPYENDA,
-        form,
-        handleSignIn,
-        isDisabled,
-        isLoading,
-        toast,
-    };
+			toast({
+				description: t2("SUCCESSFUL_LOGGING_IN"),
+				action: <Icon icon={goodIcon} alt={"good"} />,
+			});
+
+			loginUser(userData as IUser);
+
+			return session;
+		} catch (error) {
+			setIsDisabled(false);
+			setIsLoading(false);
+			return toast({
+				variant: "destructive",
+				description: t2("INVALID_CREDENTIALS"),
+				action: <Icon icon={badIcon} alt={"bad"} />,
+			});
+		}
+	}
+
+	return {
+		APPYENDA,
+		form,
+		handleSignIn,
+		isDisabled,
+		isLoading,
+		toast,
+	};
 };
 
 export default LoginViewModel;

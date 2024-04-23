@@ -11,7 +11,7 @@
 		"lOG_IN_WITH": "Loguearse con:"
 	},
 	"LanguageSelector": {
-		"locale": "{locale, select, es {Spanish} en {English} other {Unknown}}",
+		"locale": "{locale, select, es {Spanish} en {English} other {Portuguese}}",
 		"Language": "Idioma"
 	},
 	"RegisterPage": {
@@ -75,9 +75,13 @@
 		"DESCRIPTION_MAX_LENGTH": "La descripción debe contener un máximo de 500 caracteres",
 		"SELECT_CATEGORY": "Seleccione una categoría",
 		"DURATION_VALIDATION_MESSAGE": "Sólo números positivos",
+<<<<<<< HEAD
 		"PRICE_VALIDATION_MESSAGE": "Sólo números positivos",
 		"ADDING_SERVICE": "Agregando servicio",
 		"ADDED_SERVICE": "Servicio agregado"
+=======
+		"PRICE_VALIDATION_MESSAGE": "Sólo números positivos"
+>>>>>>> develop
 	},
 	"ProfilePage": {
 		"NAME": "Nombre",
@@ -98,5 +102,16 @@
 		"PROFILE": "Perfil",
 		"LOGOUT": "Cerrar sesión",
 		"LOGGING_OUT": "Cerrando sesión..."
+	},
+	"ColorSelector": {
+		"ORANGE": "Naranja",
+		"DARKORANGE": "Naranja Oscuro",
+		"BLUE": "Azul",
+		"DARKBLUE": "Azul Oscuro",
+		"GREEN": "Verde",
+		"DARKGREEN": "Verde Oscuro",
+		"LIGHT": "Claro",
+		"DARK": "Oscuro",
+		"SYSTEM": "Sistema"
 	}
 }

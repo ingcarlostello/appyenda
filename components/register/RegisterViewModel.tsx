@@ -31,80 +31,79 @@ import goodIcon from "../../app/assets/icons/goodIcon.png";
 import faceFail from "../../app/assets/icons/face-fail.png";
 
 const RegisterViewModel = () => {
-  const t = useTranslations("ValidationRegisterPage");
-  const t2 = useTranslations("RegisterPage");
+	const t = useTranslations("ValidationRegisterPage");
+	const t2 = useTranslations("RegisterPage");
 
-  const [isDisabled, setIsDisabled] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [isDisabled, setIsDisabled] = useState<boolean>(false);
+	const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const { toast } = useToast();
+	const { toast } = useToast();
 
-  const router = useRouter();
+	const router = useRouter();
 
-  const formSchema = RegisterValidationSchema(t);
+	const formSchema = RegisterValidationSchema(t);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      username: "",
-      usertype: undefined,
-      email: "",
-      password: "",
-      confirmPassword: "",
-      checkbox: false,
-    },
-  });
+	const form = useForm<z.infer<typeof formSchema>>({
+		resolver: zodResolver(formSchema),
+		defaultValues: {
+			name: "",
+			username: "",
+			usertype: undefined,
+			email: "",
+			password: "",
+			confirmPassword: "",
+			checkbox: false,
+		},
+	});
 
-  const handleSignUp = async (values: z.infer<typeof formSchema>) => {
-    try {
-      setIsDisabled(true);
-      setIsLoading(true);
-      const res = await fetch(REGISTER_USER_API, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
-      });
-      const data = await res.json();
-      form.reset();
+	const handleSignUp = async (values: z.infer<typeof formSchema>) => {
+		try {
+			setIsDisabled(true);
+			setIsLoading(true);
+			const res = await fetch(REGISTER_USER_API, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(values),
+			});
+			const data = await res.json();
+			form.reset();
 
-      if (data.success === false) {
-        setIsDisabled(false);
-        setIsLoading(false);
-        toast({
-          description: t2('USER_ALREADY_EXIST'),
-          action: <Icon icon={faceFail} alt={"already registered"} />,
-          variant: "destructive",
-        });
-        return;
-      }
+			if (data.success === false) {
+				setIsDisabled(false);
+				setIsLoading(false);
+				toast({
+					description: t2("USER_ALREADY_EXIST"),
+					action: <Icon icon={faceFail} alt={"already registered"} />,
+					variant: "destructive",
+				});
+				return;
+			}
 
-      if (data.success) {
-        setIsDisabled(false);
-        setIsLoading(false);
-      }
-      toast({
-        description: t2("SUCCESSFUL_REGISTRATION"),
-        action: <Icon icon={goodIcon} alt={"good"} />,
-      });
-      router.push(APPYENDA.LOGIN);
-    } catch (error) {
-      setIsDisabled(false);
-      setIsLoading(false);
-      throw new Error(`Error creating account: ${error}`);
-      
-    }
-  };
+			if (data.success) {
+				setIsDisabled(false);
+				setIsLoading(false);
+			}
+			toast({
+				description: t2("SUCCESSFUL_REGISTRATION"),
+				action: <Icon icon={goodIcon} alt={"good"} />,
+			});
+			router.push(APPYENDA.LOGIN);
+		} catch (error) {
+			setIsDisabled(false);
+			setIsLoading(false);
+			throw new Error(`Error creating account: ${error}`);
+		}
+	};
 
-  return {
-    APPYENDA,
-    form,
-    handleSignUp,
-    isDisabled,
-    isLoading,
-  };
+	return {
+		APPYENDA,
+		form,
+		handleSignUp,
+		isDisabled,
+		isLoading,
+	};
 };
 
 export default RegisterViewModel;

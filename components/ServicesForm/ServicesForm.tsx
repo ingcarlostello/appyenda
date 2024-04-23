@@ -2,22 +2,22 @@
 
 // @Shadcn
 import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
+	Form,
+	FormControl,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import ServicesFormViewModel from "./ServicesFormViewModel";
 import {
-    Select,
-    SelectContent,
-    SelectGroup,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
+	Select,
+	SelectContent,
+	SelectGroup,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
@@ -35,7 +35,7 @@ import { Loader2 } from "lucide-react";
 const ServicesForm = () => {
     const { form, handleAddService, isDisabled, isLoading } = ServicesFormViewModel();
 
-    const t = useTranslations("ServicesPage");
+	const t = useTranslations("ServicesPage");
 
     return (
         <div className="">
