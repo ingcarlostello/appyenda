@@ -29,7 +29,6 @@ import { SERVICES_CATEGORIES } from "@/constants/pages";
 import { useTranslations } from "next-intl";
 
 // @api
-import { addServiceToDB } from "@/lib/appwrite/api";
 import { Loader2 } from "lucide-react";
 
 const ServicesForm = () => {
@@ -38,10 +37,10 @@ const ServicesForm = () => {
 	const t = useTranslations("ServicesPage");
 
     return (
-        <div className="">
+        <div>
             <Form {...form}>
                 <div className="flex justify-center">
-                    <div className="bg-white p-8 w-full flex-center flex-col rounded-2xl">
+                    <div className="p-8 w-full flex-center flex-col rounded-2xl">
                         <form
                             onSubmit={form.handleSubmit(handleAddService)}
                             className="flex flex-col gap-5 w-full mt-4"
@@ -136,9 +135,9 @@ const ServicesForm = () => {
                                             {t("CATEGORY")}
                                         </FormLabel>
                                         <FormControl>
-                                            <Select disabled={isDisabled} onValueChange={field.onChange}>
+                                            <Select disabled={isDisabled} onValueChange={field.onChange} value={field.value}>
                                                 <SelectTrigger className="w-full">
-                                                    <SelectValue placeholder="Seleccione una categoria" />
+                                                    {field.value ? <SelectValue placeholder={t("SELECT_CATEGORY")} /> : t("SELECT_CATEGORY")}
                                                 </SelectTrigger>
                                                 <SelectContent>
                                                     <SelectGroup>

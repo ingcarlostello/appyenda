@@ -45,8 +45,8 @@ const ServicesFormViewModel = () => {
         defaultValues: {
             name: "",
             description: "",
-            duration: undefined,
-            price: undefined,
+            duration: 0,
+            price: 0,
             category: undefined,
         },
     });
@@ -67,7 +67,6 @@ const ServicesFormViewModel = () => {
             });
 
             const data = await res.json();
-            form.reset();
             
             if (data.success) {
                 setIsDisabled(false);
@@ -77,6 +76,7 @@ const ServicesFormViewModel = () => {
                 description: t("ADDED_SERVICE"),
                 action: <Icon icon={goodIcon} alt={"good"} />,
             });
+            form.reset();
         } catch (error) { 
             setIsDisabled(false);
             setIsLoading(false);
