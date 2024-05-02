@@ -109,5 +109,8 @@
 		"LIGHT": "Light",
 		"DARK": "Dark",
 		"SYSTEM": "System"
+	},
+	"DashboardPage": {
+		"HELLO": "Hello"
 	}
 }
