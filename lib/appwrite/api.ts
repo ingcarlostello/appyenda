@@ -1,3 +1,6 @@
+// @UUID
+import { v4 as uuidv4 } from "uuid";
+
 // @Appwrite
 import { ID, Query } from "appwrite";
 
@@ -5,7 +8,7 @@ import { ID, Query } from "appwrite";
 import { account, appwriteConfig, databases } from "./config";
 
 // @Interfaces
-import { IProvider, IUser } from "@/interfaces/IAuth";
+import { IProvider, IService, IUser } from "@/interfaces/IAuth";
 
 export async function createUserAccount(user: IUser) {
     try {
@@ -126,7 +129,7 @@ export const useGetProfileByUserId = async (userId: string) => {
                 [Query.equal("providerId", userId)]
             );
             const documentsProvider = responseProvider.documents;
-            
+
             return {
                 email: documentsProvider[0]?.email,
                 id: documentsProvider[0]?.$id,
@@ -180,8 +183,29 @@ export const logout = async () => {
 
 export const googleAuth = () => {
     try {
-        account.createOAuth2Session("google", "http://localhost:3000/dashboard", "http://localhost:3000/login");
+        account.createOAuth2Session("google", "http://localhost:3000/dashboard","http://localhost:3000/login");
     } catch (error) {
         console.log("google error", error);
+    }
+};
+
+export const addServiceToDB = async (service: IService) => {
+    try {
+        const profile = await useGetProfileByUserId(service.provider);
+
+        const newService = await databases.createDocument(
+            appwriteConfig.databaseId as string,
+            appwriteConfig.servicesCollectionId as string,
+            ID.unique(),
+            {
+                ...service,
+                serviceId: uuidv4(),
+                provider: profile.id,
+            }
+        );
+
+        return newService;
+    } catch (error) {
+        throw new Error(`Error saving user to DB: ${error}`);
     }
 };

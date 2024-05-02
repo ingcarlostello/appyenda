@@ -1,20 +1,26 @@
 "use client";
+
 // @Components
 import { MetricCard } from "@/components/shared/MetricCard";
 
 // @Lucide react icons
 import { CalendarCheck, CircleDollarSign, Users } from "lucide-react";
 
-// @View model
-import DashboardViewModel from "./DashboardViewModel";
+// @Store
+import { useAuthStore } from "@/stores/auth.store";
+
+// @Next-intl
+import { useTranslations } from "next-intl";
 
 const Dashboard = () => {
-	const { userName } = DashboardViewModel();
+	const t = useTranslations("DashboardPage");
+
+	const userName = useAuthStore(state => state.name)
 
 	return (
 		<div>
 			<p className="text-5xl font-bold mb-14  max-[767px]:text-3xl">
-				Hola {userName}!
+				{t("HELLO")} {userName}! 
 			</p>
 
 			<div className="grid sm:grid-cols-1 lg:grid-cols-4 gap-4 w-full pr-8">

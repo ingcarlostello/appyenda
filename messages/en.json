@@ -75,7 +75,9 @@
 		"DESCRIPTION_MAX_LENGTH": "Description must contain a maximunm 500 characters",
 		"SELECT_CATEGORY": "Select a category",
 		"DURATION_VALIDATION_MESSAGE": "Only positive numbers",
-		"PRICE_VALIDATION_MESSAGE": "Only positive numbers"
+		"PRICE_VALIDATION_MESSAGE": "Only positive numbers",
+		"ADDING_SERVICE": "Adding service",
+		"ADDED_SERVICE": "Added service"
 	},
 	"ProfilePage": {
 		"NAME": "Name",
@@ -107,5 +109,8 @@
 		"LIGHT": "Light",
 		"DARK": "Dark",
 		"SYSTEM": "System"
+	},
+	"DashboardPage": {
+		"HELLO": "Hello"
 	}
 }
