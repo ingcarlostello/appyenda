@@ -14,7 +14,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
 // @Constants
-import { ADD_SERVICE_API } from "@/constants/urls";
+import { SERVICES_API } from "@/constants/urls";
 
 // @Store
 import { useAuthStore } from "@/stores/auth.store";
@@ -27,10 +27,13 @@ import Icon from "@/components/shared/Icon";
 
 // @Assets
 import goodIcon from "../../app/assets/icons/goodIcon.png";
+import { useServicesStore } from "@/stores/services.store";
 
 const ServicesFormViewModel = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [isDisabled, setIsDisabled] = useState<boolean>(false);
+
+    const addNewService = useServicesStore((state) => state.addService);
 
     const { toast } = useToast();
 
@@ -52,10 +55,11 @@ const ServicesFormViewModel = () => {
     });
 
     const handleAddService = async (values: z.infer<typeof formSchema>) => {
+        addNewService(values)
         try {
             setIsDisabled(true);
             setIsLoading(true);
-            const res = await fetch(ADD_SERVICE_API, {
+            const res = await fetch(SERVICES_API, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

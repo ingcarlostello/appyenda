@@ -8,7 +8,8 @@ import { ID, Query } from "appwrite";
 import { account, appwriteConfig, databases } from "./config";
 
 // @Interfaces
-import { IProvider, IService, IUser } from "@/interfaces/IAuth";
+import { IProvider, IUser } from "@/interfaces/IAuth";
+import { IService } from "@/interfaces/IServices";
 
 export async function createUserAccount(user: IUser) {
     try {
@@ -189,9 +190,9 @@ export const googleAuth = () => {
     }
 };
 
-export const addServiceToDB = async (service: IService) => {
+export const addServiceToDB = async (service: IService) => {  
     try {
-        const profile = await useGetProfileByUserId(service.provider);
+        const profile = await useGetProfileByUserId(service.provider!);
 
         const newService = await databases.createDocument(
             appwriteConfig.databaseId as string,

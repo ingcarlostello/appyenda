@@ -2,30 +2,25 @@
 
 import { useEffect, useState } from "react";
 
-// @Appwrite
-import { Query } from "appwrite";
-
 // @Components
 import LanguageSelector from "@/components/shared/LanguageSelector";
 import { MobileSidebar } from "@/components/shared/mobileSidebar/MobileSidebar";
 import Sidebar from "@/components/sidebar-nav/Sidebar";
 import { ModeToggle } from "@/components/theme-toggle";
 
-// @Helpers
-import { extracUserNameFromEmail } from "@/helpers/extractUserFromEmail";
-
 // @Interfaces
 import { Account, IUser, Session } from "@/interfaces/IAuth";
 
 // @Libs
-import { checkUser, saveUserToDB } from "@/lib/appwrite/api";
-import { account, appwriteConfig, databases } from "@/lib/appwrite/config";
+import { checkUser } from "@/lib/appwrite/api";
+import { account } from "@/lib/appwrite/config";
 
 // @Store
 import { useAuthStore } from "@/stores/auth.store";
+import { useServicesStore } from "@/stores/services.store"
 
-// @Js-cookie
-import Cookies from "js-cookie";
+// @Actions
+import { getServices } from "@/lib/actions/services.actions";
 
 type DashboardLayoutProps = { children: React.ReactNode };
 
@@ -33,9 +28,11 @@ const Layout = ({ children }: DashboardLayoutProps) => {
 	const [count, setCount] = useState<number>(0);
 	const [socialAccount, setSocialAccount] = useState<Account>();
 	const [session, setSession] = useState<Partial<Session>>();
+	const [isLoading, setIsLoading] = useState<boolean>(false);
 
 	const loginUser = useAuthStore((state) => state.loginUserWithEmail);
 
+	// useEffect that loads the useAuthStore with user data
 	useEffect(() => {
 		const verifySocialAccount = async () => {
 			try {
@@ -53,44 +50,25 @@ const Layout = ({ children }: DashboardLayoutProps) => {
 		verifySocialAccount();
 	}, []);
 
-	useEffect(() => {
-		const saveUserSocialAccountToDB = async () => {
-			if (!session?.userId || !socialAccount) return;
-			Cookies.set("social-account-cookie", session?.providerAccessToken!);
+	const userProviderDocumentId = useAuthStore((state) => state.userProviderDocumentId);
+    const services = useServicesStore((state) => state.loadServices);
 
-			if (session.provider != "email") {
-				try {
-					const response = await databases.listDocuments(
-						appwriteConfig.databaseId!,
-						appwriteConfig.userCollectionId!,
-						[Query.equal("userId", session.userId)]
-					);
-
-					if (response.total === 0) {
-						if (count === 1) {
-							await saveUserToDB({
-								email: socialAccount.email,
-								name: socialAccount.name,
-								userId: socialAccount.$id,
-								username: extracUserNameFromEmail(socialAccount.email),
-								usertype: "client",
-							});
-							loginUser({
-								email: socialAccount.email,
-								name: socialAccount.name,
-								userId: socialAccount.$id,
-								username: extracUserNameFromEmail(socialAccount.email),
-								usertype: "client",
-							});
-						}
-					}
-				} catch (error) {
-					console.error("Error saving user social account to DB:", error);
-				}
-			}
-		};
-		saveUserSocialAccountToDB();
-	}, [count]);
+    useEffect(() => {
+        const fetchServices = async () => {
+            setIsLoading(true);
+            try {
+                const listOfServices = await getServices(userProviderDocumentId as string);
+                services(listOfServices as []);
+            } catch (error) {
+                console.error("Error fetching services:", error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        if (userProviderDocumentId) {
+            fetchServices();
+        }
+    }, [userProviderDocumentId, services]);
 
 	return (
 		<div className="h-screen ">
