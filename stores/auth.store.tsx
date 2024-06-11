@@ -6,6 +6,7 @@ import { devtools } from "zustand/middleware";
 import { IUser } from "@/interfaces/IAuth";
 
 interface IAuthState {
+    userProviderDocumentId?: string;
     email: string;
     name: string;
     userId: string;
@@ -16,6 +17,7 @@ interface IAuthState {
 }
 
 const authStoreAPI: StateCreator<IAuthState, [["zustand/devtools", never]]> = (set, get) => ({
+    userProviderDocumentId: "",
     email: "",
     name: "",
     userId: "",
@@ -26,6 +28,7 @@ const authStoreAPI: StateCreator<IAuthState, [["zustand/devtools", never]]> = (s
         try {
             set(
                 {
+                    userProviderDocumentId: userData.id,
                     email: userData.email,
                     name: userData.name,
                     userId: userData.userId,
@@ -40,6 +43,7 @@ const authStoreAPI: StateCreator<IAuthState, [["zustand/devtools", never]]> = (s
         } catch (error) {
             console.log("error >>>>>>>", error);
             set({
+                userProviderDocumentId: "",
                 email: "",
                 name: "",
                 userId: "",
@@ -51,6 +55,7 @@ const authStoreAPI: StateCreator<IAuthState, [["zustand/devtools", never]]> = (s
 
     logOutUser: () => {
         set({
+            userProviderDocumentId: "",
             email: "",
             name: "",
             userId: "",

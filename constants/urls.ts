@@ -1,2 +1,2 @@
 export const REGISTER_USER_API = "api/register";
-export const ADD_SERVICE_API = "/api/addService";
+export const SERVICES_API = "/api/services";

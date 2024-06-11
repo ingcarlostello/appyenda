@@ -1,4 +1,5 @@
 export interface IUser {
+    id?: string;
     name: string;
     username: string;
     email: string;
@@ -65,12 +66,3 @@ export interface Session {
     userId: string;
 }
 
-export interface IService {
-    serviceId: string;
-    name: string;
-    description: string;
-    duration: number;
-    price: string;
-    category: string;
-    provider: any;
-}
