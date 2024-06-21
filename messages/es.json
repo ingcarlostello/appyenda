@@ -86,7 +86,7 @@
 		"CLIENT": "Cliente",
 		"BUSINESS_OWNER": "Negocio",
 		"EMAIL": "Email",
-		"PHONE_NUMBER": "Numero de Télefono",
+		"PHONE_NUMBER": "Número de Télefono",
 		"LOCATION": "Ubicación",
 		"EDIT_PROFILE": "Editar Perfil",
 		"SAVE_PROFILE": "Guardar Perfil"
@@ -97,7 +97,8 @@
 		"SERVICES": "Servicios",
 		"PROFILE": "Perfil",
 		"LOGOUT": "Cerrar sesión",
-		"LOGGING_OUT": "Cerrando sesión..."
+		"LOGGING_OUT": "Cerrando sesión...",
+		"COLLABORATORS": "Colaboradores"
 	},
 	"ColorSelector": {
 		"ORANGE": "Naranja",
@@ -112,5 +113,12 @@
 	},
 	"DashboardPage": {
 		"HELLO": "Hola"
+	},
+	"CollaboratorsPage": {
+		"COLLABORATORS": "Colaboradores",
+		"NAME": "Nombre",
+		"EMAIL": "Email",
+		"PHONE_NUMBER": "Télefono",
+		"ADD_COLLABORATOR": "Agregar Colaborador"
 	}
 }

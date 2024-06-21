@@ -6,7 +6,8 @@ import {
 	CalendarDays,
 	LayoutDashboard,
 	Loader2,
-	User,
+	SquareUserRound,
+	Users,
 } from "lucide-react";
 
 // @UI components
@@ -51,9 +52,15 @@ export default function SideNavbar() {
 						variant: "ghost",
 					},
 					{
+						title: `${t("COLLABORATORS")}`,
+						href: APPYENDA.COLLABORATORS,
+						icon: Users,
+						variant: "ghost",
+					},
+					{
 						title: `${t("PROFILE")}`,
 						href: APPYENDA.PROFILE,
-						icon: User,
+						icon: SquareUserRound,
 						variant: "ghost",
 					},
 				]}

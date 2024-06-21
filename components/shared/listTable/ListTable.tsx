@@ -9,15 +9,16 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
+import { LoadingSpinner } from "../LoadingSpinner";
 
 // @Next-intl
 import { useTranslations } from "next-intl";
 
 // @View Model
 import ListTableViewModel from "./ListTableViewModel";
-import { LoadingSpinner } from "../LoadingSpinner";
+
+// @Store
 import { useServicesStore } from "@/stores/services.store";
-import { useState } from "react";
 
 const ListTable = () => {
     const { isLoading } = ListTableViewModel();
