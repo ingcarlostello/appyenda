@@ -97,7 +97,8 @@
 		"SERVICES": "Services",
 		"PROFILE": "Profile",
 		"LOGOUT": "Log out",
-		"LOGGING_OUT": "Logging out..."
+		"LOGGING_OUT": "Logging out...",
+		"COLLABORATORS": "Collaborators"
 	},
 	"ColorSelector": {
 		"ORANGE": "Orange",
@@ -112,5 +113,12 @@
 	},
 	"DashboardPage": {
 		"HELLO": "Hello"
+	},
+	"CollaboratorsPage": {
+		"COLLABORATORS": "Collaborators",
+		"NAME": "Name",
+		"EMAIL": "Email",
+		"PHONE_NUMBER": "Phone Number",
+		"ADD_COLLABORATOR": "Add Collaborator"
 	}
 }

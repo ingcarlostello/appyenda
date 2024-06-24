@@ -39,9 +39,6 @@ export const RegisterValidationSchema = (t: (arg: string) => string) =>
 			path: ["checkbox"],
 		});
 
-
-
-
 export const ServicesValidationSchema = (t: (arg: string) => string) =>
 	z.object({
 		name: z
@@ -58,15 +55,6 @@ export const ServicesValidationSchema = (t: (arg: string) => string) =>
 		price: z.coerce.number().min(1, { message: t("PRICE_VALIDATION_MESSAGE") }),
 		category: z.string({ required_error: t("SELECT_CATEGORY") }),
 	});
-
-
-
-
-
-
-
-
-
 
 export const ProfileValidationSchema = (t: (arg: string) => string) =>
 	z.object({
@@ -96,4 +84,19 @@ export const ProfileValidationSchema = (t: (arg: string) => string) =>
 			.string()
 			.min(2, { message: t("LOCATION_MIN_LENGTH") })
 			.max(50, { message: t("LOCATION_MAX_LENGTH") }),
+	});
+
+export const CollaboratorsValidationSchema = (t: (arg: string) => string) =>
+	z.object({
+		name: z
+			.string()
+			.min(4, { message: t("SERVICE_NAME_MIN_LENGTH") })
+			.max(30, { message: t("SERVICE_NAME_MAX_LENGTH") }),
+		email: z.string().email(t("INVALID_EMAIL")),
+		phone: z
+			.number({
+				required_error: t("PHONE_REQUIRED"),
+				invalid_type_error: t("INVALID_PHONE"),
+			})
+			.positive(),
 	});
