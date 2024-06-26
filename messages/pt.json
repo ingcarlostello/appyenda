@@ -119,6 +119,13 @@
 		"NAME": "Nome",
 		"EMAIL": "Email",
 		"PHONE_NUMBER": "Telefone",
-		"ADD_COLLABORATOR": "Adicionar Colaborador"
+		"ADD_COLLABORATOR": "Adicionar Colaborador",
+		"INVALID_EMAIL": "Email inválido",
+		"NAME_MIN_LENGTH": "O nome deve ter pelo menos 2 caracteres.",
+		"NAME_MAX_LENGTH": "O nome deve ter no máximo 50 caracteres.",
+		"PHONE_VALIDATION_MESSAGE": "Não é um número de telefone válido",
+		"ADDED_COLLABORATOR": "Colaborador adicionado",
+		"ADDING_COLLABORATOR": "Adicionando colaborador",
+		"UNADDED_COLLABORATOR": "Não foi possível salvar o colaborador"
 	}
 }
