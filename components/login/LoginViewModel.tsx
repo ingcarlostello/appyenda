@@ -85,7 +85,7 @@ const LoginViewModel = () => {
 			setIsDisabled(true);
 			setIsLoading(true);
 
-			const session = await account.createEmailSession(email, password);
+			const session = await account.createEmailPasswordSession(email, password);
 			const userData = await checkUser();
 
 			const getCookie = window.localStorage.getItem("cookieFallback");

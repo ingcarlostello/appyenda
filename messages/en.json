@@ -119,6 +119,13 @@
 		"NAME": "Name",
 		"EMAIL": "Email",
 		"PHONE_NUMBER": "Phone Number",
-		"ADD_COLLABORATOR": "Add Collaborator"
+		"ADD_COLLABORATOR": "Add Collaborator",
+		"INVALID_EMAIL": "Invalid email",
+		"NAME_MIN_LENGTH": "Name must be at least 2 characters long.",
+		"NAME_MAX_LENGTH": "Name must be at most 50 characters long.",
+		"PHONE_VALIDATION_MESSAGE": "It is not a valid phone number",
+		"ADDED_COLLABORATOR": "Added collaborator",
+		"ADDING_COLLABORATOR": "Adding collaborator",
+		"UNADDED_COLLABORATOR": "Collaborator could not be saved"
 	}
 }

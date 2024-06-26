@@ -90,13 +90,8 @@ export const CollaboratorsValidationSchema = (t: (arg: string) => string) =>
 	z.object({
 		name: z
 			.string()
-			.min(4, { message: t("SERVICE_NAME_MIN_LENGTH") })
-			.max(30, { message: t("SERVICE_NAME_MAX_LENGTH") }),
+			.min(2, { message: t("NAME_MIN_LENGTH") })
+			.max(50, { message: t("NAME_MAX_LENGTH") }),
 		email: z.string().email(t("INVALID_EMAIL")),
-		phone: z
-			.number({
-				required_error: t("PHONE_REQUIRED"),
-				invalid_type_error: t("INVALID_PHONE"),
-			})
-			.positive(),
+		phone: z.string().min(4, t("PHONE_VALIDATION_MESSAGE")),
 	});

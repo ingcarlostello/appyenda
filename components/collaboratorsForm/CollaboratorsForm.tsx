@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "../ui/button";
+import { Loader2 } from "lucide-react";
 
 // @View Model
 import CollaboratorsFormViewModel from "./CollaboratorsFormViewModel";
@@ -17,7 +18,7 @@ import CollaboratorsFormViewModel from "./CollaboratorsFormViewModel";
 import { useTranslations } from "next-intl";
 
 const CollaboratorsForm = () => {
-	const { form } = CollaboratorsFormViewModel();
+	const { form, handleSubmitCollaborator, isDisabled, isLoading } = CollaboratorsFormViewModel();
 
 	const t = useTranslations("CollaboratorsPage");
 
@@ -27,7 +28,7 @@ const CollaboratorsForm = () => {
 				<div className="flex justify-center">
 					<div className="p-8 w-full flex-center flex-col rounded-2xl">
 						<form
-							//onSubmit={form.handleSubmit(handleAddService)}
+							onSubmit={form.handleSubmit(handleSubmitCollaborator)}
 							className="flex flex-col gap-5 w-full mt-4"
 						>
 							<FormField
@@ -39,7 +40,12 @@ const CollaboratorsForm = () => {
 											{t("NAME")}
 										</FormLabel>
 										<FormControl>
-											<Input type="text" className="shad-input" {...field} />
+											<Input
+												disabled={isDisabled}
+												type="text"
+												className="shad-input"
+												{...field}
+											/>
 										</FormControl>
 										<FormMessage />
 									</FormItem>
@@ -61,7 +67,7 @@ const CollaboratorsForm = () => {
 												className="shad-input"
 												{...field}
 												placeholder="john@ejemplo.com"
-											//disabled={isDisabled}
+												disabled={isDisabled}
 											/>
 										</FormControl>
 										<FormMessage />
@@ -72,7 +78,7 @@ const CollaboratorsForm = () => {
 							<FormField
 								control={form.control}
 								name="phone"
-								//disabled={isDisabled}
+								disabled={isDisabled}
 								render={({ field }) => (
 									<FormItem>
 										<FormLabel> {t("PHONE_NUMBER")}</FormLabel>
@@ -86,7 +92,16 @@ const CollaboratorsForm = () => {
 							/>
 
 							<div className="mt-8 flex justify-end">
-								<Button type="submit">{t("ADD_COLLABORATOR")}</Button>
+								<Button disabled={isDisabled} type="submit">
+									{isLoading ? (
+										<>
+											<Loader2 className="mr-2 h-4 w-4 animate-spin" />{" "}
+											{t("ADDING_COLLABORATOR")}{" "}
+										</>
+									) : (
+										t("ADD_COLLABORATOR")
+									)}
+								</Button>
 							</div>
 						</form>
 					</div>
