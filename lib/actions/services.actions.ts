@@ -9,7 +9,6 @@ export const getServices = async (providerDocumentId: string) => {
             [Query.equal("provider", providerDocumentId)]
         );
         const documentsProvider = responseProvider.documents;  
-        console.log('documentsProvider ****>', documentsProvider);
         return documentsProvider;
     } catch (error) {
         console.error("Error obtaining services:", error);

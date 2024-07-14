@@ -3,7 +3,7 @@ export interface IUser {
     name: string;
     username: string;
     email: string;
-    usertype: string;
+    usertype: 'client' | 'business';
     password?: string;
     checkbox?: boolean | undefined;
     userId: string;
