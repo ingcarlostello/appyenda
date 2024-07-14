@@ -26,8 +26,7 @@ const servicesStoreAPI: StateCreator<IServicesState,[["zustand/devtools", never]
 
 
 
-    loadServices: async (services) => {
-        console.log('services ++++++>', services);        
+    loadServices: async (services) => {   
         set({ services }, false, "loadServices");
     }
 });

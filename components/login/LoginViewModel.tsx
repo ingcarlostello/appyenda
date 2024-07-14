@@ -29,12 +29,6 @@ import { useTranslations } from "next-intl";
 import { account } from "@/lib/appwrite/config";
 import { checkUser } from "@/lib/appwrite/api";
 
-// @Js-cookie
-import Cookies from "js-cookie";
-
-// @Libs
-import { extractCookieInfo } from "@/lib/auth";
-
 // @Assets
 import goodIcon from "../../app/assets/icons/goodIcon.png";
 import badIcon from "../../app/assets/icons/badIcon.png";
@@ -47,17 +41,12 @@ import { IUser } from "@/interfaces/IAuth";
 
 const LoginViewModel = () => {
 	const router = useRouter();
-
 	const t = useTranslations("ValidationRegisterPage");
 	const t2 = useTranslations("LoginPage");
-
 	const loginUser = useAuthStore((state) => state.loginUserWithEmail);
-
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [isDisabled, setIsDisabled] = useState<boolean>(false);
-
 	const { toast } = useToast();
-
 	const formSchema = LoginValidationSchema(t);
 
 	useEffect(() => {
@@ -86,14 +75,13 @@ const LoginViewModel = () => {
 			setIsLoading(true);
 
 			const session = await account.createEmailPasswordSession(email, password);
-			const userData = await checkUser();
+			const userData = (await checkUser()) as IUser;
 
-			const getCookie = window.localStorage.getItem("cookieFallback");
-			const parsedCookie = JSON.parse(getCookie!);
-			const cookieInfo = extractCookieInfo(parsedCookie);
-			Cookies.set("login-user-cookie", cookieInfo.infoCookie);
-
-			router.push(APPYENDA.DASHBOARD);
+			const res = await fetch("api/auth/login", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ userType: userData.usertype }),
+			});
 
 			toast({
 				description: t2("SUCCESSFUL_LOGGING_IN"),
@@ -102,15 +90,18 @@ const LoginViewModel = () => {
 
 			loginUser(userData as IUser);
 
+			router.push(userData.usertype === "client" ? "/user/client" : "/dashboard");
+
 			return session;
 		} catch (error) {
-			setIsDisabled(false);
-			setIsLoading(false);
 			return toast({
 				variant: "destructive",
 				description: t2("INVALID_CREDENTIALS"),
 				action: <Icon icon={badIcon} alt={"bad"} />,
 			});
+		}finally{
+			setIsDisabled(false);
+			setIsLoading(false);
 		}
 	}
 
