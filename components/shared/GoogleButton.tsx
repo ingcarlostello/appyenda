@@ -1,11 +1,10 @@
+
 // @Shadcn
 import { Button } from "@/components/ui/button";
 
 // @Lib
 import {googleAuth} from "@/lib/appwrite/api";
 
-// @Js-cookie
-import Cookies from "js-cookie";
 
 interface GoogleButtonProps {
     disabled: boolean;
@@ -14,8 +13,11 @@ interface GoogleButtonProps {
 const GoogleButton = ({disabled}: GoogleButtonProps) => {
     const registerUserViaGoogle = async (e) => {
         e.preventDefault();
-        googleAuth();
-        Cookies.set("initial-social-cookie", process.env.NEXT_PUBLIC_INITIAL_SOCIAL_COOKIE!);
+        try {
+            googleAuth();
+        } catch (error) {
+            console.error('Error al iniciar sesión con Google:', error);
+        }
     };
 
     return (

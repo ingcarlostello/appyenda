@@ -2,7 +2,7 @@
 import { v4 as uuidv4 } from "uuid";
 
 // @Appwrite
-import { ID, Query } from "appwrite";
+import { ID, Query, OAuthProvider } from "appwrite";
 
 // @Appwrite config
 import { account, appwriteConfig, databases } from "./config";
@@ -182,11 +182,12 @@ export const logout = async () => {
     }
 };
 
-export const googleAuth = () => {
+export const googleAuth = async () => {
     try {
-        account.createOAuth2Session("google", "http://localhost:3000/dashboard","http://localhost:3000/login");
+        await account.createOAuth2Session(OAuthProvider.Google, "http://localhost:3000/google/redirect", "http://localhost:3000/login");
     } catch (error) {
         console.log("google error", error);
+        throw error;
     }
 };
 
