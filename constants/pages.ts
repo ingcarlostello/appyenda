@@ -6,6 +6,7 @@ export const APPYENDA = {
     REGISTER:       "/register",
     SERVICES:       '/dashboard/services',
     COLLABORATORS:  '/dashboard/collaborators',
+    CLIENT:         '/user/client',
 }
 
 

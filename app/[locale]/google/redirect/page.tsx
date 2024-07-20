@@ -6,16 +6,21 @@ import { useEffect } from "react";
 // @next js
 import { useRouter } from "next/navigation";
 
+// @Constants
+import { APPYENDA } from "@/constants/pages";
+import { LOGIN_WITH_GOOGLE } from "@/constants/urls";
+import { CLIENT } from "@/constants/global";
+
 const Redirect = () => {
     const router = useRouter();
 
     useEffect(() => {
         const fetchData = async () => {            
             try {
-                const res = await fetch("/api/auth/loginWithGoogle", {
+                const res = await fetch(LOGIN_WITH_GOOGLE, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ userType: 'client' }),
+                    body: JSON.stringify({ userType: CLIENT }),
                 });
 
                 if (!res.ok) {
@@ -24,7 +29,7 @@ const Redirect = () => {
                     );
                 }
                 const data = await res.json();             
-                router.push("/user/client");
+                router.push(APPYENDA.CLIENT);
             } catch (error) {
                 console.log(error);
             }

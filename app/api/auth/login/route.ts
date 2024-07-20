@@ -3,7 +3,10 @@ import { NextResponse } from "next/server";
 // @jsonwebtoken
 import { sign } from "jsonwebtoken";
 
-export async function POST(request: Request, response: Response) {
+// @Constants
+import { USER_TOKEN } from "@/constants/global";
+
+export async function POST(request: Request) {
     const body = await request.json();
 
     if (body.userType) {
@@ -12,7 +15,7 @@ export async function POST(request: Request, response: Response) {
                 userType: body.userType,
                 exp: Math.floor(Date.now() / 100) + 60 * 60 * 24 * 30, // expires in 30 days
             },
-            "sTmpL9bJn452j8HeXsrn9nQrnJ5895MJAsKzZNS9NMnuEAFMYL" //  cambiar por variable de entorno
+            process.env.NEXT_PUBLIC_SECRET_TOKEN as string,
         );
 
         const response = NextResponse.json({
@@ -20,7 +23,7 @@ export async function POST(request: Request, response: Response) {
         });
 
         response.cookies.set({
-            name: "userToken",
+            name: USER_TOKEN,
             value: userToken,
             httpOnly: true,
             sameSite: "strict",

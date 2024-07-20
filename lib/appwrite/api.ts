@@ -10,6 +10,7 @@ import { account, appwriteConfig, databases } from "./config";
 // @Interfaces
 import { IProvider, IUser } from "@/interfaces/IAuth";
 import { IService } from "@/interfaces/IServices";
+import { BUSINESS, CLIENT } from "@/constants/global";
 
 export async function createUserAccount(user: IUser) {
     try {
@@ -20,7 +21,7 @@ export async function createUserAccount(user: IUser) {
             user.name
         );
 
-        if (user.usertype === "business") {
+        if (user.usertype === BUSINESS) {
             const newUserProvider = await saveProviderToDB({
                 providerId: newAccount.$id,
                 businessName: user.name,
@@ -31,7 +32,7 @@ export async function createUserAccount(user: IUser) {
             return newUserProvider;
         }
 
-        if (user.usertype === "client") {
+        if (user.usertype === CLIENT) {
             const newUser = await saveUserToDB({
                 userId: newAccount.$id,
                 name: user.name,
