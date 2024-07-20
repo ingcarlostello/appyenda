@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 
 // @Components
 import LanguageSelector from "@/components/shared/LanguageSelector";
-import { MobileSidebar } from "@/components/shared/mobileSidebar/MobileSidebar";
-import Sidebar from "@/components/sidebar-nav/Sidebar";
 import { ModeToggle } from "@/components/theme-toggle";
 
 // @Interfaces
@@ -21,8 +19,15 @@ import { useServicesStore } from "@/stores/services.store"
 
 // @Actions
 import { getServices } from "@/lib/actions/services.actions";
+
+// @helpers
 import { extracUserNameFromEmail } from "@/helpers/extractUserFromEmail";
+
+// @Appwrite
 import { Query } from "appwrite";
+
+// @Constants
+import { CLIENT } from "@/constants/global";
 
 type DashboardLayoutProps = { children: React.ReactNode };
 
@@ -39,11 +44,7 @@ const Layout = ({ children }: DashboardLayoutProps) => {
 		const verifySocialAccount = async () => {
 			try {
 				const currentAccount = await account.get();
-				const currentSession = await account.getSession("current");
-
-				console.log('currentAccount --->', currentAccount);
-				console.log('currentSession --->', currentSession);
-				
+				const currentSession = await account.getSession("current");				
 				const userData = await checkUser();
 				loginUser(userData as IUser);
 				setSocialAccount(currentAccount);
@@ -74,14 +75,14 @@ const Layout = ({ children }: DashboardLayoutProps) => {
                             name: socialAccount.name,
                             userId: socialAccount.$id,
                             username: extracUserNameFromEmail(socialAccount.email),
-                            usertype: "client",
+                            usertype: CLIENT,
                         });
                         loginUser({
                             email: socialAccount.email,
                             name: socialAccount.name,
                             userId: socialAccount.$id,
                             username: extracUserNameFromEmail(socialAccount.email),
-                            usertype: "client",
+                            usertype: CLIENT,
                         });
                     }
                 }

@@ -21,6 +21,8 @@ import { LoginValidationSchema } from "@/lib/validation";
 
 // @Constants
 import { APPYENDA } from "@/constants/pages";
+import { LOGIN } from "@/constants/urls";
+import { CLIENT } from "@/constants/global";
 
 // @next-int
 import { useTranslations } from "next-intl";
@@ -77,7 +79,7 @@ const LoginViewModel = () => {
 			const session = await account.createEmailPasswordSession(email, password);
 			const userData = (await checkUser()) as IUser;
 
-			const res = await fetch("api/auth/login", {
+			const res = await fetch(LOGIN, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ userType: userData.usertype }),
@@ -90,7 +92,7 @@ const LoginViewModel = () => {
 
 			loginUser(userData as IUser);
 
-			router.push(userData.usertype === "client" ? "/user/client" : "/dashboard");
+			router.push(userData.usertype === CLIENT ? APPYENDA.CLIENT : APPYENDA.DASHBOARD);
 
 			return session;
 		} catch (error) {

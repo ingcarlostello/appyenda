@@ -8,6 +8,8 @@ import { jwtVerify } from "jose";
 
 // @Constants
 import { CustomJWTPayload, PROTECTED_ROUTES, RESTRICTED_PATHS, UserType } from "./constants/paths";
+import { APPYENDA } from "./constants/pages";
+import { BUSINESS, CLIENT } from "./constants/global";
 
 const verifyToken = async (userToken: string): Promise<UserType | null> => {
 	if (!userToken) {
@@ -16,7 +18,7 @@ const verifyToken = async (userToken: string): Promise<UserType | null> => {
 	try {
 		const { payload } = await jwtVerify(
 			userToken,
-			new TextEncoder().encode("sTmpL9bJn452j8HeXsrn9nQrnJ5895MJAsKzZNS9NMnuEAFMYL") // no olvidar poner variable de entorno
+			new TextEncoder().encode(process.env.NEXT_PUBLIC_SECRET_TOKEN as string)
 		);
 		return (payload as CustomJWTPayload).userType;
 	} catch {
@@ -41,10 +43,10 @@ export default async function middleware(request: NextRequest) {
 	}
 
 	if (userToken && startsWithAny(path, authRedirectPaths)) {
-		if (userType === "client") {
-			return NextResponse.redirect(new URL("/user/client", request.url));
-		} else if (userType === "business") {
-			return NextResponse.redirect(new URL("/dashboard", request.url));
+		if (userType === CLIENT) {
+			return NextResponse.redirect(new URL(APPYENDA.CLIENT, request.url));
+		} else if (userType === BUSINESS) {
+			return NextResponse.redirect(new URL(APPYENDA.DASHBOARD, request.url));
 		}
 	}
 

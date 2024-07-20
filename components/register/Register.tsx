@@ -22,6 +22,7 @@ import { PasswordInput } from "@/components/ui/password-input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import GoogleButton from "../shared/GoogleButton";
 
 // @View Models
 import RegisterViewModel from "./RegisterViewModel";
@@ -35,7 +36,9 @@ import { isDarkTheme } from "../../helpers/isDarkTheme";
 // @Assets
 import logo from "../../app/assets/APPYENDA-logo-transparent.png";
 import logoDark from "../../app/assets/APPYENDA-logo-transparent-darkmode.png";
-import GoogleButton from "../shared/GoogleButton";
+
+// @Constants
+import { BUSINESS, CLIENT } from "@/constants/global";
 
 const Register = () => {
 	const { form, handleSignUp, APPYENDA, isDisabled, isLoading } =
@@ -121,7 +124,7 @@ const Register = () => {
 											>
 												<FormItem className="flex items-center space-x-3 space-y-0">
 													<FormControl>
-														<RadioGroupItem value="client" />
+														<RadioGroupItem value={CLIENT} />
 													</FormControl>
 													<FormLabel className="font-normal">
 														{t("CLIENT")}
@@ -129,7 +132,7 @@ const Register = () => {
 												</FormItem>
 												<FormItem className="flex items-center space-x-3 space-y-0">
 													<FormControl>
-														<RadioGroupItem value="business" />
+														<RadioGroupItem value={BUSINESS} />
 													</FormControl>
 													<FormLabel className="font-normal">
 														{t("BUSINESS_OWNER")}
